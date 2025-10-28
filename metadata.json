@@ -1,0 +1,5 @@
+{
+  "name": "NBABrain: AI-Powered NBA Analytics",
+  "description": "An insightful tool for users to analyze NBA teams and players throughout the season. View AI-calculated team ELO ratings and position-aware player ratings (1-99) with in-depth analysis powered by Gemini.",
+  "requestFramePermissions": []
+}
