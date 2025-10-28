@@ -5,6 +5,8 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } fro
 interface CourtViewProps {
   players: Player[];
   teamColor: string;
+  activePlayerId?: number | null;
+  onActiveChange?: (id: number | null) => void;
 }
 
 // A more standard offensive formation for a half-court view.
@@ -22,8 +24,9 @@ const PlayerMarker: React.FC<{
     player: Player; 
     teamColor: string; 
     isActive: boolean;
-    onMarkerClick: () => void;
-}> = ({ player, teamColor, isActive, onMarkerClick }) => {
+    onActivate: () => void;
+    onDeactivate: () => void;
+}> = ({ player, teamColor, isActive, onActivate, onDeactivate }) => {
   const [activeSkill, setActiveSkill] = useState<string | null>(null);
 
   const ratingColor = player.rating >= 90 ? 'border-orange-400' : player.rating >= 85 ? 'border-amber-400' : 'border-gray-500';
@@ -35,24 +38,12 @@ const PlayerMarker: React.FC<{
     { s: 'REB', A: player.skills.rebounding, fullMark: 99 },
   ];
 
-  const CustomizedDot = ({ cx, cy, payload, stroke }: any) => {
-    if (activeSkill === payload.s) {
-        return (
-            <g transform={`translate(${cx},${cy})`}>
-                <circle r={6} fill={stroke} stroke="#fff" strokeWidth={2} />
-                <text textAnchor="middle" y={-10} fill="#fff" fontSize="12" fontWeight="bold">
-                    {payload.A}
-                </text>
-            </g>
-        );
-    }
-    return <circle cx={cx} cy={cy} r={3} fill={stroke} />;
-  };
+  // Hover interactions removed for clarity; values are shown as chips below chart
 
   return (
-    <div className="relative flex flex-col items-center cursor-pointer" onClick={onMarkerClick}>
+    <div className="relative flex flex-col items-center cursor-default" onMouseEnter={onActivate} onMouseLeave={onDeactivate}>
       <div 
-        className={`w-12 h-12 rounded-full bg-black/50 border-2 ${ratingColor} flex items-center justify-center transition-all duration-300 ${isActive ? 'scale-110' : ''} shadow-lg`}
+        className={`w-12 h-12 rounded-full bg-black/50 border-2 ${ratingColor} flex items-center justify-center transition-all duration-300 ${isActive ? 'scale-110' : ''} shadow-lg cursor-default`}
         style={{ boxShadow: `0 0 15px ${teamColor}50`}}
       >
         <span className="text-white font-bold text-lg">{player.rating}</span>
@@ -61,7 +52,7 @@ const PlayerMarker: React.FC<{
       <span className="text-xs text-white mt-1 whitespace-nowrap font-medium">{player.name}</span>
       
       {/* Enhanced Popover */}
-      <div className={`absolute bottom-full mb-3 w-72 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg p-4 text-xs text-left transition-opacity duration-300 z-10 shadow-2xl ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`absolute bottom-full mb-3 w-72 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg p-4 text-xs text-left transition-opacity duration-300 z-10 shadow-2xl cursor-default ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <div className="flex justify-between items-center pb-2 border-b border-white/10">
             <div>
                 <p className="font-extrabold text-xl text-white tracking-tight">{player.name}</p>
@@ -74,20 +65,17 @@ const PlayerMarker: React.FC<{
         </div>
 
         <div className="grid grid-cols-2 gap-4 mt-3">
-            <div className="h-28">
+            <div className="h-32">
                 <ResponsiveContainer width="100%" height="100%">
-                    <RadarChart cx="50%" cy="50%" outerRadius="60%" data={radarData}>
+                    <RadarChart cx="50%" cy="50%" outerRadius={isActive ? '62%' : '52%'} data={radarData} margin={{ top: 14, right: 14, bottom: 14, left: 14 }}>
                         <PolarGrid stroke="rgba(255, 255, 255, 0.2)" />
                         <PolarAngleAxis dataKey="s" tick={{ fill: '#d1d5db', fontSize: 10 }} />
                         <Radar 
                             dataKey="A" 
                             stroke={teamColor || '#f97316'} 
                             fill={teamColor || '#f97316'} 
-                            fillOpacity={0.6} 
-                            // FIX: Explicitly type the 'data' parameter as 'any' to resolve incorrect TypeScript inference.
-                            // The 'recharts' library passes a data payload object to onClick, not a standard MouseEvent.
-                            onClick={(data: any) => setActiveSkill(prev => prev === data.payload.s ? null : data.payload.s)}
-                            dot={<CustomizedDot />}
+                            fillOpacity={0.6}
+                            dot={false}
                             activeDot={false}
                         />
                     </RadarChart>
@@ -101,14 +89,22 @@ const PlayerMarker: React.FC<{
                 <div className="flex justify-between"><span className="text-gray-400">BLK</span><span className="font-semibold text-white">{player.stats.blk.toFixed(1)}</span></div>
             </div>
         </div>
+        {/* Exact radar values as chips */}
+        <div className="mt-3 flex flex-wrap gap-2">
+          {['SHT','DEF','PLY','ATH','REB'].map((k, i) => {
+            const val = radarData[i].A;
+            return <span key={k} className="bg-white/10 text-white text-xs px-2 py-0.5 rounded-full font-semibold">{k}: {val}</span>;
+          })}
+        </div>
         <div className="absolute left-1/2 -bottom-2 -translate-x-1/2 w-4 h-4 bg-black/60 border-b border-r border-white/10 rotate-45"></div>
       </div>
     </div>
   );
 };
 
-const CourtView: React.FC<CourtViewProps> = ({ players, teamColor }) => {
-  const [activePlayerId, setActivePlayerId] = useState<number | null>(null);
+const CourtView: React.FC<CourtViewProps> = ({ players, teamColor, activePlayerId: controlledActiveId, onActiveChange }) => {
+  const [uncontrolledId, setUncontrolledId] = useState<number | null>(null);
+  const activePlayerId = controlledActiveId !== undefined ? controlledActiveId : uncontrolledId;
 
   const positionedPlayers = useMemo(() => {
     const starters = [...players];
@@ -137,8 +133,13 @@ const CourtView: React.FC<CourtViewProps> = ({ players, teamColor }) => {
     return Array.from(assigned.entries());
   }, [players]);
 
-  const handleMarkerClick = (playerId: number) => {
-    setActivePlayerId(prevId => prevId === playerId ? null : playerId);
+  const handleActivate = (playerId: number) => {
+    if (onActiveChange) onActiveChange(playerId);
+    else setUncontrolledId(playerId);
+  };
+  const handleDeactivate = () => {
+    if (onActiveChange) onActiveChange(null);
+    else setUncontrolledId(null);
   };
 
   return (
@@ -168,7 +169,8 @@ const CourtView: React.FC<CourtViewProps> = ({ players, teamColor }) => {
                     player={player} 
                     teamColor={teamColor} 
                     isActive={activePlayerId === player.id}
-                    onMarkerClick={() => handleMarkerClick(player.id)}
+                    onActivate={() => handleActivate(player.id)}
+                    onDeactivate={handleDeactivate}
                 />
               </div>
             );

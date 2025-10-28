@@ -101,7 +101,7 @@ const TeamComparisonEloChart: React.FC<TeamComparisonEloChartProps> = ({ teams }
 
 
   return (
-    <div className="bg-black/30 backdrop-blur-xl rounded-xl p-6 border border-white/10 h-full flex flex-col shadow-lg">
+    <div className="glass-light rounded-xl p-6 h-[28rem] flex flex-col shadow-lg">
         <div className="flex justify-between items-start mb-4">
             <div>
                 <h2 className="text-2xl font-bold text-white">ELO Comparison</h2>
@@ -126,7 +126,7 @@ const TeamComparisonEloChart: React.FC<TeamComparisonEloChartProps> = ({ teams }
                 {selectedTeams.map((teamName, index) => {
                     const team = teams.find(t => t.name === teamName);
                     return (
-                        <Line key={teamName} type="monotone" dataKey={teamName} stroke={team?.logoColor || COLORS[index % COLORS.length]} strokeWidth={2.5} dot={false} connectNulls activeDot={{ r: 6, fill: team?.logoColor, stroke: '#fff', strokeWidth: 2 }}/>
+                        <Line key={teamName} type="monotone" dataKey={teamName} stroke={team?.logoColor || COLORS[index % COLORS.length]} strokeWidth={3} strokeOpacity={0.95} dot={false} connectNulls isAnimationActive animationDuration={500} activeDot={{ r: 6, fill: team?.logoColor, stroke: '#fff', strokeWidth: 2 }} style={{ filter: 'drop-shadow(0 0 2px rgba(255,255,255,0.2))' }}/>
                     );
                 })}
               </LineChart>

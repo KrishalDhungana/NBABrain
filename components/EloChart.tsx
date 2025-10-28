@@ -1,13 +1,15 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, ReferenceLine } from 'recharts';
 import type { EloHistoryPoint } from '../types';
 
 interface EloChartProps {
   data: EloHistoryPoint[];
   teamColor: string;
+  overallBaseline?: number;
+  confBaseline?: number;
 }
 
-const EloChart: React.FC<EloChartProps> = ({ data, teamColor }) => {
+const EloChart: React.FC<EloChartProps> = ({ data, teamColor, overallBaseline, confBaseline }) => {
     
     // Format date for display on X-axis
     const formatDate = (tickItem: string) => {
@@ -52,13 +54,23 @@ const EloChart: React.FC<EloChartProps> = ({ data, teamColor }) => {
             itemStyle={{ color: teamColor }}
             labelFormatter={formatDate}
         />
+        {overallBaseline !== undefined && (
+          <ReferenceLine y={overallBaseline} stroke="#d1d5db" strokeDasharray="4 4" />
+        )}
+        {confBaseline !== undefined && (
+          <ReferenceLine y={confBaseline} stroke="#60a5fa" strokeDasharray="4 4" />
+        )}
         <Line 
             type="monotone" 
             dataKey="elo" 
             stroke={teamColor} 
-            strokeWidth={2.5}
+            strokeWidth={3}
+            strokeOpacity={0.95}
             dot={false}
+            isAnimationActive
+            animationDuration={500}
             activeDot={{ r: 6, fill: teamColor, stroke: '#fff', strokeWidth: 2 }}
+            style={{ filter: 'drop-shadow(0 0 2px rgba(255,255,255,0.2))' }}
         />
       </LineChart>
     </ResponsiveContainer>

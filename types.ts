@@ -43,6 +43,18 @@ export interface GameHistory {
   eloChange: number;
 }
 
+export interface TeamRecord {
+  wins: number;
+  losses: number;
+  conferenceRank: number;
+}
+
+export interface TeamStats {
+  plusMinus: number;
+  offensiveRating: number;
+  defensiveRating: number;
+}
+
 export interface Team {
   id: number;
   name: string;
@@ -54,6 +66,8 @@ export interface Team {
   logoColor: string;
   eloHistory: EloHistoryPoint[];
   gameHistory: GameHistory[];
+  record?: TeamRecord;
+  teamStats?: TeamStats;
 }
 
 // For "Games Today" Tab

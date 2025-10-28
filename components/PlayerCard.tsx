@@ -15,7 +15,7 @@ const StatBox: React.FC<{ label: string, value: number | string }> = ({ label, v
 );
 
 const PlayerCard: React.FC<PlayerCardProps> = ({ player, teamColor }) => {
-  const [activeSkill, setActiveSkill] = useState<string | null>(null);
+  const [showDetails, setShowDetails] = useState<boolean>(false);
   const { name, position, rating, stats, skills } = player;
 
   const ratingColor = rating >= 90 ? 'text-orange-400' : rating >= 85 ? 'text-amber-400' : 'text-gray-200';
@@ -29,57 +29,62 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, teamColor }) => {
     { s: 'REB', A: skills.rebounding, fullMark: 99 },
   ];
   
-  const CustomizedDot = ({ cx, cy, payload, stroke }: any) => {
-    if (activeSkill === payload.s) {
-        return (
-            <g transform={`translate(${cx},${cy})`}>
-                <circle r={6} fill={stroke} stroke="#fff" strokeWidth={2} />
-                <text textAnchor="middle" y={-10} fill="#fff" fontSize="12" fontWeight="bold">
-                    {payload.A}
-                </text>
-            </g>
-        );
-    }
-    return <circle cx={cx} cy={cy} r={3} fill={stroke} />;
-  };
+  // Hover interactions removed; values are shown as chips where used
 
   return (
-    <div className="bg-black/20 rounded-lg p-4 flex items-center justify-between gap-4 border border-white/10">
+    <div className="relative bg-black/20 rounded-lg p-4 flex items-center justify-between gap-4 border border-white/10">
       <div className="flex-grow">
         <h3 className="text-lg font-bold text-white">{name}</h3>
         <p className="text-sm text-gray-400 -mt-1">{position}</p>
-        <div className="grid grid-cols-5 gap-x-3 gap-y-2 mt-3">
-            <StatBox label="PPG" value={stats.ppg.toFixed(1)} />
-            <StatBox label="AST" value={stats.ast.toFixed(1)} />
-            <StatBox label="REB" value={stats.reb.toFixed(1)} />
-            <StatBox label="STL" value={stats.stl.toFixed(1)} />
-            <StatBox label="BLK" value={stats.blk.toFixed(1)} />
-        </div>
       </div>
       <div className="flex items-center gap-4 flex-shrink-0">
-          <div className="w-24 h-24">
-             <ResponsiveContainer width="100%" height="100%">
-                <RadarChart cx="50%" cy="50%" outerRadius="60%" data={radarData}>
-                    <PolarGrid stroke="rgba(255, 255, 255, 0.2)" />
-                    <PolarAngleAxis dataKey="s" tick={{ fill: '#d1d5db', fontSize: 10 }} />
-                    <Radar 
-                        dataKey="A" 
-                        stroke={teamColor} 
-                        fill={teamColor} 
-                        fillOpacity={0.6}
-                        // FIX: Explicitly type the 'data' parameter as 'any' to resolve incorrect TypeScript inference.
-                        // The 'recharts' library passes a data payload object to onClick, not a standard MouseEvent.
-                        onClick={(data: any) => setActiveSkill(prev => prev === data.payload.s ? null : data.payload.s)}
-                        dot={<CustomizedDot />}
-                        activeDot={false}
-                    />
-                </RadarChart>
+        <div className="flex flex-col items-center justify-center text-center w-20 select-none">
+          <span className="text-xs text-gray-400">Rating</span>
+          <button onClick={() => setShowDetails(v => !v)} className={`text-3xl font-black ${ratingColor} ${ratingHighlightClass} hover:scale-110 transition-transform`}>{rating}</button>
+        </div>
+      </div>
+
+      {/* Details popover (same style as starters) */}
+      <div className={`absolute left-full top-1/2 -translate-y-1/2 ml-3 w-72 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg p-4 text-xs text-left transition-opacity duration-300 z-10 shadow-2xl ${showDetails ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className="flex justify-between items-center pb-2 border-b border-white/10">
+          <div>
+            <p className="font-extrabold text-xl text-white tracking-tight">{name}</p>
+            <p className="text-sm text-gray-400">{position}</p>
+          </div>
+          <div className="text-center">
+            <p className="text-xs text-gray-400">RATING</p>
+            <p className={`text-4xl font-black ${rating >= 95 ? 'rating-highlight' : rating >= 90 ? 'text-orange-400' : 'text-amber-400'}`}>{rating}</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 mt-3">
+          <div className="h-28">
+            <ResponsiveContainer width="100%" height="100%">
+              <RadarChart cx="50%" cy="50%" outerRadius={'65%'} data={radarData} margin={{ top: 12, right: 12, bottom: 12, left: 12 }}>
+                <PolarGrid stroke="rgba(255, 255, 255, 0.2)" />
+                <PolarAngleAxis dataKey="s" tick={{ fill: '#d1d5db', fontSize: 10 }} />
+                <Radar
+                  dataKey="A"
+                  stroke={teamColor}
+                  fill={teamColor}
+                  fillOpacity={0.6}
+                  dot={false}
+                  activeDot={false}
+                />
+              </RadarChart>
             </ResponsiveContainer>
           </div>
-          <div className="flex flex-col items-center justify-center text-center w-20">
-            <span className="text-xs text-gray-400">Rating</span>
-            <span className={`text-3xl font-black ${ratingColor} ${ratingHighlightClass}`}>{rating}</span>
+          <div className="space-y-1 text-sm">
+            <div className="flex justify-between"><span className="text-gray-400">PPG</span><span className="font-semibold text-white">{stats.ppg.toFixed(1)}</span></div>
+            <div className="flex justify-between"><span className="text-gray-400">AST</span><span className="font-semibold text-white">{stats.ast.toFixed(1)}</span></div>
+            <div className="flex justify-between"><span className="text-gray-400">REB</span><span className="font-semibold text-white">{stats.reb.toFixed(1)}</span></div>
+            <div className="flex justify-between"><span className="text-gray-400">STL</span><span className="font-semibold text-white">{stats.stl.toFixed(1)}</span></div>
+            <div className="flex justify-between"><span className="text-gray-400">BLK</span><span className="font-semibold text-white">{stats.blk.toFixed(1)}</span></div>
           </div>
+        </div>
+        <button onClick={() => setShowDetails(false)} className="absolute top-2 right-2 text-gray-400 hover:text-white">
+          ✕
+        </button>
       </div>
     </div>
   );

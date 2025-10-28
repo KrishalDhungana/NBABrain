@@ -8,34 +8,28 @@ import BenchGrid from './BenchGrid';
 
 interface TeamDetailProps {
   team: Team;
+  onClose: () => void;
   allTeams?: Team[];
 }
 
 type TimeRange = 'week' | 'month' | 'season';
 
-const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
+const TeamDetail: React.FC<TeamDetailProps> = ({ team, onClose, allTeams }) => {
   const [analysis, setAnalysis] = useState('');
-  const [isLoadingAnalysis, setIsLoadingAnalysis] = useState(false);
+  const [isLoadingAnalysis, setIsLoadingAnalysis] = useState(true);
   const [timeRange, setTimeRange] = useState<TimeRange>('month');
   const [activePlayerId, setActivePlayerId] = useState<number | null>(null);
 
-  const generateAnalysis = async () => {
-    setIsLoadingAnalysis(true);
-    try {
-      const fetched = await fetchTeamAnalysis(team.name);
-      setAnalysis(fetched);
-    } catch {
-      setAnalysis('Bob is taking a water break. Try again in a sec.');
-    } finally {
-      setIsLoadingAnalysis(false);
-    }
-  };
-
-  // Reset AI analysis when switching teams so prior responses don't linger
   useEffect(() => {
-    setAnalysis('');
-    setIsLoadingAnalysis(false);
-  }, [team.id]);
+    const getAnalysis = async () => {
+      if (!team) return;
+      setIsLoadingAnalysis(true);
+      const fetchedAnalysis = await fetchTeamAnalysis(team.name);
+      setAnalysis(fetchedAnalysis);
+      setIsLoadingAnalysis(false);
+    };
+    getAnalysis();
+  }, [team]);
 
   const filteredEloHistory = useMemo(() => {
     const history = team.eloHistory;
@@ -86,23 +80,15 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
     return parts[parts.length - 1] || full;
   };
 
-  const ratingRanks = useMemo(() => {
-    if (!allTeams || !team.teamStats) return null;
-    const withStats = allTeams.filter(t => t.teamStats);
-    const offSorted = [...withStats].sort((a,b) => (b.teamStats!.offensiveRating) - (a.teamStats!.offensiveRating));
-    const defSorted = [...withStats].sort((a,b) => (a.teamStats!.defensiveRating) - (b.teamStats!.defensiveRating));
-    const netSorted = [...withStats].sort((a,b) => (b.teamStats!.plusMinus) - (a.teamStats!.plusMinus));
-    const offRank = offSorted.findIndex(t => t.id === team.id) + 1;
-    const defRank = defSorted.findIndex(t => t.id === team.id) + 1;
-    const netRank = netSorted.findIndex(t => t.id === team.id) + 1;
-    const total = withStats.length;
-    return { offRank, defRank, netRank, total };
-  }, [allTeams, team]);
-
   const closeCards = () => setActivePlayerId(null);
 
   return (
-    <div className="glass rounded-xl p-6 space-y-6 border border-white/10 relative shadow-lg" onClick={closeCards}>
+    <div className="bg-black/30 backdrop-blur-xl rounded-xl p-6 space-y-6 border border-white/10 relative shadow-lg" onClick={closeCards}>
+      <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
 
       <div className="flex items-center gap-4">
         <div style={{backgroundColor: team.logoColor}} className="w-16 h-16 rounded-full flex items-center justify-center text-white font-black text-2xl shadow-lg flex-shrink-0">
@@ -121,7 +107,7 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
       </div>
 
       {/* Team snapshot: record, ranking, team stats, last 5 */}
-      <div className="glass rounded-lg p-4 border border-white/10">
+      <div className="bg-black/20 rounded-lg p-4 border border-white/10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div className="bg-black/20 rounded-md p-3 border border-white/10">
             <h4 className="text-sm font-semibold text-gray-400">Record & Rank</h4>
@@ -138,17 +124,14 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
               <div>
                 <p className="text-xs text-gray-400">Off Rtg</p>
                 <p className="text-white font-semibold">{team.teamStats?.offensiveRating ?? '—'}</p>
-                {ratingRanks && <p className="text-[10px] text-gray-400">Rank #{ratingRanks.offRank} of {ratingRanks.total}</p>}
               </div>
               <div>
                 <p className="text-xs text-gray-400">Def Rtg</p>
                 <p className="text-white font-semibold">{team.teamStats?.defensiveRating ?? '—'}</p>
-                {ratingRanks && <p className="text-[10px] text-gray-400">Rank #{ratingRanks.defRank} of {ratingRanks.total}</p>}
               </div>
               <div>
-                <p className="text-xs text-gray-400">Net Rating</p>
+                <p className="text-xs text-gray-400">Plus/Minus</p>
                 <p className="text-white font-semibold">{team.teamStats?.plusMinus ?? '—'}</p>
-                {ratingRanks && <p className="text-[10px] text-gray-400">Rank #{ratingRanks.netRank} of {ratingRanks.total}</p>}
               </div>
             </div>
           </div>
@@ -169,24 +152,19 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
         </div>
       </div>
 
-      <div className="glass rounded-lg p-4 border border-white/10">
-        <div className="flex items-center justify-between mb-2">
-          <h3 className="text-lg font-bold text-orange-400">AI Analyst Insights</h3>
-          <button onClick={generateAnalysis} className="px-3 py-1.5 text-xs rounded-md bg-orange-600 hover:bg-orange-500 font-semibold">
-            Ask Bob for a hot take
-          </button>
-        </div>
+      <div className="bg-black/20 rounded-lg p-4 border border-white/10">
+        <h3 className="text-lg font-bold text-orange-400 mb-2">AI Analyst Insights</h3>
         {isLoadingAnalysis ? (
            <div className="flex items-center p-2">
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-400"></div>
-                <p className="ml-3 text-gray-400">Cooking up insights...</p>
+                <p className="ml-3 text-gray-400">Generating analysis...</p>
            </div>
         ) : (
-          <p className="text-gray-300 italic min-h-[2rem]">{analysis || 'Click the button to get Bob the AI scout’s quick thoughts.'}</p>
+          <p className="text-gray-300 italic">{analysis}</p>
         )}
       </div>
       
-      <div className="glass rounded-lg p-4 border border-white/10">
+      <div className="bg-black/20 rounded-lg p-4 border border-white/10">
           <div className="flex justify-between items-center mb-2">
             <h3 className="text-lg font-bold text-white">ELO Trend</h3>
             <div className="flex items-center gap-3">
@@ -214,7 +192,7 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
             </div>
           </div>
           <div className="h-60">
-               <EloChart key={`${team.id}-${timeRange}`} data={filteredEloHistory} teamColor={team.logoColor} overallBaseline={overallBaseline} confBaseline={confBaseline} />
+               <EloChart data={filteredEloHistory} teamColor={team.logoColor} overallBaseline={overallBaseline} confBaseline={confBaseline} />
           </div>
       </div>
 
@@ -236,11 +214,5 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
 };
 
 export default TeamDetail;
-
-
-
-
-
-
 
 

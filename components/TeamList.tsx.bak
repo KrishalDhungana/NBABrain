@@ -11,12 +11,12 @@ interface TeamListProps {
 
 const TeamList: React.FC<TeamListProps> = ({ teams, selectedTeam, onSelectTeam }) => {
   return (
-    <div className="glass rounded-xl p-4 h-full flex flex-col">
+    <div className="bg-black/30 backdrop-blur-xl rounded-xl p-4 border border-white/10 shadow-lg">
       <div className="flex items-center gap-2 mb-4">
         <h2 className="text-xl font-bold text-white">Team Power Rankings</h2>
         <InfoTooltip text="ELO rating change over the last 5 games." />
       </div>
-      <div className="space-y-2 pr-2 flex-grow overflow-y-auto">
+      <div className="space-y-2 max-h-[calc(100vh-250px)] overflow-y-auto pr-2">
         {teams.map((team, index) => {
           const isSelected = selectedTeam?.id === team.id;
           const eloHighlightClass = team.elo > 1600 ? 'elo-highlight' : '';
