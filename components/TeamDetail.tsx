@@ -5,6 +5,7 @@ import EloChangePill from './EloChangePill';
 import CourtView from './CourtView';
 import { fetchTeamAnalysis } from '../services/data';
 import BenchGrid from './BenchGrid';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 
 interface TeamDetailProps {
   team: Team;
@@ -99,6 +100,43 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
     return { offRank, defRank, netRank, total };
   }, [allTeams, team]);
 
+  // Compute team profile (starters' averaged skills) for Team Profile radar
+  const teamProfile = useMemo(() => {
+    const starters = [...team.players].sort((a,b) => b.rating - a.rating).slice(0,5);
+    const sum = starters.reduce((acc, p) => ({
+      shooting: acc.shooting + p.skills.shooting,
+      defense: acc.defense + p.skills.defense,
+      playmaking: acc.playmaking + p.skills.playmaking,
+      athleticism: acc.athleticism + p.skills.athleticism,
+      rebounding: acc.rebounding + p.skills.rebounding,
+    }), { shooting: 0, defense: 0, playmaking: 0, athleticism: 0, rebounding: 0 });
+    const n = starters.length || 1;
+    const avg = {
+      shooting: Math.round(sum.shooting / n),
+      defense: Math.round(sum.defense / n),
+      playmaking: Math.round(sum.playmaking / n),
+      athleticism: Math.round(sum.athleticism / n),
+      rebounding: Math.round(sum.rebounding / n),
+    };
+    const data = [
+      { s: 'SHT', A: avg.shooting, fullMark: 99 },
+      { s: 'DEF', A: avg.defense, fullMark: 99 },
+      { s: 'PLY', A: avg.playmaking, fullMark: 99 },
+      { s: 'ATH', A: avg.athleticism, fullMark: 99 },
+      { s: 'REB', A: avg.rebounding, fullMark: 99 },
+    ];
+    const list = [
+      { key: 'SHT', label: 'SHT', value: avg.shooting },
+      { key: 'DEF', label: 'DEF', value: avg.defense },
+      { key: 'PLY', label: 'PLY', value: avg.playmaking },
+      { key: 'ATH', label: 'ATH', value: avg.athleticism },
+      { key: 'REB', label: 'REB', value: avg.rebounding },
+    ];
+    return { data, list };
+  }, [team.players]);
+
+  // Use Recharts' built-in polygon animation by remounting Radar on team change
+
   const closeCards = () => setActivePlayerId(null);
 
   return (
@@ -109,9 +147,14 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
             {team.abbreviation}
         </div>
         <div>
-            <h2 className="text-4xl font-extrabold text-white tracking-tight">{team.name}</h2>
+            <h2 className="text-4xl font-extrabold text-white tracking-tight flex items-baseline gap-3">
+              <span>{team.name}</span>
+              {team.record && (
+                <span className="text-sm text-gray-400 font-semibold">({team.record.wins}-{team.record.losses})</span>
+              )}
+            </h2>
             <p className="text-lg text-gray-300 flex items-center gap-3 flex-wrap">
-              <span>{team.conference} Conference | ELO: <span className="font-bold text-orange-400">{team.elo}</span></span>
+              <span>{team.record ? `#${team.record.conferenceRank} in ${team.conference} Conference` : `${team.conference} Conference`} | ELO: <span className="font-bold text-orange-400">{team.elo}</span></span>
               <span className="flex items-center gap-2">
                 <EloChangePill change={team.eloChangeLast5} />
                 <span className="text-sm text-gray-400">Last 5 games</span>
@@ -123,32 +166,53 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
       {/* Team snapshot: record, ranking, team stats, last 5 */}
       <div className="glass rounded-lg p-4 border border-white/10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className="bg-black/20 rounded-md p-3 border border-white/10">
-            <h4 className="text-sm font-semibold text-gray-400">Record & Rank</h4>
+          <div className="hidden bg-black/20 rounded-md p-3 border border-white/10">
+            <h4 className="text-sm font-semibold text-gray-400">Team Profile</h4>
             <p className="mt-1 text-white text-lg font-bold">
               {team.record ? `${team.record.wins}-${team.record.losses}` : '—'}
             </p>
             <p className="text-sm text-gray-300">
-              {team.record ? `Conference Rank: #${team.record.conferenceRank}` : '—'}
+              {team.record ? `Conference Rank: ${team.record.conferenceRank}` : '—'}
             </p>
+          </div>
+          <div className="bg-black/20 rounded-md p-3 border border-white/10">
+            <h4 className="text-sm font-semibold text-gray-400">Team Profile</h4>
+            <div className="mt-1 grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
+              <div className="h-32">
+                <ResponsiveContainer width="100%" height="100%">
+                  <RadarChart cx="50%" cy="50%" outerRadius={'68%'} data={teamProfile.data} margin={{ top: 12, right: 12, bottom: 12, left: 12 }}>
+                    <PolarGrid stroke="rgba(255, 255, 255, 0.2)" />
+                    <PolarAngleAxis dataKey="s" tick={{ fill: '#d1d5db', fontSize: 10 }} />
+                    <Radar key={`team-radar-${team.id}`} dataKey="A" stroke={team.logoColor} fill={team.logoColor} fillOpacity={0.6} dot={false} activeDot={false} animationDuration={700} />
+                  </RadarChart>
+                </ResponsiveContainer>
+              </div>
+              <div className="flex flex-wrap gap-2 md:justify-end">
+                {teamProfile.list.map(item => (
+                  <span key={item.key} className="bg-white/10 text-white text-xs px-2 py-0.5 rounded-full font-semibold">
+                    {item.label}: {item.value}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
           <div className="bg-black/20 rounded-md p-3 border border-white/10">
             <h4 className="text-sm font-semibold text-gray-400">Team Stats</h4>
             <div className="mt-1 grid grid-cols-3 gap-2 text-center">
               <div>
-                <p className="text-xs text-gray-400">Off Rtg</p>
+                <p className="text-xs text-gray-400">Off Rating</p>
                 <p className="text-white font-semibold">{team.teamStats?.offensiveRating ?? '—'}</p>
-                {ratingRanks && <p className="text-[10px] text-gray-400">Rank #{ratingRanks.offRank} of {ratingRanks.total}</p>}
+                {ratingRanks && <p className="text-[10px] text-gray-400">Rank: {ratingRanks.offRank}</p>}
               </div>
               <div>
-                <p className="text-xs text-gray-400">Def Rtg</p>
+                <p className="text-xs text-gray-400">Def Rating</p>
                 <p className="text-white font-semibold">{team.teamStats?.defensiveRating ?? '—'}</p>
-                {ratingRanks && <p className="text-[10px] text-gray-400">Rank #{ratingRanks.defRank} of {ratingRanks.total}</p>}
+                {ratingRanks && <p className="text-[10px] text-gray-400">Rank: {ratingRanks.defRank}</p>}
               </div>
               <div>
                 <p className="text-xs text-gray-400">Net Rating</p>
                 <p className="text-white font-semibold">{team.teamStats?.plusMinus ?? '—'}</p>
-                {ratingRanks && <p className="text-[10px] text-gray-400">Rank #{ratingRanks.netRank} of {ratingRanks.total}</p>}
+                {ratingRanks && <p className="text-[10px] text-gray-400">Rank: {ratingRanks.netRank}</p>}
               </div>
             </div>
           </div>
@@ -236,6 +300,7 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
 };
 
 export default TeamDetail;
+
 
 
 

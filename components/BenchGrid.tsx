@@ -38,7 +38,7 @@ const BenchTile: React.FC<{ player: Player; teamColor: string; isActive: boolean
     { s: 'REB', A: player.skills.rebounding, fullMark: 99 },
   ];
 
-  // Hover interactions removed; exact values appear below the chart
+  // Use Recharts default mount animation by mounting popover only when active
 
   const ratingColor = player.rating >= 90 ? 'border-orange-400' : player.rating >= 85 ? 'border-amber-400' : 'border-gray-500';
 
@@ -54,7 +54,8 @@ const BenchTile: React.FC<{ player: Player; teamColor: string; isActive: boolean
       <span className="text-xs text-white mt-1 whitespace-nowrap font-medium">{player.name}</span>
 
       {/* Popover card */}
-      <div className={`absolute bottom-full mb-3 w-72 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg p-4 text-xs text-left transition-opacity duration-300 z-10 shadow-2xl cursor-default ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} onClick={(e) => e.stopPropagation()}>
+      {isActive && (
+      <div className={`absolute bottom-full mb-3 w-72 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg p-4 text-xs text-left z-10 shadow-2xl cursor-default`} onClick={(e) => e.stopPropagation()}>
         <div className="flex justify-between items-center pb-2 border-b border-white/10">
           <div>
             <p className="font-extrabold text-xl text-white tracking-tight">{player.name}</p>
@@ -69,10 +70,10 @@ const BenchTile: React.FC<{ player: Player; teamColor: string; isActive: boolean
         <div className="grid grid-cols-2 gap-4 mt-3">
           <div className="h-32">
             <ResponsiveContainer width="100%" height="100%">
-              <RadarChart cx="50%" cy="50%" outerRadius={isActive ? '62%' : '52%'} data={radarData} margin={{ top: 14, right: 14, bottom: 14, left: 14 }}>
+              <RadarChart cx="50%" cy="50%" outerRadius={'62%'} data={radarData} margin={{ top: 14, right: 14, bottom: 14, left: 14 }}>
                 <PolarGrid stroke="rgba(255, 255, 255, 0.2)" />
                 <PolarAngleAxis dataKey="s" tick={{ fill: '#d1d5db', fontSize: 10 }} />
-                <Radar dataKey="A" stroke={teamColor} fill={teamColor} fillOpacity={0.6} dot={false} activeDot={false} />
+                <Radar dataKey="A" stroke={teamColor} fill={teamColor} fillOpacity={0.6} dot={false} activeDot={false} animationDuration={600} />
               </RadarChart>
             </ResponsiveContainer>
           </div>
@@ -95,6 +96,7 @@ const BenchTile: React.FC<{ player: Player; teamColor: string; isActive: boolean
 
         <div className="absolute left-1/2 -bottom-2 -translate-x-1/2 w-4 h-4 bg-black/60 border-b border-r border-white/10 rotate-45"></div>
       </div>
+      )}
     </div>
   );
 };
