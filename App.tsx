@@ -215,8 +215,8 @@ const GamesTodayView: React.FC<{ summary: DailySummary | null, teams: Team[] }> 
                 <h2 className="text-3xl font-extrabold text-white mb-4">Today's Games</h2>
                  <div className="space-y-4">
                     {sortedHighlights.map((game, index) => (
-                        <div key={index} className="glass rounded-lg p-4 border border-white/10">
-                            <div className="flex justify-between items-center cursor-pointer" onClick={() => setOpenIndex(openIndex === index ? null : index)}>
+                        <div key={index} className="glass rounded-lg p-4 border border-white/10 cursor-pointer" onClick={() => setOpenIndex(openIndex === index ? null : index)}>
+                            <div className="flex justify-between items-center">
                                 <div className="flex items-center gap-3 text-lg font-bold w-2/5">
                                     <div style={{ backgroundColor: game.awayTeam.logoColor }} className="w-6 h-6 rounded-full flex-shrink-0"></div>
                                     <span>{game.awayTeam.name}</span>
@@ -236,7 +236,7 @@ const GamesTodayView: React.FC<{ summary: DailySummary | null, teams: Team[] }> 
                                 <EloChangePill change={game.homeEloChange} />
                             </div>
                             {openIndex === index && (
-                              <div className="mt-4 border-t border-white/10 pt-4">
+                              <div className="mt-4 border-t border-white/10 pt-4" onClick={(e) => e.stopPropagation()}>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                   {[{ side: 'away', team: game.awayTeam }, { side: 'home', team: game.homeTeam }].map(({team: t}, ti) => {
                                     const box = buildBoxScore(t.name, index * 100 + ti * 1000);

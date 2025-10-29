@@ -154,7 +154,7 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
               )}
             </h2>
             <p className="text-lg text-gray-300 flex items-center gap-3 flex-wrap">
-              <span>{team.record ? `#${team.record.conferenceRank} in ${team.conference} Conference` : `${team.conference} Conference`} | ELO: <span className="font-bold text-orange-400">{team.elo}</span></span>
+              <span>{team.record ? `#${team.record.conferenceRank} in ${team.conference} Conference` : `${team.conference} Conference`} | ELO: <span className={`font-bold ${team.elo > 1600 ? 'elo-highlight' : 'text-orange-400'}`}>{team.elo}</span></span>
               <span className="flex items-center gap-2">
                 <EloChangePill change={team.eloChangeLast5} />
                 <span className="text-sm text-gray-400">Last 5 games</span>
@@ -234,19 +234,22 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
       </div>
 
       <div className="glass rounded-lg p-4 border border-white/10">
-        <div className="flex items-center justify-between mb-2">
-          <h3 className="text-lg font-bold text-orange-400">AI Analyst Insights</h3>
-          <button onClick={generateAnalysis} className="px-3 py-1.5 text-xs rounded-md bg-orange-600 hover:bg-orange-500 font-semibold">
-            Ask Bob for a hot take
-          </button>
+        <div className="mb-2">
+          <h3 className="text-lg font-bold text-orange-400">Stephen AI. Smith's Hot Take</h3>
+          {(!isLoadingAnalysis && !analysis) && (
+            <button onClick={generateAnalysis} className="mt-2 btn-shimmer text-xs">
+              Get our AI analyst's thoughts
+            </button>
+          )}
         </div>
-        {isLoadingAnalysis ? (
+        {isLoadingAnalysis && (
            <div className="flex items-center p-2">
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-400"></div>
                 <p className="ml-3 text-gray-400">Cooking up insights...</p>
            </div>
-        ) : (
-          <p className="text-gray-300 italic min-h-[2rem]">{analysis || 'Click the button to get Bob the AI scout’s quick thoughts.'}</p>
+        )}
+        {!isLoadingAnalysis && analysis && (
+          <p className="text-gray-300 italic min-h-[2rem]">{analysis}</p>
         )}
       </div>
       
@@ -258,13 +261,13 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
                 {overallBaseline !== undefined && (
                   <span className="inline-flex items-center justify-center h-6 px-2 rounded-full text-xs font-semibold bg-white/10 text-gray-200 border border-white/10 leading-none align-middle whitespace-nowrap">
                     <span>League Avg:</span>
-                    <span className="ml-1 font-mono">{overallBaseline}</span>
+                    <span className="ml-1">{overallBaseline}</span>
                   </span>
                 )}
                 {confBaseline !== undefined && (
                   <span className="inline-flex items-center justify-center h-6 px-2 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-200 border border-blue-400/30 leading-none align-middle whitespace-nowrap">
-                    <span>Conf Avg:</span>
-                    <span className="ml-1 font-mono">{confBaseline}</span>
+                    <span>Conference Avg:</span>
+                    <span className="ml-1">{confBaseline}</span>
                   </span>
                 )}
               </div>
@@ -278,7 +281,7 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
             </div>
           </div>
           <div className="h-60">
-               <EloChart key={`${team.id}-${timeRange}`} data={filteredEloHistory} teamColor={team.logoColor} overallBaseline={overallBaseline} confBaseline={confBaseline} />
+               <EloChart data={filteredEloHistory} teamColor={team.logoColor} overallBaseline={overallBaseline} confBaseline={confBaseline} />
           </div>
       </div>
 

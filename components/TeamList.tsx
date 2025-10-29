@@ -35,7 +35,7 @@ const TeamList: React.FC<TeamListProps> = ({ teams, selectedTeam, onSelectTeam }
               <div style={{ backgroundColor: team.logoColor }} className="w-5 h-5 rounded-full flex-shrink-0"></div>
               <span className="font-semibold flex-grow">{team.name}</span>
               <EloChangePill change={team.eloChangeLast5} />
-              <span className={`ml-2 font-mono font-extrabold w-16 text-right text-xl tracking-tight drop-shadow ${eloHighlightClass} ${isSelected ? 'text-white' : 'text-orange-300'}`}>{team.elo}</span>
+              <span className={`ml-2 font-bold w-16 text-right ${eloHighlightClass} ${eloHighlightClass ? '' : 'text-orange-400'}`}>{team.elo}</span>
             </button>
           )
         })}

@@ -41,10 +41,12 @@ const PlayerMarker: React.FC<{
   // Use Recharts default mount animation by mounting popover only when active
 
   return (
-    <div className="relative flex flex-col items-center cursor-default" onMouseEnter={onActivate} onMouseLeave={onDeactivate}>
+    <div className="relative flex flex-col items-center cursor-default">
       <div 
         className={`w-12 h-12 rounded-full bg-black/50 border-2 ${ratingColor} flex items-center justify-center transition-all duration-300 ${isActive ? 'scale-110' : ''} shadow-lg cursor-default`}
         style={{ boxShadow: `0 0 15px ${teamColor}50`}}
+        onMouseEnter={onActivate}
+        onMouseLeave={onDeactivate}
       >
         <span className="text-white font-bold text-lg">{player.rating}</span>
       </div>

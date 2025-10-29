@@ -43,10 +43,12 @@ const BenchTile: React.FC<{ player: Player; teamColor: string; isActive: boolean
   const ratingColor = player.rating >= 90 ? 'border-orange-400' : player.rating >= 85 ? 'border-amber-400' : 'border-gray-500';
 
   return (
-    <div className="relative flex flex-col items-center text-center" onMouseEnter={onEnter} onMouseLeave={onLeave}>
+    <div className="relative flex flex-col items-center text-center">
       <div
         className={`w-12 h-12 rounded-full bg-black/50 border-2 ${ratingColor} flex items-center justify-center transition-all duration-300 ${isActive ? 'scale-110' : ''} shadow-lg cursor-default`}
         style={{ boxShadow: `0 0 15px ${teamColor}50`}}
+        onMouseEnter={onEnter}
+        onMouseLeave={onLeave}
       >
         <span className="text-white font-bold text-lg">{player.rating}</span>
       </div>

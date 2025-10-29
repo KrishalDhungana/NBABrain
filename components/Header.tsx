@@ -39,9 +39,9 @@ const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             <div className="ml-3 leading-tight flex flex-col justify-center">
                 <h1 className="text-3xl font-black tracking-tighter">
                   <span className="text-white">NBA</span>
-                  <span className="text-orange-400">Brain</span>
+                  <span className="text-orange-400">Mind</span>
                 </h1>
-                <p className="text-gray-300 text-sm">ELO Engine & AI-Powered Analytics</p>
+                <p className="text-gray-300 text-sm">AI-Powered Analytics & ELO Engine</p>
             </div>
         </div>
          <nav className="mt-4">
