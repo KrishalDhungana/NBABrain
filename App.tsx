@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Header from './components/Header';
 import TeamList from './components/TeamList';
 import TeamDetail from './components/TeamDetail';
 import LoadingSpinner from './components/LoadingSpinner';
 import TeamComparisonEloChart from './components/TeamComparisonEloChart';
 import PlayerRankingsView from './components/PlayerRankingsView';
-import type { Team, Player, DailySummary } from './types';
+import type { Team, DailySummary, PlayerDatasetPayload, PlayerDataRecord, Player } from './types';
 import EloChangePill from './components/EloChangePill';
-import { fetchTeamData, fetchDailySummaryData } from './services/data';
+import { fetchTeamData, fetchDailySummaryData, fetchPlayerData } from './services/data';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState('Team Rankings');
@@ -16,25 +16,35 @@ const App: React.FC = () => {
   const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [playerDataset, setPlayerDataset] = useState<PlayerDatasetPayload | null>(null);
 
   const loadInitialData = useCallback(async () => {
     try {
       setIsLoading(true);
       setError(null);
       setSelectedTeam(null);
-      const [fetchedTeams, fetchedSummary] = await Promise.all([
+      const [fetchedTeams, fetchedSummary, fetchedPlayers] = await Promise.all([
           fetchTeamData(),
-          fetchDailySummaryData()
+          fetchDailySummaryData(),
+          fetchPlayerData()
       ]);
-      
-      if (fetchedTeams && fetchedTeams.length > 0) {
-        const sortedTeams = [...fetchedTeams].sort((a, b) => b.elo - a.elo);
-        setTeams(sortedTeams);
-      } else {
+
+      if (!fetchedTeams || fetchedTeams.length === 0) {
         setError("Failed to load team data. The AI might be taking a break.");
+        return;
       }
 
-      if(fetchedSummary) {
+      if (!fetchedPlayers || !Array.isArray(fetchedPlayers.players) || fetchedPlayers.players.length === 0) {
+        setError("Player data is unavailable. Re-run the player pipeline to generate players.json.");
+        return;
+      }
+
+      const teamsWithPlayers = mergePlayersIntoTeams(fetchedTeams, fetchedPlayers.players);
+      const sortedTeams = [...teamsWithPlayers].sort((a, b) => b.elo - a.elo);
+      setTeams(sortedTeams);
+      setPlayerDataset(fetchedPlayers);
+
+      if (fetchedSummary) {
         setDailySummary(fetchedSummary);
       }
 
@@ -56,16 +66,6 @@ const App: React.FC = () => {
       setSelectedTeam(teams[0]);
     }
   }, [teams, selectedTeam]);
-
-  const allPlayers = useMemo((): Player[] => {
-    return teams.flatMap(team => 
-      team.players.map(player => ({
-        ...player,
-        teamLogoColor: team.logoColor,
-        teamAbbreviation: team.abbreviation,
-      }))
-    ).sort((a,b) => b.rating - a.rating);
-  }, [teams]);
 
   const renderContent = () => {
     if (isLoading) {
@@ -92,7 +92,14 @@ const App: React.FC = () => {
       case 'Team Rankings':
         return <TeamRankingsView teams={teams} selectedTeam={selectedTeam} onSelectTeam={setSelectedTeam} />;
       case 'Player Rankings':
-        return <PlayerRankingsView players={allPlayers} />;
+        return (
+          <PlayerRankingsView
+            players={playerDataset?.players ?? []}
+            season={playerDataset?.season}
+            seasonType={playerDataset?.seasonType}
+            lastUpdated={playerDataset?.lastUpdated}
+          />
+        );
       case 'Games Today':
         return <GamesTodayView summary={dailySummary} teams={teams} />;
       default:
@@ -314,12 +321,124 @@ const GamesTodayView: React.FC<{ summary: DailySummary | null, teams: Team[] }> 
     );
 };
 
+type PlayerIndex = Map<string, PlayerDataRecord[]>;
+
+const mergePlayersIntoTeams = (teams: Team[], records: PlayerDataRecord[]): Team[] => {
+  if (!Array.isArray(teams) || teams.length === 0) return [];
+  if (!Array.isArray(records) || records.length === 0) return teams;
+
+  const byAbbreviation: PlayerIndex = new Map();
+  records.forEach(record => {
+    const abbr = (record.identity.teamAbbreviation || '').toUpperCase();
+    if (!abbr) return;
+    const list = byAbbreviation.get(abbr) ?? [];
+    list.push(record);
+    byAbbreviation.set(abbr, list);
+  });
+
+  return teams.map(team => {
+    const matches = byAbbreviation.get((team.abbreviation || '').toUpperCase()) ?? [];
+    if (!matches.length) return team;
+    const mappedPlayers = matches
+      .map(record => convertPlayerRecordToPlayer(record, team))
+      .sort((a, b) => {
+        if (b.rating !== a.rating) return b.rating - a.rating;
+        return (b.stats.ppg ?? 0) - (a.stats.ppg ?? 0);
+      });
+    return { ...team, players: mappedPlayers };
+  });
+};
+
+const convertPlayerRecordToPlayer = (record: PlayerDataRecord, team: Team): Player => {
+  const perGame = record.stats?.perGame ?? {};
+  const advanced = record.stats?.advanced ?? {};
+
+  const stats: Player['stats'] = {
+    gp: numberOrUndefined(perGame.gp),
+    min: numberOrUndefined(perGame.min),
+    ppg: numberOrDefault(perGame.pts),
+    ast: numberOrDefault(perGame.ast),
+    reb: numberOrDefault(perGame.reb),
+    stl: numberOrDefault(perGame.stl),
+    blk: numberOrDefault(perGame.blk),
+    fgPercentage: numberOrDefault(perGame.fgPct, 0),
+    fg3m: numberOrUndefined(perGame.fg3m),
+    fg3a: numberOrUndefined(perGame.fg3a),
+    fg3Pct: numberOrUndefined(perGame.fg3Pct),
+    tov: numberOrUndefined(perGame.tov),
+    plusMinus: numberOrUndefined(perGame.plusMinus),
+    per: numberOrUndefined(advanced.netRating),
+    tsPercentage: numberOrUndefined(advanced.tsPct),
+    ws: numberOrUndefined(advanced.pie),
+  };
+
+  const skills = buildSkillsFromRatings(record.ratings?.perCategory);
+  const name = record.identity.name || `${record.identity.firstName || ''} ${record.identity.lastName || ''}`.trim() || 'Unknown Player';
+  const rating = ratingOrFallback(record.ratings?.overall, 70);
+
+  return {
+    id: record.identity.playerId ?? stringToNumericId(`${team.abbreviation}-${name}`),
+    name,
+    position: toUiPosition(record.identity.position),
+    rating,
+    skills,
+    stats,
+    teamName: team.name,
+    teamLogoColor: team.logoColor,
+    teamAbbreviation: team.abbreviation,
+    detail: record,
+  };
+};
+
+const buildSkillsFromRatings = (ratings?: PlayerDataRecord['ratings']['perCategory']): Player['skills'] => {
+  const r = ratings ?? {};
+  const hustle = numberOrUndefined(r.hst);
+  const impact = numberOrUndefined(r.imp);
+  const athleticismSeed = hustle !== undefined || impact !== undefined ? ((hustle ?? 60) + (impact ?? 60)) / 2 : undefined;
+
+  return {
+    shooting: ratingOrFallback(r.sco, 60),
+    defense: ratingOrFallback(r.def, 60),
+    playmaking: ratingOrFallback(r.ply, 60),
+    athleticism: ratingOrFallback(athleticismSeed, 60),
+    rebounding: ratingOrFallback(r.reb, 60),
+  };
+};
+
+const toUiPosition = (value?: string | null): Player['position'] => {
+  const normalized = (value || '').trim().toUpperCase();
+  if (normalized === 'PG' || normalized === 'SG' || normalized === 'SF' || normalized === 'PF' || normalized === 'C') {
+    return normalized as Player['position'];
+  }
+  if (normalized === 'G' || normalized === 'G-F') return 'PG';
+  if (normalized === 'GF') return 'SG';
+  if (normalized === 'F' || normalized === 'F-G') return 'SF';
+  if (normalized === 'FC' || normalized === 'C-F' || normalized === 'PF/C') return 'PF';
+  return 'SF';
+};
+
+const ratingOrFallback = (value?: number | null, fallback = 60) => {
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return Math.max(1, Math.min(99, Math.round(value)));
+  }
+  return fallback;
+};
+
+const numberOrDefault = (value?: number | null, fallback = 0) =>
+  typeof value === 'number' && Number.isFinite(value) ? value : fallback;
+
+const numberOrUndefined = (value?: number | null) =>
+  typeof value === 'number' && Number.isFinite(value) ? value : undefined;
+
+const stringToNumericId = (value: string): number => {
+  if (!value) return Math.floor(Math.random() * 1_000_000);
+  let hash = 0;
+  for (let i = 0; i < value.length; i += 1) {
+    hash = (hash << 5) - hash + value.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash);
+};
 
 export default App;
-
-
-
-
-
-
 

@@ -18,8 +18,9 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, teamColor }) => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const { name, position, rating, stats, skills } = player;
 
-  const ratingColor = rating >= 90 ? 'text-orange-400' : rating >= 85 ? 'text-amber-400' : 'text-gray-200';
-  const ratingHighlightClass = rating >= 95 ? 'rating-highlight' : '';
+  const ratingColor =
+    rating >= 96 ? 'rating-highlight text-white' : rating >= 90 ? 'text-orange-400' : rating >= 80 ? 'text-amber-400' : 'text-gray-300';
+  const ratingHighlightClass = rating >= 96 ? 'rating-highlight' : '';
 
   const radarData = [
     { s: 'SHT', A: skills.shooting, fullMark: 99 },
@@ -53,7 +54,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, teamColor }) => {
           </div>
           <div className="text-center">
             <p className="text-xs text-gray-400">RATING</p>
-            <p className={`text-4xl font-black ${rating >= 95 ? 'rating-highlight' : rating >= 90 ? 'text-orange-400' : 'text-amber-400'}`}>{rating}</p>
+            <p className={`text-4xl font-black ${rating >= 96 ? 'rating-highlight' : rating >= 90 ? 'text-orange-400' : rating >= 80 ? 'text-amber-400' : 'text-gray-300'}`}>{rating}</p>
           </div>
         </div>
 

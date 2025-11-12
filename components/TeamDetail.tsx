@@ -62,13 +62,9 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
     });
   }, [team.eloHistory, timeRange]);
 
-  const { starters, bench } = useMemo(() => {
-    const sortedPlayers = [...team.players].sort((a, b) => b.rating - a.rating);
-    return {
-      starters: sortedPlayers.slice(0, 5),
-      bench: sortedPlayers.slice(5),
-    };
-  }, [team.players]);
+  const sortedPlayers = useMemo(() => [...team.players].sort((a, b) => b.rating - a.rating), [team.players]);
+  const starters = useMemo(() => sortedPlayers.slice(0, 5), [sortedPlayers]);
+  const bench = useMemo(() => sortedPlayers.slice(5), [sortedPlayers]);
 
   const overallBaseline = useMemo(() => {
     if (!allTeams || allTeams.length === 0) return undefined;
@@ -102,15 +98,15 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
 
   // Compute team profile (starters' averaged skills) for Team Profile radar
   const teamProfile = useMemo(() => {
-    const starters = [...team.players].sort((a,b) => b.rating - a.rating).slice(0,5);
-    const sum = starters.reduce((acc, p) => ({
+    const startersSample = sortedPlayers.slice(0,5);
+    const sum = startersSample.reduce((acc, p) => ({
       shooting: acc.shooting + p.skills.shooting,
       defense: acc.defense + p.skills.defense,
       playmaking: acc.playmaking + p.skills.playmaking,
       athleticism: acc.athleticism + p.skills.athleticism,
       rebounding: acc.rebounding + p.skills.rebounding,
     }), { shooting: 0, defense: 0, playmaking: 0, athleticism: 0, rebounding: 0 });
-    const n = starters.length || 1;
+    const n = startersSample.length || 1;
     const avg = {
       shooting: Math.round(sum.shooting / n),
       defense: Math.round(sum.defense / n),
@@ -133,7 +129,7 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
       { key: 'REB', label: 'REB', value: avg.rebounding },
     ];
     return { data, list };
-  }, [team.players]);
+  }, [sortedPlayers]);
 
   // Use Recharts' built-in polygon animation by remounting Radar on team change
 

@@ -7,27 +7,37 @@ export interface PlayerSkills {
 }
 
 export interface PlayerStats {
-  ppg: number; // Points Per Game
-  ast: number; // Assists Per Game
-  reb: number; // Rebounds Per Game
-  stl: number; // Steals Per Game
-  blk: number; // Blocks Per Game
-  fgPercentage: number; // Field Goal Percentage
-  per: number; // Player Efficiency Rating
-  tsPercentage: number; // True Shooting Percentage
-  ws: number; // Win Shares
+  gp?: number;
+  min?: number;
+  ppg: number;
+  ast: number;
+  reb: number;
+  stl: number;
+  blk: number;
+  fgPercentage: number;
+  fg3m?: number;
+  fg3a?: number;
+  fg3Pct?: number;
+  tov?: number;
+  plusMinus?: number;
+  per?: number;
+  tsPercentage?: number;
+  ws?: number;
 }
+
+export type PlayerPosition = 'PG' | 'SG' | 'SF' | 'PF' | 'C';
 
 export interface Player {
   id: number;
   name: string;
-  position: 'PG' | 'SG' | 'SF' | 'PF' | 'C';
+  position: PlayerPosition;
   rating: number;
   skills: PlayerSkills;
   stats: PlayerStats;
   teamName: string;
   teamLogoColor: string;
   teamAbbreviation: string;
+  detail?: PlayerDataRecord;
 }
 
 export interface EloHistoryPoint {
@@ -92,105 +102,81 @@ export interface DailySummary {
   playerPerformances: PlayerPerformance[];
 }
 
-// Player data for Rankings tab and ratings
+// Player data for Rankings tab (from notebooks/player_pipeline.py)
 export interface PlayerIdentity {
-  playerId: number;
+  playerId: number | null;
+  firstName: string;
+  lastName: string;
   name: string;
-  teamId: number;
+  teamId: number | null;
+  teamCity: string;
   team: string;
   teamAbbreviation: string;
   jersey?: string;
-  position: 'PG' | 'SG' | 'SF' | 'PF' | 'C';
+  position: string;
+  height?: string;
+  weight?: string;
 }
 
 export interface PlayerPerGame {
-  pts: number;
-  ast: number;
-  reb: number;
-  stl: number;
-  blk: number;
-  fgm: number;
-  fga: number;
-  fgPct: number;
-  ftm: number;
-  fta: number;
-  ftPct: number;
-  fg3m: number;
-  fg3a: number;
-  fg3Pct: number;
-  tov: number;
-  plusMinus: number;
+  gp?: number | null;
+  min?: number | null;
+  pts?: number | null;
+  ast?: number | null;
+  reb?: number | null;
+  stl?: number | null;
+  blk?: number | null;
+  fgm?: number | null;
+  fga?: number | null;
+  fgPct?: number | null;
+  ftm?: number | null;
+  fta?: number | null;
+  ftPct?: number | null;
+  fg3m?: number | null;
+  fg3a?: number | null;
+  fg3Pct?: number | null;
+  tov?: number | null;
+  plusMinus?: number | null;
 }
 
 export interface PlayerAdvanced {
-  nbaFantasyPoints?: number;
-  offRating?: number;
-  defRating?: number;
-  netRating?: number;
-  efgPct?: number;
-  tsPct?: number;
-  usgPct?: number;
-  pie?: number;
+  nbaFantasyPoints?: number | null;
+  offRating?: number | null;
+  defRating?: number | null;
+  netRating?: number | null;
+  tsPct?: number | null;
+  usgPct?: number | null;
+  pie?: number | null;
 }
 
-export interface PlayerTrackingHustle {
-  potentialAstPer100?: number;
-  boxOutsPer36?: number;
-  contestedShotsPer36?: number;
-  defendedFgPctDiff?: number; // Opp FG% - Player Defended FG%
-  screenAssistsPer36?: number;
-  deflectionsPer36?: number;
-  looseBallsRecoveredPer36?: number;
-  chargesDrawnPer36?: number;
+export interface PlayerRatingsPerCategory {
+  sco?: number | null;
+  ply?: number | null;
+  reb?: number | null;
+  def?: number | null;
+  hst?: number | null;
+  imp?: number | null;
 }
 
-export interface PlayerRatings {
-  sco: number;
-  ply: number;
-  reb: number;
-  def: number;
-  hst: number;
-  imp: number;
-  overall: number; // position-aware overall rating
+export interface PlayerRatingsSummary {
+  perCategory: PlayerRatingsPerCategory;
+  overall: number | null;
 }
 
-export interface PlayerDetail {
-  identity: PlayerIdentity;
+export interface PlayerStatsBundle {
   perGame: PlayerPerGame;
   advanced: PlayerAdvanced;
-  tracking: PlayerTrackingHustle;
-  ratings: PlayerRatings;
 }
 
-export interface PlayerRankRow {
-  playerId: number;
-  name: string;
-  team: string;
-  teamAbbreviation: string;
-  position: 'PG' | 'SG' | 'SF' | 'PF' | 'C';
-  jersey?: string;
-  pts: number;
-  ast: number;
-  reb: number;
-  stl: number;
-  blk: number;
-  fgm: number;
-  fga: number;
-  fgPct: number;
-  ftm: number;
-  fta: number;
-  ftPct: number;
-  fg3m: number;
-  fg3a: number;
-  fg3Pct: number;
-  tov: number;
-  nbaFantasyPoints?: number;
-  plusMinus: number;
-  offRating?: number;
-  defRating?: number;
-  netRating?: number;
-  efgPct?: number;
-  tsPct?: number;
-  usgPct?: number;
-  overall: number;
+export interface PlayerDataRecord {
+  identity: PlayerIdentity;
+  stats: PlayerStatsBundle;
+  ratings: PlayerRatingsSummary;
+}
+
+export interface PlayerDatasetPayload {
+  season: string;
+  seasonType: string;
+  lastUpdated: string;
+  players: PlayerDataRecord[];
 }

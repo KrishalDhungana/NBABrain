@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import type { Player } from '../types';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
+import { getRatingBorderGlowClass, getRatingTextClass } from './ratingStyles';
 
 interface CourtViewProps {
   players: Player[];
@@ -29,7 +30,8 @@ const PlayerMarker: React.FC<{
 }> = ({ player, teamColor, isActive, onActivate, onDeactivate }) => {
   const [activeSkill, setActiveSkill] = useState<string | null>(null);
 
-  const ratingColor = player.rating >= 90 ? 'border-orange-400' : player.rating >= 85 ? 'border-amber-400' : 'border-gray-500';
+  const ratingBorder = getRatingBorderGlowClass(player.rating);
+  const ratingText = getRatingTextClass(player.rating);
   const radarData = [
     { s: 'SHT', A: player.skills.shooting, fullMark: 99 },
     { s: 'DEF', A: player.skills.defense, fullMark: 99 },
@@ -43,19 +45,20 @@ const PlayerMarker: React.FC<{
   return (
     <div className="relative flex flex-col items-center cursor-default">
       <div 
-        className={`w-12 h-12 rounded-full bg-black/50 border-2 ${ratingColor} flex items-center justify-center transition-all duration-300 ${isActive ? 'scale-110' : ''} shadow-lg cursor-default`}
-        style={{ boxShadow: `0 0 15px ${teamColor}50`}}
+        className={`w-12 h-12 rounded-full bg-black/50 ${ratingBorder} flex items-center justify-center transition-all duration-300 ${
+          isActive ? 'scale-110' : ''
+        } cursor-default`}
         onMouseEnter={onActivate}
         onMouseLeave={onDeactivate}
       >
-        <span className="text-white font-bold text-lg">{player.rating}</span>
+        <span className={`${ratingText} font-bold text-lg`}>{player.rating}</span>
       </div>
       <span className="text-xs text-gray-300 font-semibold mt-1 bg-black/40 px-2 py-0.5 rounded-full">{player.position}</span>
       <span className="text-xs text-white mt-1 whitespace-nowrap font-medium">{player.name}</span>
       
       {/* Enhanced Popover */}
       {isActive && (
-      <div className={`absolute bottom-full mb-3 w-72 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg p-4 text-xs text-left z-10 shadow-2xl cursor-default`}>
+      <div className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-72 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg p-4 text-xs text-left z-10 shadow-2xl cursor-default`}>
         <div className="flex justify-between items-center pb-2 border-b border-white/10">
             <div>
                 <p className="font-extrabold text-xl text-white tracking-tight">{player.name}</p>
@@ -63,7 +66,7 @@ const PlayerMarker: React.FC<{
             </div>
             <div className="text-center">
                 <p className="text-xs text-gray-400">RATING</p>
-                <p className={`text-4xl font-black ${player.rating >= 95 ? 'rating-highlight' : player.rating >= 90 ? 'text-orange-400' : 'text-amber-400'}`}>{player.rating}</p>
+                <p className={`text-4xl font-black ${ratingText}`}>{player.rating}</p>
             </div>
         </div>
 
