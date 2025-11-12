@@ -26,3 +26,30 @@ export const fetchTeamAnalysis = async (teamName: string) => {
   const mod = await import('./geminiService');
   return mod.fetchTeamAnalysis(teamName);
 };
+
+// Player data fetcher (supports static JSON produced by notebooks/player_pipeline.py)
+export const fetchPlayerData = async () => {
+  // Prefer generated dataset; in mock mode fall back to sample for local UI work
+  const primaryUrl = '/data/players.json';
+  const fallbackUrl = '/data/players.sample.json';
+  const url = useMock ? fallbackUrl : primaryUrl;
+  try {
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`Failed ${url}: ${res.status}`);
+    return await res.json();
+  } catch (err) {
+    if (!useMock) {
+      // Try fallback once if primary missing
+      try {
+        const res = await fetch(fallbackUrl, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`Failed fallback ${fallbackUrl}: ${res.status}`);
+        return await res.json();
+      } catch (e) {
+        console.error('fetchPlayerData fallback error', e);
+        throw e;
+      }
+    }
+    console.error('fetchPlayerData error', err);
+    throw err;
+  }
+};
