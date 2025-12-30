@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import type { Player } from '../types';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import { getRatingBorderGlowClass, getRatingTextClass } from './ratingStyles';
+import { getPlayerCategoryRatings } from './playerCategoryRatings';
 
 interface CourtViewProps {
   players: Player[];
@@ -13,11 +14,11 @@ interface CourtViewProps {
 // A more standard offensive formation for a half-court view.
 // The basket is at the top of the component (top: 0%).
 const positionCoordinates = {
-  PG: { top: '85%', left: '50%' }, // Point Guard: Top of the key, controlling play
-  SG: { top: '65%', left: '85%' }, // Shooting Guard: Right wing
-  SF: { top: '65%', left: '15%' }, // Small Forward: Left wing
-  PF: { top: '35%', left: '75%' }, // Power Forward: Right low post/block
-  C:  { top: '35%', left: '25%' }, // Center: Left low post/block
+  PG: { top: '78%', left: '50%' }, // Point Guard: high center above the arc
+  SG: { top: '58%', left: '20%' }, // Shooting Guard: left arc shoulder
+  SF: { top: '58%', left: '80%' }, // Small Forward: right arc shoulder
+  PF: { top: '26%', left: '32%' }, // Power Forward: left block near baseline
+  C:  { top: '26%', left: '68%' }, // Center: mirrored block near baseline
 };
 
 
@@ -27,18 +28,18 @@ const PlayerMarker: React.FC<{
     isActive: boolean;
     onActivate: () => void;
     onDeactivate: () => void;
-}> = ({ player, teamColor, isActive, onActivate, onDeactivate }) => {
+    courtLabel: keyof typeof positionCoordinates;
+}> = ({ player, teamColor, isActive, onActivate, onDeactivate, courtLabel }) => {
   const [activeSkill, setActiveSkill] = useState<string | null>(null);
 
   const ratingBorder = getRatingBorderGlowClass(player.rating);
   const ratingText = getRatingTextClass(player.rating);
-  const radarData = [
-    { s: 'SHT', A: player.skills.shooting, fullMark: 99 },
-    { s: 'DEF', A: player.skills.defense, fullMark: 99 },
-    { s: 'PLY', A: player.skills.playmaking, fullMark: 99 },
-    { s: 'ATH', A: player.skills.athleticism, fullMark: 99 },
-    { s: 'REB', A: player.skills.rebounding, fullMark: 99 },
-  ];
+  const categoryRatings = getPlayerCategoryRatings(player);
+  const radarData = categoryRatings.map(category => ({
+    s: category.abbreviation,
+    A: category.value,
+    fullMark: 99,
+  }));
 
   // Use Recharts default mount animation by mounting popover only when active
 
@@ -53,7 +54,7 @@ const PlayerMarker: React.FC<{
       >
         <span className={`${ratingText} font-bold text-lg`}>{player.rating}</span>
       </div>
-      <span className="text-xs text-gray-300 font-semibold mt-1 bg-black/40 px-2 py-0.5 rounded-full">{player.position}</span>
+      <span className="text-xs text-gray-300 font-semibold mt-1 bg-black/40 px-2 py-0.5 rounded-full">{courtLabel}</span>
       <span className="text-xs text-white mt-1 whitespace-nowrap font-medium">{player.name}</span>
       
       {/* Enhanced Popover */}
@@ -97,11 +98,12 @@ const PlayerMarker: React.FC<{
             </div>
         </div>
         {/* Exact radar values as chips */}
-        <div className="mt-3 flex flex-wrap gap-2">
-          {['SHT','DEF','PLY','ATH','REB'].map((k, i) => {
-            const val = radarData[i].A;
-            return <span key={k} className="bg-white/10 text-white text-xs px-2 py-0.5 rounded-full font-semibold">{k}: {val}</span>;
-          })}
+        <div className="mt-3 flex flex-wrap gap-2 justify-center w-full">
+          {categoryRatings.map(category => (
+            <span key={category.key} className="bg-white/10 text-white text-xs px-2 py-0.5 rounded-full font-semibold">
+              {category.abbreviation}: {category.value}
+            </span>
+          ))}
         </div>
         <div className="absolute left-1/2 -bottom-2 -translate-x-1/2 w-4 h-4 bg-black/60 border-b border-r border-white/10 rotate-45"></div>
       </div>
@@ -122,7 +124,7 @@ const CourtView: React.FC<CourtViewProps> = ({ players, teamColor, activePlayerI
 
     // First pass: assign players to their natural position
     for (const pos of positions) {
-      const playerForPos = starters.find(p => p.position === pos && !usedPlayerIds.has(p.id));
+      const playerForPos = starters.find(p => p.courtPosition === pos && !usedPlayerIds.has(p.id));
       if (playerForPos) {
         assigned.set(pos, playerForPos);
         usedPlayerIds.add(playerForPos.id);
@@ -161,7 +163,7 @@ const CourtView: React.FC<CourtViewProps> = ({ players, teamColor, activePlayerI
             <path d="M 210 40 A 40 40 0 0 1 290 40" stroke="currentColor" strokeWidth="2" fill="none"/>
             <path d="M30,0 L30,140 A 237.5 237.5 0 0 0 470 140 L470,0" stroke="currentColor" strokeWidth="2" fill="none" />
             <line x1="220" y1="40" x2="280" y2="40" stroke="currentColor" strokeWidth="3"/>
-            <circle cx="250" cy="52.5" r="15" stroke="currentColor" strokeWidth="2" fill="none"/>
+            <circle cx="250" cy="60" r="12" stroke="currentColor" strokeWidth="2" fill="none"/>
         </svg>
 
         {positionedPlayers.map(([pos, player]) => {
@@ -179,6 +181,7 @@ const CourtView: React.FC<CourtViewProps> = ({ players, teamColor, activePlayerI
                     isActive={activePlayerId === player.id}
                     onActivate={() => handleActivate(player.id)}
                     onDeactivate={handleDeactivate}
+                    courtLabel={pos}
                 />
               </div>
             );

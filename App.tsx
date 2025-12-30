@@ -375,11 +375,14 @@ const convertPlayerRecordToPlayer = (record: PlayerDataRecord, team: Team): Play
   const skills = buildSkillsFromRatings(record.ratings?.perCategory);
   const name = record.identity.name || `${record.identity.firstName || ''} ${record.identity.lastName || ''}`.trim() || 'Unknown Player';
   const rating = ratingOrFallback(record.ratings?.overall, 70);
+  const courtPosition = toUiPosition(record.identity.position);
+  const position = formatOriginalPosition(record.identity.position, courtPosition);
 
   return {
     id: record.identity.playerId ?? stringToNumericId(`${team.abbreviation}-${name}`),
     name,
-    position: toUiPosition(record.identity.position),
+    position,
+    courtPosition,
     rating,
     skills,
     stats,
@@ -405,16 +408,21 @@ const buildSkillsFromRatings = (ratings?: PlayerDataRecord['ratings']['perCatego
   };
 };
 
-const toUiPosition = (value?: string | null): Player['position'] => {
+const toUiPosition = (value?: string | null): Player['courtPosition'] => {
   const normalized = (value || '').trim().toUpperCase();
   if (normalized === 'PG' || normalized === 'SG' || normalized === 'SF' || normalized === 'PF' || normalized === 'C') {
-    return normalized as Player['position'];
+    return normalized as Player['courtPosition'];
   }
   if (normalized === 'G' || normalized === 'G-F') return 'PG';
   if (normalized === 'GF') return 'SG';
   if (normalized === 'F' || normalized === 'F-G') return 'SF';
   if (normalized === 'FC' || normalized === 'C-F' || normalized === 'PF/C') return 'PF';
   return 'SF';
+};
+
+const formatOriginalPosition = (value?: string | null, fallback: Player['courtPosition'] = 'SF'): Player['position'] => {
+  const normalized = (value || '').trim().toUpperCase();
+  return normalized || fallback;
 };
 
 const ratingOrFallback = (value?: number | null, fallback = 60) => {

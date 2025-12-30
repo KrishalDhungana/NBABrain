@@ -10,7 +10,7 @@ Usage (from repo root):
   pip install nba_api pandas numpy scipy tqdm requests
 
   # 2) Run the pipeline
-  python notebooks/player_pipeline.py --season 2025-26 --season-type "Regular Season" --out public/data/players.json
+  python data-pipelines/player_pipeline.py --season 2025-26 --season-type "Regular Season" --out public/data/players.json
 
 Notes:
   - The nba_api servers rate-limit. This script throttles requests; adjust --sleep.
@@ -30,11 +30,11 @@ from __future__ import annotations
 import argparse
 import json
 import time
-from typing import Dict, List, Optional
-from scipy.stats import rankdata
+from typing import Dict, List
 
 import numpy as np
 import pandas as pd
+from pipeline_utils import rating_1_99, rename_with_suffix, safe_float, safe_int, z_robust
 
 try:
     from nba_api.stats.endpoints import (
@@ -54,14 +54,6 @@ except Exception as e:
 # -----------------------------
 # Helpers
 # -----------------------------
-
-
-def rename_with_suffix(df: pd.DataFrame, suffix: str, preserve: Optional[List[str]] | None = None) -> pd.DataFrame:
-    if not suffix:
-        return df
-    preserve = set(preserve or [])
-    rename_map = {col: f"{col}{suffix}" for col in df.columns if col not in preserve}
-    return df.rename(columns=rename_map)
 
 
 def qualify(df: pd.DataFrame, min_minutes: float = 12.0, min_games: int = 5) -> pd.DataFrame:
@@ -131,7 +123,7 @@ def fetch_player_index(season: str = "2025-26") -> pd.DataFrame:
 
 def build_dataset(season: str = "2025-26", season_type: str = "Regular Season", sleep_sec: float = 0.6) -> pd.DataFrame:
     # Base per-game
-    pd.set_option('display.max_columns', None)
+    # pd.set_option('display.max_columns', None)
     base_pg = fetch_league("Base", "PerGame", season, season_type)[["PLAYER_ID", "GP", "MIN", "FGM", "FGA", "FG_PCT", "FG3M", "FG3A", "FG3_PCT", "FTM", "FTA", "FT_PCT", "REB", "AST", "TOV", "STL", "BLK", "PTS", "PLUS_MINUS", "NBA_FANTASY_PTS"]]
     base_pg = rename_with_suffix(base_pg, "_PerGame", ["PLAYER_ID", "GP"])
     time.sleep(sleep_sec)
@@ -185,20 +177,6 @@ def build_dataset(season: str = "2025-26", season_type: str = "Regular Season", 
 # -----------------------------
 
 
-def winsorize(s: pd.Series, lo=0.02, hi=0.98) -> pd.Series:
-    x = pd.to_numeric(s, errors="coerce")
-    qlo, qhi = x.quantile(lo), x.quantile(hi)
-    return x.clip(qlo, qhi)
-
-
-def z_robust(s: pd.Series) -> pd.Series:
-    x = winsorize(s)
-    mu, sd = x.mean(), x.std(ddof=0)
-    if not sd or np.isnan(sd):
-        return pd.Series(0.0, index=s.index)
-    return ((x - mu) / sd).clip(-3, 3)
-
-
 def z_group(s: pd.Series, groups: pd.Series, minutes: pd.Series | None = None) -> pd.Series:
     out = pd.Series(index=s.index, dtype=float)
     for g, idx in groups.groupby(groups).groups.items():
@@ -206,16 +184,6 @@ def z_group(s: pd.Series, groups: pd.Series, minutes: pd.Series | None = None) -
     if minutes is not None:
         w = pd.to_numeric(minutes, errors="coerce").fillna(0).clip(0, 24) / 24.0
         out = out * w  # shrink to 0 for low-minute players
-    return out
-
-
-def rating_1_99(s: pd.Series) -> pd.Series:
-    x = pd.to_numeric(s, errors="coerce")
-    r = rankdata(x, method="average")  # 1..n
-    n = max(int(x.notna().sum()), 1)
-    pct = (r - 0.5) / n
-    out = pd.Series(np.round(1 + 98 * pct).astype(int), index=s.index).clip(1, 99)
-    out[x.isna()] = np.nan
     return out
 
 
@@ -235,8 +203,8 @@ def compute_metrics(df: pd.DataFrame) -> pd.DataFrame:
     pts_p100 = pd.to_numeric(df["PTS_Per100Possessions"], errors="coerce")
     ts_pct = pd.to_numeric(df["TS_PCT_PerGame"], errors="coerce")
     usg_pct = pd.to_numeric(df["USG_PCT_PerGame"], errors="coerce")
-    sco_z = (z_robust(pts_p100) * 0.45 + # consider league-wide Z-scores 
-             z_robust(ts_pct) * 0.45 +
+    sco_z = (z_robust(pts_p100) * 0.50 + # consider league-wide Z-scores 
+             z_robust(ts_pct) * 0.40 +
              z_robust(usg_pct) * 0.10)
     sco_z *= min_pg.clip(0, 24) / 24.0 # shrink for light minutes
 
@@ -321,26 +289,6 @@ def compute_metrics(df: pd.DataFrame) -> pd.DataFrame:
 # Helpers
 # -----------------------------
 
-
-def safe_float(x):
-    try:
-        if x is None:
-            return None
-        val = float(x)
-    except Exception:
-        return None
-    return None if np.isnan(val) else val
-
-
-def safe_int(x):
-    try:
-        if x is None:
-            return None
-        val = float(x)
-    except Exception:
-        return None
-    return None if np.isnan(val) else int(val)
-    
 
 # -----------------------------
 # Stats & ratings storage

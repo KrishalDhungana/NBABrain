@@ -282,7 +282,7 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team, allTeams }) => {
       </div>
 
       <div>
-        <h3 className="text-2xl font-bold text-white mb-4">Player Roster</h3>
+        <h3 className="text-2xl font-bold text-white mb-4">Current Player Rotation</h3>
         <div className="space-y-6">
             <div>
                 <h4 className="text-lg font-semibold text-gray-300 mb-3 border-b-2 border-orange-500/50 pb-1">Starters</h4>

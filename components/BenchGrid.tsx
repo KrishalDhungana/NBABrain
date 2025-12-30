@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { Player } from '../types';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import { getRatingBorderGlowClass, getRatingTextClass } from './ratingStyles';
+import { getPlayerCategoryRatings } from './playerCategoryRatings';
 
 interface BenchGridProps {
   players: Player[];
@@ -31,13 +32,12 @@ const BenchGrid: React.FC<BenchGridProps> = ({ players, teamColor, activePlayerI
 const BenchTile: React.FC<{ player: Player; teamColor: string; isActive: boolean; onToggle: () => void; onEnter?: () => void; onLeave?: () => void }> = ({ player, teamColor, isActive, onToggle, onEnter, onLeave }) => {
   const [activeSkill, setActiveSkill] = useState<string | null>(null);
 
-  const radarData = [
-    { s: 'SHT', A: player.skills.shooting, fullMark: 99 },
-    { s: 'DEF', A: player.skills.defense, fullMark: 99 },
-    { s: 'PLY', A: player.skills.playmaking, fullMark: 99 },
-    { s: 'ATH', A: player.skills.athleticism, fullMark: 99 },
-    { s: 'REB', A: player.skills.rebounding, fullMark: 99 },
-  ];
+  const categoryRatings = getPlayerCategoryRatings(player);
+  const radarData = categoryRatings.map(category => ({
+    s: category.abbreviation,
+    A: category.value,
+    fullMark: 99,
+  }));
 
   // Use Recharts default mount animation by mounting popover only when active
 
@@ -92,11 +92,12 @@ const BenchTile: React.FC<{ player: Player; teamColor: string; isActive: boolean
         </div>
 
         {/* Show exact radar values as chips */}
-        <div className="mt-3 flex flex-wrap gap-2">
-          {['SHT','DEF','PLY','ATH','REB'].map((k, i) => {
-            const val = radarData[i].A;
-            return <span key={k} className="bg-white/10 text-white text-xs px-2 py-0.5 rounded-full font-semibold">{k}: {val}</span>;
-          })}
+        <div className="mt-3 flex flex-wrap gap-2 justify-center w-full">
+          {categoryRatings.map(category => (
+            <span key={category.key} className="bg-white/10 text-white text-xs px-2 py-0.5 rounded-full font-semibold">
+              {category.abbreviation}: {category.value}
+            </span>
+          ))}
         </div>
 
         <div className="absolute left-1/2 -bottom-2 -translate-x-1/2 w-4 h-4 bg-black/60 border-b border-r border-white/10 rotate-45"></div>

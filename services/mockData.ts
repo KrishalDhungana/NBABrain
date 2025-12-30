@@ -69,7 +69,7 @@ const makePlayer = (id: number, name: string, position: Player['position'], team
     rebounding: clamp(70 + (position === 'C' || position === 'PF' ? 12 : 0) + Math.round((rating - 80) * 0.8), 60, 99),
   };
 
-  return { id, name, position, rating, teamName, teamLogoColor, teamAbbreviation, stats, skills };
+  return { id, name, position, courtPosition: position as Player['courtPosition'], rating, teamName, teamLogoColor, teamAbbreviation, stats, skills };
 };
 
 const buildTeam = (seed: typeof TEAM_SEED[number]): Team => {
@@ -204,4 +204,3 @@ export const fetchTeamAnalysis = async (teamName: string): Promise<string> => {
   await new Promise(r => setTimeout(r, 80));
   return `${teamName} show solid form and balanced roster depth. ELO trend suggests competitive consistency with room to climb against elite opponents.`;
 };
-

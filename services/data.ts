@@ -29,7 +29,7 @@ export const fetchTeamAnalysis = async (teamName: string) => {
   return mod.fetchTeamAnalysis(teamName);
 };
 
-// Player data fetcher (supports static JSON produced by notebooks/player_pipeline.py)
+// Player data fetcher (supports static JSON produced by data-pipelines/player_pipeline.py)
 export const fetchPlayerData = async () => {
   const primaryUrl = '/data/players.json';
   const fallbackUrl = '/data/players.sample.json';

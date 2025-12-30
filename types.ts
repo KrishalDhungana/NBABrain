@@ -25,12 +25,14 @@ export interface PlayerStats {
   ws?: number;
 }
 
-export type PlayerPosition = 'PG' | 'SG' | 'SF' | 'PF' | 'C';
+export type PlayerPosition = string;
+export type CourtPosition = 'PG' | 'SG' | 'SF' | 'PF' | 'C';
 
 export interface Player {
   id: number;
   name: string;
   position: PlayerPosition;
+  courtPosition: CourtPosition;
   rating: number;
   skills: PlayerSkills;
   stats: PlayerStats;
@@ -102,7 +104,7 @@ export interface DailySummary {
   playerPerformances: PlayerPerformance[];
 }
 
-// Player data for Rankings tab (from notebooks/player_pipeline.py)
+// Player data for Rankings tab (from data-pipelines/player_pipeline.py)
 export interface PlayerIdentity {
   playerId: number | null;
   firstName: string;
