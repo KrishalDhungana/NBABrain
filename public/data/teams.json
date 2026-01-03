@@ -1,7 +1,7 @@
 {
   "season": "2025-26",
   "seasonType": "Regular Season",
-  "lastUpdated": "2025-12-30T23:26:38.207422+00:00",
+  "lastUpdated": "2026-01-02T18:32:22.852454+00:00",
   "teams": [
     {
       "teamId": 1610612737,
@@ -9,36 +9,36 @@
       "abbreviation": "ATL",
       "conference": "East",
       "seed": 10,
-      "record": "15-19",
+      "record": "16-19",
       "categoryRatings": {
         "offense": 84,
-        "defense": 19,
-        "pacePressure": 71,
-        "hustle": 84,
-        "clutch": 58
+        "defense": 26,
+        "pacePressure": 74,
+        "hustle": 88,
+        "clutch": 55
       },
       "teamStats": {
-        "offRating": 114.2,
-        "offRatingRank": 25,
-        "defRating": 115.2,
-        "defRatingRank": 56,
-        "netRating": -1.0,
-        "netRatingRank": 44,
-        "threesPerGame": 13.8,
+        "offRating": 114.5,
+        "offRatingRank": 24,
+        "defRating": 114.9,
+        "defRatingRank": 53,
+        "netRating": -0.3,
+        "netRatingRank": 41,
+        "threesPerGame": 13.9,
         "threesPerGameRank": 21,
-        "turnoversPerGame": 15.3,
-        "turnoversPerGameRank": 39,
-        "plusMinus": -1.1,
-        "plusMinusRank": 45,
-        "fgPct": 0.48,
-        "fgPctRank": 16,
+        "turnoversPerGame": 15.2,
+        "turnoversPerGameRank": 38,
+        "plusMinus": -0.5,
+        "plusMinusRank": 42,
+        "fgPct": 0.481,
+        "fgPctRank": 17,
         "fg3Pct": 0.37,
-        "fg3PctRank": 17,
-        "ftPct": 0.783,
-        "ftPctRank": 26
+        "fg3PctRank": 15,
+        "ftPct": 0.778,
+        "ftPctRank": 32
       },
       "elo": {
-        "current": 1413.275596840031,
+        "current": 1450.1686354410135,
         "history": [
           {
             "date": "2025-10-22",
@@ -142,11 +142,11 @@
           },
           {
             "date": "2025-12-12",
-            "elo": 1398.8
+            "elo": 1435.6
           },
           {
             "date": "2025-12-14",
-            "elo": 1413.3
+            "elo": 1450.2
           },
           {
             "date": "2025-12-18",
@@ -175,6 +175,10 @@
           {
             "date": "2025-12-29",
             "elo": 1407.7
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1446.5
           }
         ]
       },
@@ -565,9 +569,9 @@
           "opponentScore": 142,
           "margin": -27,
           "result": "L",
-          "eloBefore": 1407.7,
-          "eloAfter": 1398.8,
-          "eloChange": -9.0
+          "eloBefore": 1446.5,
+          "eloAfter": 1435.6,
+          "eloChange": -10.9
         },
         {
           "gameId": "0022501217",
@@ -580,9 +584,9 @@
           "opponentScore": 117,
           "margin": 3,
           "result": "W",
-          "eloBefore": 1398.8,
-          "eloAfter": 1413.3,
-          "eloChange": 14.5
+          "eloBefore": 1435.6,
+          "eloAfter": 1450.2,
+          "eloChange": 14.6
         },
         {
           "gameId": "0022500371",
@@ -688,6 +692,21 @@
           "eloBefore": 1411.9,
           "eloAfter": 1407.7,
           "eloChange": -4.1
+        },
+        {
+          "gameId": "0022500463",
+          "date": "2025-12-31",
+          "home": true,
+          "opponentTeamId": 1610612750,
+          "opponentTeamName": "Minnesota Timberwolves",
+          "opponentAbbreviation": "MIN",
+          "teamScore": 126,
+          "opponentScore": 102,
+          "margin": 24,
+          "result": "W",
+          "eloBefore": 1407.7,
+          "eloAfter": 1446.5,
+          "eloChange": 38.8
         }
       ]
     },
@@ -697,36 +716,36 @@
       "abbreviation": "BOS",
       "conference": "East",
       "seed": 3,
-      "record": "19-12",
+      "record": "21-12",
       "categoryRatings": {
         "offense": 88,
         "defense": 88,
-        "pacePressure": 32,
-        "hustle": 88,
-        "clutch": 39
+        "pacePressure": 29,
+        "hustle": 81,
+        "clutch": 35
       },
       "teamStats": {
-        "offRating": 118.9,
-        "offRatingRank": 8,
-        "defRating": 111.6,
-        "defRatingRank": 34,
-        "netRating": 7.3,
-        "netRatingRank": 11,
+        "offRating": 119.3,
+        "offRatingRank": 5,
+        "defRating": 111.8,
+        "defRatingRank": 37,
+        "netRating": 7.6,
+        "netRatingRank": 10,
         "threesPerGame": 15.0,
-        "threesPerGameRank": 7,
-        "turnoversPerGame": 12.9,
+        "threesPerGameRank": 8,
+        "turnoversPerGame": 12.8,
         "turnoversPerGameRank": 6,
-        "plusMinus": 6.7,
+        "plusMinus": 6.9,
         "plusMinusRank": 11,
-        "fgPct": 0.466,
-        "fgPctRank": 34,
+        "fgPct": 0.468,
+        "fgPctRank": 33,
         "fg3Pct": 0.357,
-        "fg3PctRank": 31,
-        "ftPct": 0.778,
-        "ftPctRank": 33
+        "fg3PctRank": 29,
+        "ftPct": 0.782,
+        "ftPctRank": 29
       },
       "elo": {
-        "current": 1597.441655615138,
+        "current": 1615.4462971230498,
         "history": [
           {
             "date": "2025-10-22",
@@ -826,11 +845,11 @@
           },
           {
             "date": "2025-12-11",
-            "elo": 1620.4
+            "elo": 1639.5
           },
           {
             "date": "2025-12-15",
-            "elo": 1597.4
+            "elo": 1615.4
           },
           {
             "date": "2025-12-19",
@@ -851,6 +870,14 @@
           {
             "date": "2025-12-28",
             "elo": 1655.6
+          },
+          {
+            "date": "2025-12-30",
+            "elo": 1667.8
+          },
+          {
+            "date": "2026-01-01",
+            "elo": 1676.0
           }
         ]
       },
@@ -1226,9 +1253,9 @@
           "opponentScore": 116,
           "margin": -15,
           "result": "L",
-          "eloBefore": 1655.6,
-          "eloAfter": 1620.4,
-          "eloChange": -35.2
+          "eloBefore": 1676.0,
+          "eloAfter": 1639.5,
+          "eloChange": -36.6
         },
         {
           "gameId": "0022501222",
@@ -1241,9 +1268,9 @@
           "opponentScore": 112,
           "margin": -7,
           "result": "L",
-          "eloBefore": 1620.4,
-          "eloAfter": 1597.4,
-          "eloChange": -22.9
+          "eloBefore": 1639.5,
+          "eloAfter": 1615.4,
+          "eloChange": -24.0
         },
         {
           "gameId": "0022500381",
@@ -1319,6 +1346,36 @@
           "eloBefore": 1681.9,
           "eloAfter": 1655.6,
           "eloChange": -26.4
+        },
+        {
+          "gameId": "0022500459",
+          "date": "2025-12-30",
+          "home": false,
+          "opponentTeamId": 1610612762,
+          "opponentTeamName": "Utah Jazz",
+          "opponentAbbreviation": "UTA",
+          "teamScore": 129,
+          "opponentScore": 119,
+          "margin": 10,
+          "result": "W",
+          "eloBefore": 1655.6,
+          "eloAfter": 1667.8,
+          "eloChange": 12.2
+        },
+        {
+          "gameId": "0022500474",
+          "date": "2026-01-01",
+          "home": false,
+          "opponentTeamId": 1610612758,
+          "opponentTeamName": "Sacramento Kings",
+          "opponentAbbreviation": "SAC",
+          "teamScore": 120,
+          "opponentScore": 106,
+          "margin": 14,
+          "result": "W",
+          "eloBefore": 1667.8,
+          "eloAfter": 1676.0,
+          "eloChange": 8.3
         }
       ]
     },
@@ -1328,36 +1385,36 @@
       "abbreviation": "BKN",
       "conference": "East",
       "seed": 13,
-      "record": "10-20",
+      "record": "10-21",
       "categoryRatings": {
-        "offense": 26,
-        "defense": 29,
+        "offense": 22,
+        "defense": 19,
         "pacePressure": 9,
         "hustle": 16,
         "clutch": 3
       },
       "teamStats": {
-        "offRating": 110.6,
-        "offRatingRank": 48,
-        "defRating": 114.5,
-        "defRatingRank": 50,
-        "netRating": -3.9,
-        "netRatingRank": 55,
-        "threesPerGame": 13.5,
-        "threesPerGameRank": 27,
-        "turnoversPerGame": 16.2,
+        "offRating": 110.5,
+        "offRatingRank": 46,
+        "defRating": 114.9,
+        "defRatingRank": 54,
+        "netRating": -4.4,
+        "netRatingRank": 58,
+        "threesPerGame": 13.4,
+        "threesPerGameRank": 29,
+        "turnoversPerGame": 16.1,
         "turnoversPerGameRank": 52,
-        "plusMinus": -4.2,
-        "plusMinusRank": 55,
+        "plusMinus": -4.7,
+        "plusMinusRank": 59,
         "fgPct": 0.445,
-        "fgPctRank": 58,
-        "fg3Pct": 0.34,
-        "fg3PctRank": 51,
-        "ftPct": 0.778,
-        "ftPctRank": 34
+        "fgPctRank": 56,
+        "fg3Pct": 0.339,
+        "fg3PctRank": 52,
+        "ftPct": 0.772,
+        "ftPctRank": 36
       },
       "elo": {
-        "current": 1446.8945917200056,
+        "current": 1429.9393111811771,
         "history": [
           {
             "date": "2025-10-22",
@@ -1453,11 +1510,11 @@
           },
           {
             "date": "2025-12-12",
-            "elo": 1410.2
+            "elo": 1392.4
           },
           {
             "date": "2025-12-14",
-            "elo": 1446.9
+            "elo": 1429.9
           },
           {
             "date": "2025-12-18",
@@ -1478,6 +1535,10 @@
           {
             "date": "2025-12-29",
             "elo": 1428.3
+          },
+          {
+            "date": "2026-01-01",
+            "elo": 1410.9
           }
         ]
       },
@@ -1838,9 +1899,9 @@
           "opponentScore": 119,
           "margin": -8,
           "result": "L",
-          "eloBefore": 1428.3,
-          "eloAfter": 1410.2,
-          "eloChange": -18.2
+          "eloBefore": 1410.9,
+          "eloAfter": 1392.4,
+          "eloChange": -18.6
         },
         {
           "gameId": "0022501219",
@@ -1853,9 +1914,9 @@
           "opponentScore": 82,
           "margin": 45,
           "result": "W",
-          "eloBefore": 1410.2,
-          "eloAfter": 1446.9,
-          "eloChange": 36.7
+          "eloBefore": 1392.4,
+          "eloAfter": 1429.9,
+          "eloChange": 37.6
         },
         {
           "gameId": "0022500373",
@@ -1931,6 +1992,21 @@
           "eloBefore": 1451.0,
           "eloAfter": 1428.3,
           "eloChange": -22.7
+        },
+        {
+          "gameId": "0022500471",
+          "date": "2026-01-01",
+          "home": true,
+          "opponentTeamId": 1610612745,
+          "opponentTeamName": "Houston Rockets",
+          "opponentAbbreviation": "HOU",
+          "teamScore": 96,
+          "opponentScore": 120,
+          "margin": -24,
+          "result": "L",
+          "eloBefore": 1428.3,
+          "eloAfter": 1410.9,
+          "eloChange": -17.4
         }
       ]
     },
@@ -1940,36 +2016,36 @@
       "abbreviation": "CHA",
       "conference": "East",
       "seed": 12,
-      "record": "11-21",
+      "record": "11-22",
       "categoryRatings": {
-        "offense": 68,
-        "defense": 39,
-        "pacePressure": 22,
-        "hustle": 26,
-        "clutch": 22
+        "offense": 65,
+        "defense": 35,
+        "pacePressure": 26,
+        "hustle": 22,
+        "clutch": 16
       },
       "teamStats": {
-        "offRating": 114.7,
-        "offRatingRank": 22,
-        "defRating": 114.7,
-        "defRatingRank": 51,
-        "netRating": -0.1,
-        "netRatingRank": 36,
+        "offRating": 114.9,
+        "offRatingRank": 21,
+        "defRating": 115.1,
+        "defRatingRank": 56,
+        "netRating": -0.3,
+        "netRatingRank": 40,
         "threesPerGame": 14.5,
-        "threesPerGameRank": 14,
+        "threesPerGameRank": 16,
         "turnoversPerGame": 15.6,
-        "turnoversPerGameRank": 46,
-        "plusMinus": -0.3,
-        "plusMinusRank": 41,
-        "fgPct": 0.455,
-        "fgPctRank": 48,
-        "fg3Pct": 0.363,
-        "fg3PctRank": 22,
-        "ftPct": 0.798,
+        "turnoversPerGameRank": 43,
+        "plusMinus": -0.5,
+        "plusMinusRank": 43,
+        "fgPct": 0.457,
+        "fgPctRank": 44,
+        "fg3Pct": 0.364,
+        "fg3PctRank": 19,
+        "ftPct": 0.797,
         "ftPctRank": 14
       },
       "elo": {
-        "current": 1429.2936069139316,
+        "current": 1417.366739923928,
         "history": [
           {
             "date": "2025-10-22",
@@ -2069,11 +2145,11 @@
           },
           {
             "date": "2025-12-12",
-            "elo": 1398.0
+            "elo": 1384.9
           },
           {
             "date": "2025-12-14",
-            "elo": 1429.3
+            "elo": 1417.4
           },
           {
             "date": "2025-12-18",
@@ -2098,6 +2174,10 @@
           {
             "date": "2025-12-29",
             "elo": 1415.0
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1400.7
           }
         ]
       },
@@ -2473,9 +2553,9 @@
           "opponentScore": 129,
           "margin": -3,
           "result": "L",
-          "eloBefore": 1415.0,
-          "eloAfter": 1398.0,
-          "eloChange": -17.0
+          "eloBefore": 1400.7,
+          "eloAfter": 1384.9,
+          "eloChange": -15.8
         },
         {
           "gameId": "0022501218",
@@ -2488,9 +2568,9 @@
           "opponentScore": 111,
           "margin": 8,
           "result": "W",
-          "eloBefore": 1398.0,
-          "eloAfter": 1429.3,
-          "eloChange": 31.3
+          "eloBefore": 1384.9,
+          "eloAfter": 1417.4,
+          "eloChange": 32.5
         },
         {
           "gameId": "0022500371",
@@ -2581,6 +2661,21 @@
           "eloBefore": 1445.5,
           "eloAfter": 1415.0,
           "eloChange": -30.5
+        },
+        {
+          "gameId": "0022500462",
+          "date": "2025-12-31",
+          "home": true,
+          "opponentTeamId": 1610612744,
+          "opponentTeamName": "Golden State Warriors",
+          "opponentAbbreviation": "GSW",
+          "teamScore": 125,
+          "opponentScore": 132,
+          "margin": -7,
+          "result": "L",
+          "eloBefore": 1415.0,
+          "eloAfter": 1400.7,
+          "eloChange": -14.3
         }
       ]
     },
@@ -2590,36 +2685,36 @@
       "abbreviation": "CHI",
       "conference": "East",
       "seed": 9,
-      "record": "15-17",
+      "record": "16-17",
       "categoryRatings": {
-        "offense": 65,
-        "defense": 22,
-        "pacePressure": 81,
+        "offense": 68,
+        "defense": 29,
+        "pacePressure": 78,
         "hustle": 55,
         "clutch": 61
       },
       "teamStats": {
-        "offRating": 112.2,
-        "offRatingRank": 37,
-        "defRating": 116.9,
+        "offRating": 112.6,
+        "offRatingRank": 31,
+        "defRating": 116.8,
         "defRatingRank": 64,
-        "netRating": -4.8,
-        "netRatingRank": 59,
-        "threesPerGame": 13.4,
-        "threesPerGameRank": 30,
-        "turnoversPerGame": 15.6,
-        "turnoversPerGameRank": 47,
-        "plusMinus": -4.5,
-        "plusMinusRank": 58,
-        "fgPct": 0.47,
-        "fgPctRank": 28,
+        "netRating": -4.2,
+        "netRatingRank": 57,
+        "threesPerGame": 13.5,
+        "threesPerGameRank": 27,
+        "turnoversPerGame": 15.5,
+        "turnoversPerGameRank": 42,
+        "plusMinus": -3.9,
+        "plusMinusRank": 54,
+        "fgPct": 0.471,
+        "fgPctRank": 26,
         "fg3Pct": 0.359,
-        "fg3PctRank": 29,
-        "ftPct": 0.782,
-        "ftPctRank": 27
+        "fg3PctRank": 28,
+        "ftPct": 0.78,
+        "ftPctRank": 31
       },
       "elo": {
-        "current": 1388.0115577592674,
+        "current": 1400.9343632348744,
         "history": [
           {
             "date": "2025-10-22",
@@ -2715,11 +2810,11 @@
           },
           {
             "date": "2025-12-12",
-            "elo": 1420.4
+            "elo": 1434.4
           },
           {
             "date": "2025-12-14",
-            "elo": 1388.0
+            "elo": 1400.9
           },
           {
             "date": "2025-12-17",
@@ -2748,6 +2843,10 @@
           {
             "date": "2025-12-29",
             "elo": 1403.4
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1418.6
           }
         ]
       },
@@ -3108,9 +3207,9 @@
           "opponentScore": 126,
           "margin": 3,
           "result": "W",
-          "eloBefore": 1403.4,
-          "eloAfter": 1420.4,
-          "eloChange": 17.0
+          "eloBefore": 1418.6,
+          "eloAfter": 1434.4,
+          "eloChange": 15.8
         },
         {
           "gameId": "0022501223",
@@ -3123,9 +3222,9 @@
           "opponentScore": 114,
           "margin": -10,
           "result": "L",
-          "eloBefore": 1420.4,
-          "eloAfter": 1388.0,
-          "eloChange": -32.3
+          "eloBefore": 1434.4,
+          "eloAfter": 1400.9,
+          "eloChange": -33.5
         },
         {
           "gameId": "0022500367",
@@ -3231,6 +3330,21 @@
           "eloBefore": 1431.9,
           "eloAfter": 1403.4,
           "eloChange": -28.5
+        },
+        {
+          "gameId": "0022500466",
+          "date": "2025-12-31",
+          "home": true,
+          "opponentTeamId": 1610612740,
+          "opponentTeamName": "New Orleans Pelicans",
+          "opponentAbbreviation": "NOP",
+          "teamScore": 134,
+          "opponentScore": 118,
+          "margin": 16,
+          "result": "W",
+          "eloBefore": 1403.4,
+          "eloAfter": 1418.6,
+          "eloChange": 15.2
         }
       ]
     },
@@ -3240,36 +3354,36 @@
       "abbreviation": "CLE",
       "conference": "East",
       "seed": 8,
-      "record": "18-16",
+      "record": "19-16",
       "categoryRatings": {
         "offense": 61,
-        "defense": 48,
+        "defense": 52,
         "pacePressure": 88,
-        "hustle": 68,
-        "clutch": 19
+        "hustle": 74,
+        "clutch": 22
       },
       "teamStats": {
-        "offRating": 115.2,
-        "offRatingRank": 20,
-        "defRating": 113.1,
+        "offRating": 115.4,
+        "offRatingRank": 19,
+        "defRating": 112.9,
         "defRatingRank": 45,
-        "netRating": 2.1,
-        "netRatingRank": 29,
+        "netRating": 2.5,
+        "netRatingRank": 28,
         "threesPerGame": 14.2,
-        "threesPerGameRank": 18,
+        "threesPerGameRank": 20,
         "turnoversPerGame": 14.4,
-        "turnoversPerGameRank": 22,
-        "plusMinus": 2.1,
-        "plusMinusRank": 28,
-        "fgPct": 0.457,
-        "fgPctRank": 43,
-        "fg3Pct": 0.338,
-        "fg3PctRank": 54,
-        "ftPct": 0.78,
-        "ftPctRank": 32
+        "turnoversPerGameRank": 24,
+        "plusMinus": 2.4,
+        "plusMinusRank": 29,
+        "fgPct": 0.458,
+        "fgPctRank": 41,
+        "fg3Pct": 0.339,
+        "fg3PctRank": 53,
+        "ftPct": 0.781,
+        "ftPctRank": 30
       },
       "elo": {
-        "current": 1489.1753437844125,
+        "current": 1517.8260881057608,
         "history": [
           {
             "date": "2025-10-22",
@@ -3373,11 +3487,11 @@
           },
           {
             "date": "2025-12-12",
-            "elo": 1520.5
+            "elo": 1550.3
           },
           {
             "date": "2025-12-14",
-            "elo": 1489.2
+            "elo": 1517.8
           },
           {
             "date": "2025-12-17",
@@ -3406,6 +3520,10 @@
           {
             "date": "2025-12-29",
             "elo": 1511.2
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1541.9
           }
         ]
       },
@@ -3796,9 +3914,9 @@
           "opponentScore": 126,
           "margin": 4,
           "result": "W",
-          "eloBefore": 1511.2,
-          "eloAfter": 1520.5,
-          "eloChange": 9.2
+          "eloBefore": 1541.9,
+          "eloAfter": 1550.3,
+          "eloChange": 8.4
         },
         {
           "gameId": "0022501218",
@@ -3811,9 +3929,9 @@
           "opponentScore": 119,
           "margin": -8,
           "result": "L",
-          "eloBefore": 1520.5,
-          "eloAfter": 1489.2,
-          "eloChange": -31.3
+          "eloBefore": 1550.3,
+          "eloAfter": 1517.8,
+          "eloChange": -32.5
         },
         {
           "gameId": "0022500367",
@@ -3919,6 +4037,21 @@
           "eloBefore": 1473.6,
           "eloAfter": 1511.2,
           "eloChange": 37.6
+        },
+        {
+          "gameId": "0022500465",
+          "date": "2025-12-31",
+          "home": true,
+          "opponentTeamId": 1610612756,
+          "opponentTeamName": "Phoenix Suns",
+          "opponentAbbreviation": "PHX",
+          "teamScore": 129,
+          "opponentScore": 113,
+          "margin": 16,
+          "result": "W",
+          "eloBefore": 1511.2,
+          "eloAfter": 1541.9,
+          "eloChange": 30.7
         }
       ]
     },
@@ -3927,37 +4060,37 @@
       "name": "Dallas Mavericks",
       "abbreviation": "DAL",
       "conference": "West",
-      "seed": 12,
-      "record": "12-22",
+      "seed": 13,
+      "record": "12-23",
       "categoryRatings": {
         "offense": 6,
         "defense": 58,
         "pacePressure": 35,
-        "hustle": 74,
-        "clutch": 35
+        "hustle": 71,
+        "clutch": 39
       },
       "teamStats": {
-        "offRating": 108.2,
-        "offRatingRank": 54,
-        "defRating": 111.5,
-        "defRatingRank": 33,
-        "netRating": -3.3,
-        "netRatingRank": 49,
-        "threesPerGame": 10.7,
-        "threesPerGameRank": 55,
+        "offRating": 108.1,
+        "offRatingRank": 56,
+        "defRating": 111.8,
+        "defRatingRank": 39,
+        "netRating": -3.7,
+        "netRatingRank": 55,
+        "threesPerGame": 10.6,
+        "threesPerGameRank": 56,
         "turnoversPerGame": 15.3,
         "turnoversPerGameRank": 40,
-        "plusMinus": -3.7,
-        "plusMinusRank": 52,
-        "fgPct": 0.462,
-        "fgPctRank": 40,
-        "fg3Pct": 0.335,
-        "fg3PctRank": 58,
-        "ftPct": 0.75,
-        "ftPctRank": 58
+        "plusMinus": -4.0,
+        "plusMinusRank": 55,
+        "fgPct": 0.461,
+        "fgPctRank": 37,
+        "fg3Pct": 0.332,
+        "fg3PctRank": 60,
+        "ftPct": 0.753,
+        "ftPctRank": 52
       },
       "elo": {
-        "current": 1419.6852543852922,
+        "current": 1395.2064410106589,
         "history": [
           {
             "date": "2025-10-22",
@@ -4061,11 +4194,11 @@
           },
           {
             "date": "2025-12-12",
-            "elo": 1435.8
+            "elo": 1411.4
           },
           {
             "date": "2025-12-15",
-            "elo": 1419.7
+            "elo": 1395.2
           },
           {
             "date": "2025-12-18",
@@ -4094,6 +4227,10 @@
           {
             "date": "2025-12-29",
             "elo": 1417.7
+          },
+          {
+            "date": "2026-01-01",
+            "elo": 1392.9
           }
         ]
       },
@@ -4484,9 +4621,9 @@
           "opponentScore": 111,
           "margin": 8,
           "result": "W",
-          "eloBefore": 1417.7,
-          "eloAfter": 1435.8,
-          "eloChange": 18.2
+          "eloBefore": 1392.9,
+          "eloAfter": 1411.4,
+          "eloChange": 18.6
         },
         {
           "gameId": "0022501224",
@@ -4499,8 +4636,8 @@
           "opponentScore": 140,
           "margin": -7,
           "result": "L",
-          "eloBefore": 1435.8,
-          "eloAfter": 1419.7,
+          "eloBefore": 1411.4,
+          "eloAfter": 1395.2,
           "eloChange": -16.2
         },
         {
@@ -4607,6 +4744,21 @@
           "eloBefore": 1428.4,
           "eloAfter": 1417.7,
           "eloChange": -10.7
+        },
+        {
+          "gameId": "0022500473",
+          "date": "2026-01-01",
+          "home": true,
+          "opponentTeamId": 1610612755,
+          "opponentTeamName": "Philadelphia 76ers",
+          "opponentAbbreviation": "PHI",
+          "teamScore": 108,
+          "opponentScore": 123,
+          "margin": -15,
+          "result": "L",
+          "eloBefore": 1417.7,
+          "eloAfter": 1392.9,
+          "eloChange": -24.8
         }
       ]
     },
@@ -4616,36 +4768,36 @@
       "abbreviation": "DEN",
       "conference": "West",
       "seed": 3,
-      "record": "22-10",
+      "record": "23-10",
       "categoryRatings": {
         "offense": 97,
-        "defense": 45,
-        "pacePressure": 29,
+        "defense": 48,
+        "pacePressure": 32,
         "hustle": 3,
         "clutch": 29
       },
       "teamStats": {
-        "offRating": 121.9,
-        "offRatingRank": 2,
-        "defRating": 115.2,
+        "offRating": 121.6,
+        "offRatingRank": 1,
+        "defRating": 114.9,
         "defRatingRank": 55,
         "netRating": 6.7,
-        "netRatingRank": 12,
-        "threesPerGame": 13.5,
+        "netRatingRank": 13,
+        "threesPerGame": 13.4,
         "threesPerGameRank": 28,
-        "turnoversPerGame": 13.8,
-        "turnoversPerGameRank": 15,
-        "plusMinus": 6.6,
-        "plusMinusRank": 12,
-        "fgPct": 0.505,
-        "fgPctRank": 3,
-        "fg3Pct": 0.395,
-        "fg3PctRank": 3,
-        "ftPct": 0.812,
+        "turnoversPerGame": 13.7,
+        "turnoversPerGameRank": 12,
+        "plusMinus": 6.5,
+        "plusMinusRank": 13,
+        "fgPct": 0.503,
+        "fgPctRank": 1,
+        "fg3Pct": 0.392,
+        "fg3PctRank": 4,
+        "ftPct": 0.813,
         "ftPctRank": 10
       },
       "elo": {
-        "current": 1622.5689008536456,
+        "current": 1632.8396065288816,
         "history": [
           {
             "date": "2025-10-23",
@@ -4741,11 +4893,11 @@
           },
           {
             "date": "2025-12-11",
-            "elo": 1610.0
+            "elo": 1620.0
           },
           {
             "date": "2025-12-15",
-            "elo": 1622.6
+            "elo": 1632.8
           },
           {
             "date": "2025-12-18",
@@ -4774,6 +4926,10 @@
           {
             "date": "2025-12-29",
             "elo": 1593.8
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1606.2
           }
         ]
       },
@@ -5134,9 +5290,9 @@
           "opponentScore": 105,
           "margin": 31,
           "result": "W",
-          "eloBefore": 1593.8,
-          "eloAfter": 1610.0,
-          "eloChange": 16.2
+          "eloBefore": 1606.2,
+          "eloAfter": 1620.0,
+          "eloChange": 13.8
         },
         {
           "gameId": "0022501225",
@@ -5149,9 +5305,9 @@
           "opponentScore": 125,
           "margin": 3,
           "result": "W",
-          "eloBefore": 1610.0,
-          "eloAfter": 1622.6,
-          "eloChange": 12.5
+          "eloBefore": 1620.0,
+          "eloAfter": 1632.8,
+          "eloChange": 12.8
         },
         {
           "gameId": "0022500377",
@@ -5257,6 +5413,21 @@
           "eloBefore": 1628.0,
           "eloAfter": 1593.8,
           "eloChange": -34.2
+        },
+        {
+          "gameId": "0022500468",
+          "date": "2025-12-31",
+          "home": false,
+          "opponentTeamId": 1610612761,
+          "opponentTeamName": "Toronto Raptors",
+          "opponentAbbreviation": "TOR",
+          "teamScore": 106,
+          "opponentScore": 103,
+          "margin": 3,
+          "result": "W",
+          "eloBefore": 1593.8,
+          "eloAfter": 1606.2,
+          "eloChange": 12.4
         }
       ]
     },
@@ -5266,9 +5437,9 @@
       "abbreviation": "DET",
       "conference": "East",
       "seed": 1,
-      "record": "24-8",
+      "record": "25-9",
       "categoryRatings": {
-        "offense": 55,
+        "offense": 58,
         "defense": 91,
         "pacePressure": 97,
         "hustle": 91,
@@ -5276,26 +5447,26 @@
       },
       "teamStats": {
         "offRating": 115.8,
-        "offRatingRank": 16,
-        "defRating": 109.9,
-        "defRatingRank": 24,
-        "netRating": 5.9,
-        "netRatingRank": 14,
+        "offRatingRank": 15,
+        "defRating": 109.7,
+        "defRatingRank": 25,
+        "netRating": 6.1,
+        "netRatingRank": 16,
         "threesPerGame": 11.0,
-        "threesPerGameRank": 51,
-        "turnoversPerGame": 15.6,
-        "turnoversPerGameRank": 44,
-        "plusMinus": 5.8,
-        "plusMinusRank": 15,
-        "fgPct": 0.474,
-        "fgPctRank": 23,
-        "fg3Pct": 0.349,
-        "fg3PctRank": 40,
-        "ftPct": 0.739,
-        "ftPctRank": 63
+        "threesPerGameRank": 53,
+        "turnoversPerGame": 15.8,
+        "turnoversPerGameRank": 48,
+        "plusMinus": 5.9,
+        "plusMinusRank": 17,
+        "fgPct": 0.477,
+        "fgPctRank": 19,
+        "fg3Pct": 0.351,
+        "fg3PctRank": 37,
+        "ftPct": 0.742,
+        "ftPctRank": 59
       },
       "elo": {
-        "current": 1672.2965061044968,
+        "current": 1676.3887874735638,
         "history": [
           {
             "date": "2025-10-22",
@@ -5395,11 +5566,11 @@
           },
           {
             "date": "2025-12-12",
-            "elo": 1649.4
+            "elo": 1652.3
           },
           {
             "date": "2025-12-15",
-            "elo": 1672.3
+            "elo": 1676.4
           },
           {
             "date": "2025-12-18",
@@ -5424,6 +5595,14 @@
           {
             "date": "2025-12-28",
             "elo": 1640.4
+          },
+          {
+            "date": "2025-12-30",
+            "elo": 1669.0
+          },
+          {
+            "date": "2026-01-01",
+            "elo": 1641.4
           }
         ]
       },
@@ -5799,9 +5978,9 @@
           "opponentScore": 115,
           "margin": 27,
           "result": "W",
-          "eloBefore": 1640.4,
-          "eloAfter": 1649.4,
-          "eloChange": 9.0
+          "eloBefore": 1641.4,
+          "eloAfter": 1652.3,
+          "eloChange": 10.9
         },
         {
           "gameId": "0022501222",
@@ -5814,9 +5993,9 @@
           "opponentScore": 105,
           "margin": 7,
           "result": "W",
-          "eloBefore": 1649.4,
-          "eloAfter": 1672.3,
-          "eloChange": 22.9
+          "eloBefore": 1652.3,
+          "eloAfter": 1676.4,
+          "eloChange": 24.0
         },
         {
           "gameId": "0022500376",
@@ -5907,6 +6086,36 @@
           "eloBefore": 1672.3,
           "eloAfter": 1640.4,
           "eloChange": -32.0
+        },
+        {
+          "gameId": "0022500460",
+          "date": "2025-12-30",
+          "home": false,
+          "opponentTeamId": 1610612747,
+          "opponentTeamName": "Los Angeles Lakers",
+          "opponentAbbreviation": "LAL",
+          "teamScore": 128,
+          "opponentScore": 106,
+          "margin": 22,
+          "result": "W",
+          "eloBefore": 1640.4,
+          "eloAfter": 1669.0,
+          "eloChange": 28.6
+        },
+        {
+          "gameId": "0022500472",
+          "date": "2026-01-01",
+          "home": true,
+          "opponentTeamId": 1610612748,
+          "opponentTeamName": "Miami Heat",
+          "opponentAbbreviation": "MIA",
+          "teamScore": 112,
+          "opponentScore": 118,
+          "margin": -6,
+          "result": "L",
+          "eloBefore": 1669.0,
+          "eloAfter": 1641.4,
+          "eloChange": -27.6
         }
       ]
     },
@@ -5916,36 +6125,36 @@
       "abbreviation": "GSW",
       "conference": "West",
       "seed": 8,
-      "record": "17-16",
+      "record": "18-16",
       "categoryRatings": {
-        "offense": 35,
+        "offense": 42,
         "defense": 68,
         "pacePressure": 39,
-        "hustle": 97,
-        "clutch": 26
+        "hustle": 94,
+        "clutch": 32
       },
       "teamStats": {
-        "offRating": 111.0,
-        "offRatingRank": 45,
-        "defRating": 109.7,
-        "defRatingRank": 22,
-        "netRating": 1.3,
-        "netRatingRank": 35,
-        "threesPerGame": 14.5,
-        "threesPerGameRank": 16,
-        "turnoversPerGame": 16.9,
-        "turnoversPerGameRank": 60,
-        "plusMinus": 1.0,
-        "plusMinusRank": 35,
-        "fgPct": 0.446,
-        "fgPctRank": 56,
-        "fg3Pct": 0.347,
-        "fg3PctRank": 45,
-        "ftPct": 0.803,
+        "offRating": 111.5,
+        "offRatingRank": 42,
+        "defRating": 110.1,
+        "defRatingRank": 28,
+        "netRating": 1.4,
+        "netRatingRank": 34,
+        "threesPerGame": 14.7,
+        "threesPerGameRank": 14,
+        "turnoversPerGame": 17.0,
+        "turnoversPerGameRank": 59,
+        "plusMinus": 1.2,
+        "plusMinusRank": 36,
+        "fgPct": 0.448,
+        "fgPctRank": 54,
+        "fg3Pct": 0.351,
+        "fg3PctRank": 36,
+        "ftPct": 0.806,
         "ftPctRank": 11
       },
       "elo": {
-        "current": 1533.3279278028638,
+        "current": 1544.3988661261967,
         "history": [
           {
             "date": "2025-10-21",
@@ -6049,11 +6258,11 @@
           },
           {
             "date": "2025-12-12",
-            "elo": 1553.6
+            "elo": 1565.3
           },
           {
             "date": "2025-12-14",
-            "elo": 1533.3
+            "elo": 1544.4
           },
           {
             "date": "2025-12-18",
@@ -6078,6 +6287,10 @@
           {
             "date": "2025-12-29",
             "elo": 1577.9
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1592.2
           }
         ]
       },
@@ -6468,9 +6681,9 @@
           "opponentScore": 127,
           "margin": -7,
           "result": "L",
-          "eloBefore": 1577.9,
-          "eloAfter": 1553.6,
-          "eloChange": -24.4
+          "eloBefore": 1592.2,
+          "eloAfter": 1565.3,
+          "eloChange": -26.9
         },
         {
           "gameId": "0022501221",
@@ -6483,9 +6696,9 @@
           "opponentScore": 136,
           "margin": -5,
           "result": "L",
-          "eloBefore": 1553.6,
-          "eloAfter": 1533.3,
-          "eloChange": -20.2
+          "eloBefore": 1565.3,
+          "eloAfter": 1544.4,
+          "eloChange": -20.9
         },
         {
           "gameId": "0022500378",
@@ -6576,6 +6789,21 @@
           "eloBefore": 1555.2,
           "eloAfter": 1577.9,
           "eloChange": 22.7
+        },
+        {
+          "gameId": "0022500462",
+          "date": "2025-12-31",
+          "home": false,
+          "opponentTeamId": 1610612766,
+          "opponentTeamName": "Charlotte Hornets",
+          "opponentAbbreviation": "CHA",
+          "teamScore": 132,
+          "opponentScore": 125,
+          "margin": 7,
+          "result": "W",
+          "eloBefore": 1577.9,
+          "eloAfter": 1592.2,
+          "eloChange": 14.3
         }
       ]
     },
@@ -6585,36 +6813,36 @@
       "abbreviation": "HOU",
       "conference": "West",
       "seed": 4,
-      "record": "20-10",
+      "record": "21-10",
       "categoryRatings": {
-        "offense": 74,
-        "defense": 74,
-        "pacePressure": 68,
+        "offense": 78,
+        "defense": 71,
+        "pacePressure": 71,
         "hustle": 58,
-        "clutch": 32
+        "clutch": 26
       },
       "teamStats": {
-        "offRating": 118.9,
+        "offRating": 119.2,
         "offRatingRank": 7,
-        "defRating": 112.5,
-        "defRatingRank": 43,
-        "netRating": 6.3,
-        "netRatingRank": 13,
+        "defRating": 112.4,
+        "defRatingRank": 44,
+        "netRating": 6.8,
+        "netRatingRank": 12,
         "threesPerGame": 11.4,
-        "threesPerGameRank": 48,
-        "turnoversPerGame": 16.5,
+        "threesPerGameRank": 50,
+        "turnoversPerGame": 16.4,
         "turnoversPerGameRank": 55,
-        "plusMinus": 6.3,
-        "plusMinusRank": 13,
-        "fgPct": 0.483,
-        "fgPctRank": 15,
-        "fg3Pct": 0.38,
-        "fg3PctRank": 9,
-        "ftPct": 0.752,
-        "ftPctRank": 56
+        "plusMinus": 6.8,
+        "plusMinusRank": 12,
+        "fgPct": 0.485,
+        "fgPctRank": 12,
+        "fg3Pct": 0.381,
+        "fg3PctRank": 7,
+        "ftPct": 0.753,
+        "ftPctRank": 53
       },
       "elo": {
-        "current": 1640.520820135518,
+        "current": 1657.8841146605907,
         "history": [
           {
             "date": "2025-10-21",
@@ -6702,11 +6930,11 @@
           },
           {
             "date": "2025-12-11",
-            "elo": 1653.1
+            "elo": 1670.7
           },
           {
             "date": "2025-12-15",
-            "elo": 1640.5
+            "elo": 1657.9
           },
           {
             "date": "2025-12-18",
@@ -6735,6 +6963,10 @@
           {
             "date": "2025-12-29",
             "elo": 1648.0
+          },
+          {
+            "date": "2026-01-01",
+            "elo": 1665.4
           }
         ]
       },
@@ -7065,9 +7297,9 @@
           "opponentScore": 113,
           "margin": 2,
           "result": "W",
-          "eloBefore": 1648.0,
-          "eloAfter": 1653.1,
-          "eloChange": 5.1
+          "eloBefore": 1665.4,
+          "eloAfter": 1670.7,
+          "eloChange": 5.3
         },
         {
           "gameId": "0022501225",
@@ -7080,9 +7312,9 @@
           "opponentScore": 128,
           "margin": -3,
           "result": "L",
-          "eloBefore": 1653.1,
-          "eloAfter": 1640.5,
-          "eloChange": -12.5
+          "eloBefore": 1670.7,
+          "eloAfter": 1657.9,
+          "eloChange": -12.8
         },
         {
           "gameId": "0022500375",
@@ -7188,6 +7420,21 @@
           "eloBefore": 1645.1,
           "eloAfter": 1648.0,
           "eloChange": 2.8
+        },
+        {
+          "gameId": "0022500471",
+          "date": "2026-01-01",
+          "home": false,
+          "opponentTeamId": 1610612751,
+          "opponentTeamName": "Brooklyn Nets",
+          "opponentAbbreviation": "BKN",
+          "teamScore": 120,
+          "opponentScore": 96,
+          "margin": 24,
+          "result": "W",
+          "eloBefore": 1648.0,
+          "eloAfter": 1665.4,
+          "eloChange": 17.4
         }
       ]
     },
@@ -7197,36 +7444,36 @@
       "abbreviation": "IND",
       "conference": "East",
       "seed": 15,
-      "record": "6-27",
+      "record": "6-28",
       "categoryRatings": {
         "offense": 3,
-        "defense": 12,
-        "pacePressure": 16,
-        "hustle": 19,
-        "clutch": 16
+        "defense": 16,
+        "pacePressure": 19,
+        "hustle": 26,
+        "clutch": 19
       },
       "teamStats": {
-        "offRating": 108.7,
-        "offRatingRank": 52,
-        "defRating": 117.1,
-        "defRatingRank": 65,
-        "netRating": -8.4,
-        "netRatingRank": 67,
+        "offRating": 108.4,
+        "offRatingRank": 53,
+        "defRating": 116.7,
+        "defRatingRank": 63,
+        "netRating": -8.3,
+        "netRatingRank": 65,
         "threesPerGame": 12.0,
         "threesPerGameRank": 45,
-        "turnoversPerGame": 14.4,
-        "turnoversPerGameRank": 23,
-        "plusMinus": -8.5,
-        "plusMinusRank": 66,
+        "turnoversPerGame": 14.5,
+        "turnoversPerGameRank": 26,
+        "plusMinus": -8.3,
+        "plusMinusRank": 65,
         "fgPct": 0.441,
-        "fgPctRank": 61,
+        "fgPctRank": 60,
         "fg3Pct": 0.329,
-        "fg3PctRank": 65,
-        "ftPct": 0.771,
-        "ftPctRank": 38
+        "fg3PctRank": 64,
+        "ftPct": 0.772,
+        "ftPctRank": 35
       },
       "elo": {
-        "current": 1245.134933834445,
+        "current": 1242.239970670686,
         "history": [
           {
             "date": "2025-10-23",
@@ -7326,11 +7573,11 @@
           },
           {
             "date": "2025-12-12",
-            "elo": 1279.4
+            "elo": 1275.0
           },
           {
             "date": "2025-12-14",
-            "elo": 1245.1
+            "elo": 1242.2
           },
           {
             "date": "2025-12-18",
@@ -7359,6 +7606,10 @@
           {
             "date": "2025-12-29",
             "elo": 1286.8
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1280.8
           }
         ]
       },
@@ -7734,9 +7985,9 @@
           "opponentScore": 115,
           "margin": -10,
           "result": "L",
-          "eloBefore": 1286.8,
-          "eloAfter": 1279.4,
-          "eloChange": -7.3
+          "eloBefore": 1280.8,
+          "eloAfter": 1275.0,
+          "eloChange": -5.7
         },
         {
           "gameId": "0022501216",
@@ -7749,9 +8000,9 @@
           "opponentScore": 108,
           "margin": -19,
           "result": "L",
-          "eloBefore": 1279.4,
-          "eloAfter": 1245.1,
-          "eloChange": -34.3
+          "eloBefore": 1275.0,
+          "eloAfter": 1242.2,
+          "eloChange": -32.8
         },
         {
           "gameId": "0022500372",
@@ -7857,6 +8108,21 @@
           "eloBefore": 1289.6,
           "eloAfter": 1286.8,
           "eloChange": -2.8
+        },
+        {
+          "gameId": "0022500464",
+          "date": "2025-12-31",
+          "home": true,
+          "opponentTeamId": 1610612753,
+          "opponentTeamName": "Orlando Magic",
+          "opponentAbbreviation": "ORL",
+          "teamScore": 110,
+          "opponentScore": 112,
+          "margin": -2,
+          "result": "L",
+          "eloBefore": 1286.8,
+          "eloAfter": 1280.8,
+          "eloChange": -6.0
         }
       ]
     },
@@ -7865,37 +8131,37 @@
       "name": "LA Clippers",
       "abbreviation": "LAC",
       "conference": "West",
-      "seed": 13,
-      "record": "10-21",
+      "seed": 11,
+      "record": "12-21",
       "categoryRatings": {
-        "offense": 48,
+        "offense": 52,
         "defense": 42,
         "pacePressure": 3,
         "hustle": 9,
         "clutch": 12
       },
       "teamStats": {
-        "offRating": 112.0,
-        "offRatingRank": 39,
-        "defRating": 114.8,
-        "defRatingRank": 53,
-        "netRating": -2.8,
-        "netRatingRank": 48,
-        "threesPerGame": 12.6,
-        "threesPerGameRank": 37,
-        "turnoversPerGame": 16.3,
-        "turnoversPerGameRank": 53,
-        "plusMinus": -2.8,
-        "plusMinusRank": 49,
-        "fgPct": 0.465,
-        "fgPctRank": 35,
-        "fg3Pct": 0.355,
-        "fg3PctRank": 33,
-        "ftPct": 0.832,
-        "ftPctRank": 6
+        "offRating": 112.9,
+        "offRatingRank": 29,
+        "defRating": 114.0,
+        "defRatingRank": 48,
+        "netRating": -1.1,
+        "netRatingRank": 45,
+        "threesPerGame": 12.8,
+        "threesPerGameRank": 35,
+        "turnoversPerGame": 15.8,
+        "turnoversPerGameRank": 47,
+        "plusMinus": -1.2,
+        "plusMinusRank": 45,
+        "fgPct": 0.466,
+        "fgPctRank": 34,
+        "fg3Pct": 0.354,
+        "fg3PctRank": 31,
+        "ftPct": 0.831,
+        "ftPctRank": 5
       },
       "elo": {
-        "current": 1478.6365306747518,
+        "current": 1502.914045101385,
         "history": [
           {
             "date": "2025-10-22",
@@ -7995,11 +8261,11 @@
           },
           {
             "date": "2025-12-11",
-            "elo": 1517.5
+            "elo": 1544.0
           },
           {
             "date": "2025-12-15",
-            "elo": 1478.6
+            "elo": 1502.9
           },
           {
             "date": "2025-12-18",
@@ -8020,6 +8286,14 @@
           {
             "date": "2025-12-28",
             "elo": 1522.6
+          },
+          {
+            "date": "2025-12-30",
+            "elo": 1535.9
+          },
+          {
+            "date": "2026-01-01",
+            "elo": 1549.3
           }
         ]
       },
@@ -8395,9 +8669,9 @@
           "opponentScore": 115,
           "margin": -2,
           "result": "L",
-          "eloBefore": 1522.6,
-          "eloAfter": 1517.5,
-          "eloChange": -5.1
+          "eloBefore": 1549.3,
+          "eloAfter": 1544.0,
+          "eloChange": -5.3
         },
         {
           "gameId": "0022501226",
@@ -8410,9 +8684,9 @@
           "opponentScore": 121,
           "margin": -18,
           "result": "L",
-          "eloBefore": 1517.5,
-          "eloAfter": 1478.6,
-          "eloChange": -38.9
+          "eloBefore": 1544.0,
+          "eloAfter": 1502.9,
+          "eloChange": -41.1
         },
         {
           "gameId": "0022500369",
@@ -8488,6 +8762,36 @@
           "eloBefore": 1490.7,
           "eloAfter": 1522.6,
           "eloChange": 32.0
+        },
+        {
+          "gameId": "0022500461",
+          "date": "2025-12-30",
+          "home": true,
+          "opponentTeamId": 1610612758,
+          "opponentTeamName": "Sacramento Kings",
+          "opponentAbbreviation": "SAC",
+          "teamScore": 131,
+          "opponentScore": 90,
+          "margin": 41,
+          "result": "W",
+          "eloBefore": 1522.6,
+          "eloAfter": 1535.9,
+          "eloChange": 13.3
+        },
+        {
+          "gameId": "0022500475",
+          "date": "2026-01-01",
+          "home": true,
+          "opponentTeamId": 1610612762,
+          "opponentTeamName": "Utah Jazz",
+          "opponentAbbreviation": "UTA",
+          "teamScore": 118,
+          "opponentScore": 101,
+          "margin": 17,
+          "result": "W",
+          "eloBefore": 1535.9,
+          "eloAfter": 1549.3,
+          "eloChange": 13.4
         }
       ]
     },
@@ -8497,36 +8801,36 @@
       "abbreviation": "LAL",
       "conference": "West",
       "seed": 5,
-      "record": "20-10",
+      "record": "20-11",
       "categoryRatings": {
         "offense": 71,
-        "defense": 26,
+        "defense": 22,
         "pacePressure": 12,
-        "hustle": 81,
+        "hustle": 78,
         "clutch": 94
       },
       "teamStats": {
-        "offRating": 114.6,
-        "offRatingRank": 23,
-        "defRating": 114.8,
-        "defRatingRank": 52,
-        "netRating": -0.3,
-        "netRatingRank": 38,
+        "offRating": 114.3,
+        "offRatingRank": 25,
+        "defRating": 115.2,
+        "defRatingRank": 57,
+        "netRating": -0.9,
+        "netRatingRank": 44,
         "threesPerGame": 11.4,
-        "threesPerGameRank": 47,
-        "turnoversPerGame": 15.5,
-        "turnoversPerGameRank": 42,
-        "plusMinus": -0.1,
-        "plusMinusRank": 38,
-        "fgPct": 0.485,
-        "fgPctRank": 13,
-        "fg3Pct": 0.343,
-        "fg3PctRank": 48,
-        "ftPct": 0.767,
-        "ftPctRank": 42
+        "threesPerGameRank": 49,
+        "turnoversPerGame": 15.6,
+        "turnoversPerGameRank": 43,
+        "plusMinus": -0.7,
+        "plusMinusRank": 44,
+        "fgPct": 0.484,
+        "fgPctRank": 15,
+        "fg3Pct": 0.341,
+        "fg3PctRank": 49,
+        "ftPct": 0.764,
+        "ftPctRank": 43
       },
       "elo": {
-        "current": 1539.1240339006806,
+        "current": 1513.711866468209,
         "history": [
           {
             "date": "2025-10-21",
@@ -8622,11 +8926,11 @@
           },
           {
             "date": "2025-12-10",
-            "elo": 1524.1
+            "elo": 1498.7
           },
           {
             "date": "2025-12-14",
-            "elo": 1539.1
+            "elo": 1513.7
           },
           {
             "date": "2025-12-18",
@@ -8647,6 +8951,10 @@
           {
             "date": "2025-12-28",
             "elo": 1552.4
+          },
+          {
+            "date": "2025-12-30",
+            "elo": 1523.8
           }
         ]
       },
@@ -9007,9 +9315,9 @@
           "opponentScore": 132,
           "margin": -13,
           "result": "L",
-          "eloBefore": 1552.4,
-          "eloAfter": 1524.1,
-          "eloChange": -28.3
+          "eloBefore": 1523.8,
+          "eloAfter": 1498.7,
+          "eloChange": -25.1
         },
         {
           "gameId": "0022501228",
@@ -9022,8 +9330,8 @@
           "opponentScore": 114,
           "margin": 2,
           "result": "W",
-          "eloBefore": 1524.1,
-          "eloAfter": 1539.1,
+          "eloBefore": 1498.7,
+          "eloAfter": 1513.7,
           "eloChange": 15.0
         },
         {
@@ -9100,6 +9408,21 @@
           "eloBefore": 1541.4,
           "eloAfter": 1552.4,
           "eloChange": 11.0
+        },
+        {
+          "gameId": "0022500460",
+          "date": "2025-12-30",
+          "home": true,
+          "opponentTeamId": 1610612765,
+          "opponentTeamName": "Detroit Pistons",
+          "opponentAbbreviation": "DET",
+          "teamScore": 106,
+          "opponentScore": 128,
+          "margin": -22,
+          "result": "L",
+          "eloBefore": 1552.4,
+          "eloAfter": 1523.8,
+          "eloChange": -28.6
         }
       ]
     },
@@ -9109,36 +9432,36 @@
       "abbreviation": "MEM",
       "conference": "West",
       "seed": 9,
-      "record": "15-17",
+      "record": "15-18",
       "categoryRatings": {
-        "offense": 22,
+        "offense": 29,
         "defense": 81,
-        "pacePressure": 58,
-        "hustle": 35,
+        "pacePressure": 61,
+        "hustle": 48,
         "clutch": 42
       },
       "teamStats": {
-        "offRating": 111.5,
-        "offRatingRank": 41,
-        "defRating": 111.9,
-        "defRatingRank": 39,
-        "netRating": -0.4,
-        "netRatingRank": 39,
-        "threesPerGame": 13.0,
+        "offRating": 111.7,
+        "offRatingRank": 38,
+        "defRating": 112.2,
+        "defRatingRank": 42,
+        "netRating": -0.5,
+        "netRatingRank": 42,
+        "threesPerGame": 12.9,
         "threesPerGameRank": 33,
-        "turnoversPerGame": 15.6,
+        "turnoversPerGame": 15.7,
         "turnoversPerGameRank": 45,
         "plusMinus": -0.2,
-        "plusMinusRank": 39,
-        "fgPct": 0.449,
-        "fgPctRank": 54,
-        "fg3Pct": 0.35,
-        "fg3PctRank": 39,
-        "ftPct": 0.794,
-        "ftPctRank": 16
+        "plusMinusRank": 40,
+        "fgPct": 0.452,
+        "fgPctRank": 52,
+        "fg3Pct": 0.351,
+        "fg3PctRank": 38,
+        "ftPct": 0.796,
+        "ftPctRank": 15
       },
       "elo": {
-        "current": 1496.5781576288573,
+        "current": 1482.5652740713156,
         "history": [
           {
             "date": "2025-10-22",
@@ -9238,11 +9561,11 @@
           },
           {
             "date": "2025-12-12",
-            "elo": 1457.7
+            "elo": 1441.5
           },
           {
             "date": "2025-12-15",
-            "elo": 1496.6
+            "elo": 1482.6
           },
           {
             "date": "2025-12-17",
@@ -9267,6 +9590,10 @@
           {
             "date": "2025-12-28",
             "elo": 1478.8
+          },
+          {
+            "date": "2025-12-30",
+            "elo": 1463.0
           }
         ]
       },
@@ -9642,9 +9969,9 @@
           "opponentScore": 130,
           "margin": -4,
           "result": "L",
-          "eloBefore": 1478.8,
-          "eloAfter": 1457.7,
-          "eloChange": -21.2
+          "eloBefore": 1463.0,
+          "eloAfter": 1441.5,
+          "eloChange": -21.4
         },
         {
           "gameId": "0022501226",
@@ -9657,9 +9984,9 @@
           "opponentScore": 103,
           "margin": 18,
           "result": "W",
-          "eloBefore": 1457.7,
-          "eloAfter": 1496.6,
-          "eloChange": 38.9
+          "eloBefore": 1441.5,
+          "eloAfter": 1482.6,
+          "eloChange": 41.1
         },
         {
           "gameId": "0022500368",
@@ -9750,6 +10077,21 @@
           "eloBefore": 1499.0,
           "eloAfter": 1478.8,
           "eloChange": -20.2
+        },
+        {
+          "gameId": "0022500458",
+          "date": "2025-12-30",
+          "home": true,
+          "opponentTeamId": 1610612755,
+          "opponentTeamName": "Philadelphia 76ers",
+          "opponentAbbreviation": "PHI",
+          "teamScore": 136,
+          "opponentScore": 139,
+          "margin": -3,
+          "result": "L",
+          "eloBefore": 1478.8,
+          "eloAfter": 1463.0,
+          "eloChange": -15.9
         }
       ]
     },
@@ -9758,37 +10100,37 @@
       "name": "Miami Heat",
       "abbreviation": "MIA",
       "conference": "East",
-      "seed": 6,
-      "record": "18-15",
+      "seed": 7,
+      "record": "19-15",
       "categoryRatings": {
-        "offense": 52,
-        "defense": 71,
+        "offense": 48,
+        "defense": 74,
         "pacePressure": 94,
-        "hustle": 48,
-        "clutch": 55
+        "hustle": 52,
+        "clutch": 58
       },
       "teamStats": {
-        "offRating": 112.6,
+        "offRating": 112.5,
         "offRatingRank": 32,
-        "defRating": 111.0,
+        "defRating": 110.8,
         "defRatingRank": 30,
-        "netRating": 1.6,
+        "netRating": 1.7,
         "netRatingRank": 32,
-        "threesPerGame": 12.1,
+        "threesPerGame": 12.2,
         "threesPerGameRank": 44,
-        "turnoversPerGame": 14.9,
-        "turnoversPerGameRank": 28,
-        "plusMinus": 1.9,
-        "plusMinusRank": 30,
-        "fgPct": 0.469,
-        "fgPctRank": 31,
+        "turnoversPerGame": 15.0,
+        "turnoversPerGameRank": 33,
+        "plusMinus": 2.0,
+        "plusMinusRank": 31,
+        "fgPct": 0.468,
+        "fgPctRank": 30,
         "fg3Pct": 0.364,
-        "fg3PctRank": 21,
-        "ftPct": 0.786,
-        "ftPctRank": 23
+        "fg3PctRank": 18,
+        "ftPct": 0.788,
+        "ftPctRank": 22
       },
       "elo": {
-        "current": 1499.104834154613,
+        "current": 1523.8613747514019,
         "history": [
           {
             "date": "2025-10-22",
@@ -9888,11 +10230,11 @@
           },
           {
             "date": "2025-12-09",
-            "elo": 1530.5
+            "elo": 1556.9
           },
           {
             "date": "2025-12-15",
-            "elo": 1499.1
+            "elo": 1523.9
           },
           {
             "date": "2025-12-18",
@@ -9921,6 +10263,10 @@
           {
             "date": "2025-12-29",
             "elo": 1551.7
+          },
+          {
+            "date": "2026-01-01",
+            "elo": 1579.2
           }
         ]
       },
@@ -10296,9 +10642,9 @@
           "opponentScore": 117,
           "margin": -9,
           "result": "L",
-          "eloBefore": 1551.7,
-          "eloAfter": 1530.5,
-          "eloChange": -21.1
+          "eloBefore": 1579.2,
+          "eloAfter": 1556.9,
+          "eloChange": -22.3
         },
         {
           "gameId": "0022501227",
@@ -10311,9 +10657,9 @@
           "opponentScore": 106,
           "margin": -10,
           "result": "L",
-          "eloBefore": 1530.5,
-          "eloAfter": 1499.1,
-          "eloChange": -31.4
+          "eloBefore": 1556.9,
+          "eloAfter": 1523.9,
+          "eloChange": -33.1
         },
         {
           "gameId": "0022500373",
@@ -10419,6 +10765,21 @@
           "eloBefore": 1517.5,
           "eloAfter": 1551.7,
           "eloChange": 34.2
+        },
+        {
+          "gameId": "0022500472",
+          "date": "2026-01-01",
+          "home": false,
+          "opponentTeamId": 1610612765,
+          "opponentTeamName": "Detroit Pistons",
+          "opponentAbbreviation": "DET",
+          "teamScore": 118,
+          "opponentScore": 112,
+          "margin": 6,
+          "result": "W",
+          "eloBefore": 1551.7,
+          "eloAfter": 1579.2,
+          "eloChange": 27.6
         }
       ]
     },
@@ -10428,36 +10789,36 @@
       "abbreviation": "MIL",
       "conference": "East",
       "seed": 11,
-      "record": "14-19",
+      "record": "14-20",
       "categoryRatings": {
-        "offense": 58,
-        "defense": 35,
+        "offense": 55,
+        "defense": 39,
         "pacePressure": 6,
         "hustle": 6,
         "clutch": 45
       },
       "teamStats": {
-        "offRating": 111.8,
-        "offRatingRank": 40,
+        "offRating": 111.9,
+        "offRatingRank": 37,
         "defRating": 115.3,
-        "defRatingRank": 57,
-        "netRating": -3.5,
-        "netRatingRank": 51,
+        "defRatingRank": 58,
+        "netRating": -3.4,
+        "netRatingRank": 52,
         "threesPerGame": 14.5,
-        "threesPerGameRank": 14,
+        "threesPerGameRank": 16,
         "turnoversPerGame": 15.1,
-        "turnoversPerGameRank": 34,
+        "turnoversPerGameRank": 37,
         "plusMinus": -3.3,
-        "plusMinusRank": 51,
+        "plusMinusRank": 52,
         "fgPct": 0.476,
         "fgPctRank": 20,
-        "fg3Pct": 0.385,
-        "fg3PctRank": 7,
-        "ftPct": 0.734,
-        "ftPctRank": 65
+        "fg3Pct": 0.386,
+        "fg3PctRank": 5,
+        "ftPct": 0.733,
+        "ftPctRank": 64
       },
       "elo": {
-        "current": 1439.3955866637875,
+        "current": 1429.9141020614588,
         "history": [
           {
             "date": "2025-10-22",
@@ -10561,11 +10922,11 @@
           },
           {
             "date": "2025-12-11",
-            "elo": 1476.1
+            "elo": 1467.5
           },
           {
             "date": "2025-12-14",
-            "elo": 1439.4
+            "elo": 1429.9
           },
           {
             "date": "2025-12-18",
@@ -10590,6 +10951,10 @@
           {
             "date": "2025-12-29",
             "elo": 1440.9
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1430.9
           }
         ]
       },
@@ -10980,9 +11345,9 @@
           "opponentScore": 101,
           "margin": 15,
           "result": "W",
-          "eloBefore": 1440.9,
-          "eloAfter": 1476.1,
-          "eloChange": 35.2
+          "eloBefore": 1430.9,
+          "eloAfter": 1467.5,
+          "eloChange": 36.6
         },
         {
           "gameId": "0022501219",
@@ -10995,9 +11360,9 @@
           "opponentScore": 127,
           "margin": -45,
           "result": "L",
-          "eloBefore": 1476.1,
-          "eloAfter": 1439.4,
-          "eloChange": -36.7
+          "eloBefore": 1467.5,
+          "eloAfter": 1429.9,
+          "eloChange": -37.6
         },
         {
           "gameId": "0022500374",
@@ -11088,6 +11453,21 @@
           "eloBefore": 1410.4,
           "eloAfter": 1440.9,
           "eloChange": 30.5
+        },
+        {
+          "gameId": "0022500469",
+          "date": "2025-12-31",
+          "home": true,
+          "opponentTeamId": 1610612764,
+          "opponentTeamName": "Washington Wizards",
+          "opponentAbbreviation": "WAS",
+          "teamScore": 113,
+          "opponentScore": 114,
+          "margin": -1,
+          "result": "L",
+          "eloBefore": 1440.9,
+          "eloAfter": 1430.9,
+          "eloChange": -10.0
         }
       ]
     },
@@ -11097,36 +11477,36 @@
       "abbreviation": "MIN",
       "conference": "West",
       "seed": 6,
-      "record": "21-12",
+      "record": "21-13",
       "categoryRatings": {
-        "offense": 81,
-        "defense": 84,
+        "offense": 74,
+        "defense": 78,
         "pacePressure": 48,
-        "hustle": 22,
+        "hustle": 19,
         "clutch": 65
       },
       "teamStats": {
-        "offRating": 115.5,
-        "offRatingRank": 18,
-        "defRating": 110.4,
-        "defRatingRank": 28,
-        "netRating": 5.0,
-        "netRatingRank": 18,
+        "offRating": 115.1,
+        "offRatingRank": 20,
+        "defRating": 110.8,
+        "defRatingRank": 31,
+        "netRating": 4.3,
+        "netRatingRank": 23,
         "threesPerGame": 13.3,
-        "threesPerGameRank": 31,
+        "threesPerGameRank": 30,
         "turnoversPerGame": 14.7,
         "turnoversPerGameRank": 27,
-        "plusMinus": 5.3,
-        "plusMinusRank": 17,
-        "fgPct": 0.474,
-        "fgPctRank": 22,
+        "plusMinus": 4.5,
+        "plusMinusRank": 21,
+        "fgPct": 0.473,
+        "fgPctRank": 23,
         "fg3Pct": 0.364,
         "fg3PctRank": 20,
-        "ftPct": 0.754,
-        "ftPctRank": 54
+        "ftPct": 0.755,
+        "ftPctRank": 50
       },
       "elo": {
-        "current": 1616.1749394015192,
+        "current": 1580.4585941507066,
         "history": [
           {
             "date": "2025-10-22",
@@ -11226,11 +11606,11 @@
           },
           {
             "date": "2025-12-12",
-            "elo": 1610.6
+            "elo": 1574.4
           },
           {
             "date": "2025-12-14",
-            "elo": 1616.2
+            "elo": 1580.5
           },
           {
             "date": "2025-12-17",
@@ -11259,6 +11639,10 @@
           {
             "date": "2025-12-29",
             "elo": 1586.3
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1547.5
           }
         ]
       },
@@ -11634,9 +12018,9 @@
           "opponentScore": 120,
           "margin": 7,
           "result": "W",
-          "eloBefore": 1586.3,
-          "eloAfter": 1610.6,
-          "eloChange": 24.4
+          "eloBefore": 1547.5,
+          "eloAfter": 1574.4,
+          "eloChange": 26.9
         },
         {
           "gameId": "0022501220",
@@ -11649,9 +12033,9 @@
           "opponentScore": 103,
           "margin": 14,
           "result": "W",
-          "eloBefore": 1610.6,
-          "eloAfter": 1616.2,
-          "eloChange": 5.5
+          "eloBefore": 1574.4,
+          "eloAfter": 1580.5,
+          "eloChange": 6.1
         },
         {
           "gameId": "0022500368",
@@ -11757,6 +12141,21 @@
           "eloBefore": 1557.8,
           "eloAfter": 1586.3,
           "eloChange": 28.5
+        },
+        {
+          "gameId": "0022500463",
+          "date": "2025-12-31",
+          "home": false,
+          "opponentTeamId": 1610612737,
+          "opponentTeamName": "Atlanta Hawks",
+          "opponentAbbreviation": "ATL",
+          "teamScore": 102,
+          "opponentScore": 126,
+          "margin": -24,
+          "result": "L",
+          "eloBefore": 1586.3,
+          "eloAfter": 1547.5,
+          "eloChange": -38.8
         }
       ]
     },
@@ -11766,36 +12165,36 @@
       "abbreviation": "NOP",
       "conference": "West",
       "seed": 15,
-      "record": "8-26",
+      "record": "8-27",
       "categoryRatings": {
         "offense": 16,
-        "defense": 3,
+        "defense": 6,
         "pacePressure": 84,
-        "hustle": 32,
-        "clutch": 9
+        "hustle": 29,
+        "clutch": 6
       },
       "teamStats": {
         "offRating": 110.3,
-        "offRatingRank": 49,
-        "defRating": 117.6,
-        "defRatingRank": 67,
-        "netRating": -7.3,
+        "offRatingRank": 47,
+        "defRating": 117.9,
+        "defRatingRank": 68,
+        "netRating": -7.6,
         "netRatingRank": 64,
         "threesPerGame": 10.2,
-        "threesPerGameRank": 58,
-        "turnoversPerGame": 15.1,
-        "turnoversPerGameRank": 33,
-        "plusMinus": -7.6,
-        "plusMinusRank": 65,
-        "fgPct": 0.456,
+        "threesPerGameRank": 59,
+        "turnoversPerGame": 15.0,
+        "turnoversPerGameRank": 32,
+        "plusMinus": -7.8,
+        "plusMinusRank": 64,
+        "fgPct": 0.455,
         "fgPctRank": 47,
-        "fg3Pct": 0.334,
-        "fg3PctRank": 60,
-        "ftPct": 0.781,
+        "fg3Pct": 0.333,
+        "fg3PctRank": 59,
+        "ftPct": 0.782,
         "ftPctRank": 28
       },
       "elo": {
-        "current": 1377.7135483198165,
+        "current": 1364.1811503944991,
         "history": [
           {
             "date": "2025-10-22",
@@ -11899,11 +12298,11 @@
           },
           {
             "date": "2025-12-11",
-            "elo": 1345.4
+            "elo": 1330.7
           },
           {
             "date": "2025-12-14",
-            "elo": 1377.7
+            "elo": 1364.2
           },
           {
             "date": "2025-12-18",
@@ -11932,6 +12331,10 @@
           {
             "date": "2025-12-29",
             "elo": 1309.7
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1294.4
           }
         ]
       },
@@ -12322,9 +12725,9 @@
           "opponentScore": 120,
           "margin": 23,
           "result": "W",
-          "eloBefore": 1309.7,
-          "eloAfter": 1345.4,
-          "eloChange": 35.7
+          "eloBefore": 1294.4,
+          "eloAfter": 1330.7,
+          "eloChange": 36.3
         },
         {
           "gameId": "0022501223",
@@ -12337,9 +12740,9 @@
           "opponentScore": 104,
           "margin": 10,
           "result": "W",
-          "eloBefore": 1345.4,
-          "eloAfter": 1377.7,
-          "eloChange": 32.3
+          "eloBefore": 1330.7,
+          "eloAfter": 1364.2,
+          "eloChange": 33.5
         },
         {
           "gameId": "0022500375",
@@ -12445,6 +12848,21 @@
           "eloBefore": 1317.3,
           "eloAfter": 1309.7,
           "eloChange": -7.6
+        },
+        {
+          "gameId": "0022500466",
+          "date": "2025-12-31",
+          "home": false,
+          "opponentTeamId": 1610612741,
+          "opponentTeamName": "Chicago Bulls",
+          "opponentAbbreviation": "CHI",
+          "teamScore": 118,
+          "opponentScore": 134,
+          "margin": -16,
+          "result": "L",
+          "eloBefore": 1309.7,
+          "eloAfter": 1294.4,
+          "eloChange": -15.2
         }
       ]
     },
@@ -12454,36 +12872,36 @@
       "abbreviation": "NYK",
       "conference": "East",
       "seed": 2,
-      "record": "23-9",
+      "record": "23-10",
       "categoryRatings": {
         "offense": 94,
-        "defense": 65,
-        "pacePressure": 55,
+        "defense": 61,
+        "pacePressure": 52,
         "hustle": 61,
-        "clutch": 74
+        "clutch": 68
       },
       "teamStats": {
-        "offRating": 118.8,
-        "offRatingRank": 9,
-        "defRating": 113.9,
-        "defRatingRank": 47,
-        "netRating": 4.9,
-        "netRatingRank": 20,
-        "threesPerGame": 14.5,
+        "offRating": 119.1,
+        "offRatingRank": 8,
+        "defRating": 114.4,
+        "defRatingRank": 52,
+        "netRating": 4.7,
+        "netRatingRank": 21,
+        "threesPerGame": 14.7,
         "threesPerGameRank": 13,
-        "turnoversPerGame": 14.0,
-        "turnoversPerGameRank": 20,
-        "plusMinus": 4.8,
+        "turnoversPerGame": 13.9,
+        "turnoversPerGameRank": 17,
+        "plusMinus": 4.6,
         "plusMinusRank": 20,
         "fgPct": 0.47,
         "fgPctRank": 29,
-        "fg3Pct": 0.371,
-        "fg3PctRank": 15,
-        "ftPct": 0.78,
-        "ftPctRank": 31
+        "fg3Pct": 0.372,
+        "fg3PctRank": 14,
+        "ftPct": 0.783,
+        "ftPctRank": 27
       },
       "elo": {
-        "current": 1634.91593666092,
+        "current": 1626.7105660045736,
         "history": [
           {
             "date": "2025-10-22",
@@ -12579,11 +12997,11 @@
           },
           {
             "date": "2025-12-09",
-            "elo": 1621.3
+            "elo": 1612.0
           },
           {
             "date": "2025-12-13",
-            "elo": 1634.9
+            "elo": 1626.7
           },
           {
             "date": "2025-12-18",
@@ -12612,6 +13030,10 @@
           {
             "date": "2025-12-29",
             "elo": 1596.1
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1587.1
           }
         ]
       },
@@ -12972,9 +13394,9 @@
           "opponentScore": 101,
           "margin": 16,
           "result": "W",
-          "eloBefore": 1596.1,
-          "eloAfter": 1621.3,
-          "eloChange": 25.2
+          "eloBefore": 1587.1,
+          "eloAfter": 1612.0,
+          "eloChange": 24.9
         },
         {
           "gameId": "0022501229",
@@ -12987,9 +13409,9 @@
           "opponentScore": 120,
           "margin": 12,
           "result": "W",
-          "eloBefore": 1621.3,
-          "eloAfter": 1634.9,
-          "eloChange": 13.6
+          "eloBefore": 1612.0,
+          "eloAfter": 1626.7,
+          "eloChange": 14.7
         },
         {
           "gameId": "0022500372",
@@ -13095,6 +13517,21 @@
           "eloBefore": 1588.4,
           "eloAfter": 1596.1,
           "eloChange": 7.6
+        },
+        {
+          "gameId": "0022500467",
+          "date": "2025-12-31",
+          "home": false,
+          "opponentTeamId": 1610612759,
+          "opponentTeamName": "San Antonio Spurs",
+          "opponentAbbreviation": "SAS",
+          "teamScore": 132,
+          "opponentScore": 134,
+          "margin": -2,
+          "result": "L",
+          "eloBefore": 1596.1,
+          "eloAfter": 1587.1,
+          "eloChange": -9.0
         }
       ]
     },
@@ -13104,36 +13541,36 @@
       "abbreviation": "OKC",
       "conference": "West",
       "seed": 1,
-      "record": "28-5",
+      "record": "29-5",
       "categoryRatings": {
         "offense": 91,
         "defense": 97,
         "pacePressure": 42,
-        "hustle": 94,
+        "hustle": 97,
         "clutch": 97
       },
       "teamStats": {
-        "offRating": 115.9,
-        "offRatingRank": 13,
-        "defRating": 103.8,
-        "defRatingRank": 14,
-        "netRating": 12.1,
-        "netRatingRank": 5,
-        "threesPerGame": 12.6,
-        "threesPerGameRank": 38,
-        "turnoversPerGame": 13.5,
-        "turnoversPerGameRank": 10,
-        "plusMinus": 12.0,
-        "plusMinusRank": 5,
+        "offRating": 116.0,
+        "offRatingRank": 14,
+        "defRating": 103.5,
+        "defRatingRank": 13,
+        "netRating": 12.5,
+        "netRatingRank": 3,
+        "threesPerGame": 12.7,
+        "threesPerGameRank": 37,
+        "turnoversPerGame": 13.6,
+        "turnoversPerGameRank": 11,
+        "plusMinus": 12.4,
+        "plusMinusRank": 3,
         "fgPct": 0.485,
         "fgPctRank": 11,
-        "fg3Pct": 0.36,
-        "fg3PctRank": 27,
-        "ftPct": 0.818,
+        "fg3Pct": 0.359,
+        "fg3PctRank": 26,
+        "ftPct": 0.817,
         "ftPctRank": 8
       },
       "elo": {
-        "current": 1743.9585721406734,
+        "current": 1747.5418451205448,
         "history": [
           {
             "date": "2025-10-21",
@@ -13233,11 +13670,11 @@
           },
           {
             "date": "2025-12-10",
-            "elo": 1756.3
+            "elo": 1759.8
           },
           {
             "date": "2025-12-13",
-            "elo": 1744.0
+            "elo": 1747.5
           },
           {
             "date": "2025-12-18",
@@ -13266,6 +13703,10 @@
           {
             "date": "2025-12-29",
             "elo": 1736.4
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1743.2
           }
         ]
       },
@@ -13641,9 +14082,9 @@
           "opponentScore": 89,
           "margin": 49,
           "result": "W",
-          "eloBefore": 1736.4,
-          "eloAfter": 1756.3,
-          "eloChange": 19.9
+          "eloBefore": 1743.2,
+          "eloAfter": 1759.8,
+          "eloChange": 16.6
         },
         {
           "gameId": "0022501230",
@@ -13656,8 +14097,8 @@
           "opponentScore": 111,
           "margin": -2,
           "result": "L",
-          "eloBefore": 1756.3,
-          "eloAfter": 1744.0,
+          "eloBefore": 1759.8,
+          "eloAfter": 1747.5,
           "eloChange": -12.3
         },
         {
@@ -13764,6 +14205,21 @@
           "eloBefore": 1732.2,
           "eloAfter": 1736.4,
           "eloChange": 4.1
+        },
+        {
+          "gameId": "0022500470",
+          "date": "2025-12-31",
+          "home": true,
+          "opponentTeamId": 1610612757,
+          "opponentTeamName": "Portland Trail Blazers",
+          "opponentAbbreviation": "POR",
+          "teamScore": 124,
+          "opponentScore": 95,
+          "margin": 29,
+          "result": "W",
+          "eloBefore": 1736.4,
+          "eloAfter": 1743.2,
+          "eloChange": 6.8
         }
       ]
     },
@@ -13772,37 +14228,37 @@
       "name": "Orlando Magic",
       "abbreviation": "ORL",
       "conference": "East",
-      "seed": 5,
-      "record": "18-15",
+      "seed": 6,
+      "record": "19-15",
       "categoryRatings": {
         "offense": 32,
-        "defense": 52,
-        "pacePressure": 61,
+        "defense": 65,
+        "pacePressure": 58,
         "hustle": 42,
-        "clutch": 68
+        "clutch": 74
       },
       "teamStats": {
-        "offRating": 112.2,
+        "offRating": 111.9,
         "offRatingRank": 36,
-        "defRating": 112.3,
-        "defRatingRank": 41,
-        "netRating": -0.2,
+        "defRating": 112.0,
+        "defRatingRank": 40,
+        "netRating": -0.1,
         "netRatingRank": 37,
-        "threesPerGame": 11.1,
-        "threesPerGameRank": 50,
-        "turnoversPerGame": 14.6,
-        "turnoversPerGameRank": 26,
-        "plusMinus": 0.1,
-        "plusMinusRank": 36,
-        "fgPct": 0.456,
-        "fgPctRank": 45,
-        "fg3Pct": 0.334,
-        "fg3PctRank": 59,
-        "ftPct": 0.79,
-        "ftPctRank": 20
+        "threesPerGame": 10.8,
+        "threesPerGameRank": 54,
+        "turnoversPerGame": 14.7,
+        "turnoversPerGameRank": 27,
+        "plusMinus": 0.2,
+        "plusMinusRank": 37,
+        "fgPct": 0.457,
+        "fgPctRank": 43,
+        "fg3Pct": 0.331,
+        "fg3PctRank": 61,
+        "ftPct": 0.791,
+        "ftPctRank": 19
       },
       "elo": {
-        "current": 1511.0550705352439,
+        "current": 1517.1909858279148,
         "history": [
           {
             "date": "2025-10-22",
@@ -13902,11 +14358,11 @@
           },
           {
             "date": "2025-12-09",
-            "elo": 1524.7
+            "elo": 1531.9
           },
           {
             "date": "2025-12-13",
-            "elo": 1511.1
+            "elo": 1517.2
           },
           {
             "date": "2025-12-18",
@@ -13935,6 +14391,10 @@
           {
             "date": "2025-12-29",
             "elo": 1503.6
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1509.6
           }
         ]
       },
@@ -14310,9 +14770,9 @@
           "opponentScore": 108,
           "margin": 9,
           "result": "W",
-          "eloBefore": 1503.6,
-          "eloAfter": 1524.7,
-          "eloChange": 21.1
+          "eloBefore": 1509.6,
+          "eloAfter": 1531.9,
+          "eloChange": 22.3
         },
         {
           "gameId": "0022501229",
@@ -14325,9 +14785,9 @@
           "opponentScore": 132,
           "margin": -12,
           "result": "L",
-          "eloBefore": 1524.7,
-          "eloAfter": 1511.1,
-          "eloChange": -13.6
+          "eloBefore": 1531.9,
+          "eloAfter": 1517.2,
+          "eloChange": -14.7
         },
         {
           "gameId": "0022500377",
@@ -14433,6 +14893,21 @@
           "eloBefore": 1509.3,
           "eloAfter": 1503.6,
           "eloChange": -5.8
+        },
+        {
+          "gameId": "0022500464",
+          "date": "2025-12-31",
+          "home": false,
+          "opponentTeamId": 1610612754,
+          "opponentTeamName": "Indiana Pacers",
+          "opponentAbbreviation": "IND",
+          "teamScore": 112,
+          "opponentScore": 110,
+          "margin": 2,
+          "result": "W",
+          "eloBefore": 1503.6,
+          "eloAfter": 1509.6,
+          "eloChange": 6.0
         }
       ]
     },
@@ -14441,37 +14916,37 @@
       "name": "Philadelphia 76ers",
       "abbreviation": "PHI",
       "conference": "East",
-      "seed": 7,
-      "record": "16-14",
+      "seed": 5,
+      "record": "18-14",
       "categoryRatings": {
         "offense": 19,
-        "defense": 61,
+        "defense": 55,
         "pacePressure": 45,
-        "hustle": 71,
+        "hustle": 68,
         "clutch": 78
       },
       "teamStats": {
-        "offRating": 111.0,
-        "offRatingRank": 46,
-        "defRating": 111.7,
+        "offRating": 111.6,
+        "offRatingRank": 40,
+        "defRating": 111.8,
         "defRatingRank": 38,
-        "netRating": -0.7,
-        "netRatingRank": 43,
-        "threesPerGame": 12.3,
-        "threesPerGameRank": 42,
-        "turnoversPerGame": 15.0,
-        "turnoversPerGameRank": 30,
-        "plusMinus": -0.7,
-        "plusMinusRank": 43,
-        "fgPct": 0.44,
-        "fgPctRank": 62,
+        "netRating": -0.1,
+        "netRatingRank": 38,
+        "threesPerGame": 12.4,
+        "threesPerGameRank": 41,
+        "turnoversPerGame": 14.8,
+        "turnoversPerGameRank": 29,
+        "plusMinus": -0.3,
+        "plusMinusRank": 41,
+        "fgPct": 0.443,
+        "fgPctRank": 59,
         "fg3Pct": 0.349,
-        "fg3PctRank": 41,
-        "ftPct": 0.8,
+        "fg3PctRank": 40,
+        "ftPct": 0.801,
         "ftPctRank": 13
       },
       "elo": {
-        "current": 1487.9362053317798,
+        "current": 1526.9417111784078,
         "history": [
           {
             "date": "2025-10-22",
@@ -14567,11 +15042,11 @@
           },
           {
             "date": "2025-12-12",
-            "elo": 1502.5
+            "elo": 1541.5
           },
           {
             "date": "2025-12-14",
-            "elo": 1487.9
+            "elo": 1526.9
           },
           {
             "date": "2025-12-19",
@@ -14592,6 +15067,14 @@
           {
             "date": "2025-12-28",
             "elo": 1495.1
+          },
+          {
+            "date": "2025-12-30",
+            "elo": 1511.0
+          },
+          {
+            "date": "2026-01-01",
+            "elo": 1535.8
           }
         ]
       },
@@ -14952,9 +15435,9 @@
           "opponentScore": 105,
           "margin": 10,
           "result": "W",
-          "eloBefore": 1495.1,
-          "eloAfter": 1502.5,
-          "eloChange": 7.3
+          "eloBefore": 1535.8,
+          "eloAfter": 1541.5,
+          "eloChange": 5.7
         },
         {
           "gameId": "0022501217",
@@ -14967,9 +15450,9 @@
           "opponentScore": 120,
           "margin": -3,
           "result": "L",
-          "eloBefore": 1502.5,
-          "eloAfter": 1487.9,
-          "eloChange": -14.5
+          "eloBefore": 1541.5,
+          "eloAfter": 1526.9,
+          "eloChange": -14.6
         },
         {
           "gameId": "0022500382",
@@ -15045,6 +15528,36 @@
           "eloBefore": 1504.6,
           "eloAfter": 1495.1,
           "eloChange": -9.5
+        },
+        {
+          "gameId": "0022500458",
+          "date": "2025-12-30",
+          "home": false,
+          "opponentTeamId": 1610612763,
+          "opponentTeamName": "Memphis Grizzlies",
+          "opponentAbbreviation": "MEM",
+          "teamScore": 139,
+          "opponentScore": 136,
+          "margin": 3,
+          "result": "W",
+          "eloBefore": 1495.1,
+          "eloAfter": 1511.0,
+          "eloChange": 15.9
+        },
+        {
+          "gameId": "0022500473",
+          "date": "2026-01-01",
+          "home": false,
+          "opponentTeamId": 1610612742,
+          "opponentTeamName": "Dallas Mavericks",
+          "opponentAbbreviation": "DAL",
+          "teamScore": 123,
+          "opponentScore": 108,
+          "margin": 15,
+          "result": "W",
+          "eloBefore": 1511.0,
+          "eloAfter": 1535.8,
+          "eloChange": 24.8
         }
       ]
     },
@@ -15054,36 +15567,36 @@
       "abbreviation": "PHX",
       "conference": "West",
       "seed": 7,
-      "record": "19-13",
+      "record": "19-14",
       "categoryRatings": {
-        "offense": 39,
-        "defense": 55,
-        "pacePressure": 74,
-        "hustle": 78,
+        "offense": 35,
+        "defense": 45,
+        "pacePressure": 81,
+        "hustle": 84,
         "clutch": 84
       },
       "teamStats": {
-        "offRating": 113.1,
-        "offRatingRank": 27,
-        "defRating": 111.7,
-        "defRatingRank": 37,
-        "netRating": 1.5,
-        "netRatingRank": 34,
-        "threesPerGame": 13.7,
-        "threesPerGameRank": 25,
-        "turnoversPerGame": 16.2,
+        "offRating": 113.0,
+        "offRatingRank": 28,
+        "defRating": 112.0,
+        "defRatingRank": 41,
+        "netRating": 0.9,
+        "netRatingRank": 36,
+        "threesPerGame": 13.8,
+        "threesPerGameRank": 24,
+        "turnoversPerGame": 16.1,
         "turnoversPerGameRank": 51,
-        "plusMinus": 1.7,
-        "plusMinusRank": 31,
-        "fgPct": 0.464,
-        "fgPctRank": 38,
-        "fg3Pct": 0.362,
-        "fg3PctRank": 26,
-        "ftPct": 0.781,
-        "ftPctRank": 29
+        "plusMinus": 1.2,
+        "plusMinusRank": 34,
+        "fgPct": 0.462,
+        "fgPctRank": 36,
+        "fg3Pct": 0.363,
+        "fg3PctRank": 21,
+        "ftPct": 0.783,
+        "ftPctRank": 26
       },
       "elo": {
-        "current": 1595.5475680313284,
+        "current": 1568.179969214033,
         "history": [
           {
             "date": "2025-10-22",
@@ -15183,11 +15696,11 @@
           },
           {
             "date": "2025-12-10",
-            "elo": 1610.6
+            "elo": 1583.2
           },
           {
             "date": "2025-12-14",
-            "elo": 1595.5
+            "elo": 1568.2
           },
           {
             "date": "2025-12-18",
@@ -15212,6 +15725,10 @@
           {
             "date": "2025-12-29",
             "elo": 1630.5
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1599.8
           }
         ]
       },
@@ -15587,9 +16104,9 @@
           "opponentScore": 138,
           "margin": -49,
           "result": "L",
-          "eloBefore": 1630.5,
-          "eloAfter": 1610.6,
-          "eloChange": -19.9
+          "eloBefore": 1599.8,
+          "eloAfter": 1583.2,
+          "eloChange": -16.6
         },
         {
           "gameId": "0022501228",
@@ -15602,8 +16119,8 @@
           "opponentScore": 116,
           "margin": -2,
           "result": "L",
-          "eloBefore": 1610.6,
-          "eloAfter": 1595.5,
+          "eloBefore": 1583.2,
+          "eloAfter": 1568.2,
           "eloChange": -15.0
         },
         {
@@ -15695,6 +16212,21 @@
           "eloBefore": 1620.7,
           "eloAfter": 1630.5,
           "eloChange": 9.7
+        },
+        {
+          "gameId": "0022500465",
+          "date": "2025-12-31",
+          "home": false,
+          "opponentTeamId": 1610612739,
+          "opponentTeamName": "Cleveland Cavaliers",
+          "opponentAbbreviation": "CLE",
+          "teamScore": 113,
+          "opponentScore": 129,
+          "margin": -16,
+          "result": "L",
+          "eloBefore": 1630.5,
+          "eloAfter": 1599.8,
+          "eloChange": -30.7
         }
       ]
     },
@@ -15704,36 +16236,36 @@
       "abbreviation": "POR",
       "conference": "West",
       "seed": 10,
-      "record": "14-19",
+      "record": "14-20",
       "categoryRatings": {
-        "offense": 29,
+        "offense": 26,
         "defense": 32,
         "pacePressure": 91,
         "hustle": 12,
-        "clutch": 52
+        "clutch": 48
       },
       "teamStats": {
-        "offRating": 112.2,
-        "offRatingRank": 35,
-        "defRating": 114.3,
-        "defRatingRank": 49,
-        "netRating": -2.1,
-        "netRatingRank": 47,
+        "offRating": 111.6,
+        "offRatingRank": 41,
+        "defRating": 114.4,
+        "defRatingRank": 51,
+        "netRating": -2.8,
+        "netRatingRank": 49,
         "threesPerGame": 13.8,
-        "threesPerGameRank": 22,
-        "turnoversPerGame": 17.3,
-        "turnoversPerGameRank": 62,
-        "plusMinus": -2.2,
-        "plusMinusRank": 46,
-        "fgPct": 0.445,
+        "threesPerGameRank": 23,
+        "turnoversPerGame": 17.5,
+        "turnoversPerGameRank": 60,
+        "plusMinus": -2.9,
+        "plusMinusRank": 49,
+        "fgPct": 0.444,
         "fgPctRank": 57,
-        "fg3Pct": 0.337,
-        "fg3PctRank": 56,
+        "fg3Pct": 0.339,
+        "fg3PctRank": 55,
         "ftPct": 0.776,
-        "ftPctRank": 35
+        "ftPctRank": 34
       },
       "elo": {
-        "current": 1432.6503155368662,
+        "current": 1426.007481294543,
         "history": [
           {
             "date": "2025-10-22",
@@ -15833,11 +16365,11 @@
           },
           {
             "date": "2025-12-11",
-            "elo": 1412.4
+            "elo": 1405.1
           },
           {
             "date": "2025-12-14",
-            "elo": 1432.7
+            "elo": 1426.0
           },
           {
             "date": "2025-12-18",
@@ -15866,6 +16398,10 @@
           {
             "date": "2025-12-29",
             "elo": 1448.1
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1441.3
           }
         ]
       },
@@ -16241,9 +16777,9 @@
           "opponentScore": 143,
           "margin": -23,
           "result": "L",
-          "eloBefore": 1448.1,
-          "eloAfter": 1412.4,
-          "eloChange": -35.7
+          "eloBefore": 1441.3,
+          "eloAfter": 1405.1,
+          "eloChange": -36.3
         },
         {
           "gameId": "0022501221",
@@ -16256,9 +16792,9 @@
           "opponentScore": 131,
           "margin": 5,
           "result": "W",
-          "eloBefore": 1412.4,
-          "eloAfter": 1432.7,
-          "eloChange": 20.2
+          "eloBefore": 1405.1,
+          "eloAfter": 1426.0,
+          "eloChange": 20.9
         },
         {
           "gameId": "0022500380",
@@ -16364,6 +16900,21 @@
           "eloBefore": 1437.4,
           "eloAfter": 1448.1,
           "eloChange": 10.7
+        },
+        {
+          "gameId": "0022500470",
+          "date": "2025-12-31",
+          "home": false,
+          "opponentTeamId": 1610612760,
+          "opponentTeamName": "Oklahoma City Thunder",
+          "opponentAbbreviation": "OKC",
+          "teamScore": 95,
+          "opponentScore": 124,
+          "margin": -29,
+          "result": "L",
+          "eloBefore": 1448.1,
+          "eloAfter": 1441.3,
+          "eloChange": -6.8
         }
       ]
     },
@@ -16373,36 +16924,36 @@
       "abbreviation": "SAC",
       "conference": "West",
       "seed": 14,
-      "record": "8-24",
+      "record": "8-26",
       "categoryRatings": {
         "offense": 12,
-        "defense": 9,
-        "pacePressure": 19,
-        "hustle": 39,
-        "clutch": 48
+        "defense": 3,
+        "pacePressure": 16,
+        "hustle": 35,
+        "clutch": 52
       },
       "teamStats": {
-        "offRating": 109.1,
+        "offRating": 108.9,
         "offRatingRank": 51,
-        "defRating": 116.4,
-        "defRatingRank": 61,
-        "netRating": -7.2,
-        "netRatingRank": 63,
+        "defRating": 117.1,
+        "defRatingRank": 65,
+        "netRating": -8.3,
+        "netRatingRank": 66,
         "threesPerGame": 10.6,
         "threesPerGameRank": 56,
         "turnoversPerGame": 14.5,
-        "turnoversPerGameRank": 24,
-        "plusMinus": -7.4,
-        "plusMinusRank": 63,
-        "fgPct": 0.464,
-        "fgPctRank": 36,
+        "turnoversPerGameRank": 25,
+        "plusMinus": -8.4,
+        "plusMinusRank": 66,
+        "fgPct": 0.463,
+        "fgPctRank": 35,
         "fg3Pct": 0.347,
-        "fg3PctRank": 44,
-        "ftPct": 0.749,
-        "ftPctRank": 60
+        "fg3PctRank": 42,
+        "ftPct": 0.755,
+        "ftPctRank": 49
       },
       "elo": {
-        "current": 1321.079521928496,
+        "current": 1301.4411534995863,
         "history": [
           {
             "date": "2025-10-22",
@@ -16502,11 +17053,11 @@
           },
           {
             "date": "2025-12-11",
-            "elo": 1326.6
+            "elo": 1307.5
           },
           {
             "date": "2025-12-14",
-            "elo": 1321.1
+            "elo": 1301.4
           },
           {
             "date": "2025-12-18",
@@ -16531,6 +17082,14 @@
           {
             "date": "2025-12-28",
             "elo": 1342.8
+          },
+          {
+            "date": "2025-12-30",
+            "elo": 1329.6
+          },
+          {
+            "date": "2026-01-01",
+            "elo": 1321.3
           }
         ]
       },
@@ -16906,9 +17465,9 @@
           "opponentScore": 136,
           "margin": -31,
           "result": "L",
-          "eloBefore": 1342.8,
-          "eloAfter": 1326.6,
-          "eloChange": -16.2
+          "eloBefore": 1321.3,
+          "eloAfter": 1307.5,
+          "eloChange": -13.8
         },
         {
           "gameId": "0022501220",
@@ -16921,9 +17480,9 @@
           "opponentScore": 117,
           "margin": -14,
           "result": "L",
-          "eloBefore": 1326.6,
-          "eloAfter": 1321.1,
-          "eloChange": -5.5
+          "eloBefore": 1307.5,
+          "eloAfter": 1301.4,
+          "eloChange": -6.1
         },
         {
           "gameId": "0022500380",
@@ -17014,6 +17573,36 @@
           "eloBefore": 1353.8,
           "eloAfter": 1342.8,
           "eloChange": -11.0
+        },
+        {
+          "gameId": "0022500461",
+          "date": "2025-12-30",
+          "home": false,
+          "opponentTeamId": 1610612746,
+          "opponentTeamName": "LA Clippers",
+          "opponentAbbreviation": "LAC",
+          "teamScore": 90,
+          "opponentScore": 131,
+          "margin": -41,
+          "result": "L",
+          "eloBefore": 1342.8,
+          "eloAfter": 1329.6,
+          "eloChange": -13.3
+        },
+        {
+          "gameId": "0022500474",
+          "date": "2026-01-01",
+          "home": true,
+          "opponentTeamId": 1610612738,
+          "opponentTeamName": "Boston Celtics",
+          "opponentAbbreviation": "BOS",
+          "teamScore": 106,
+          "opponentScore": 120,
+          "margin": -14,
+          "result": "L",
+          "eloBefore": 1329.6,
+          "eloAfter": 1321.3,
+          "eloChange": -8.3
         }
       ]
     },
@@ -17023,36 +17612,36 @@
       "abbreviation": "SAS",
       "conference": "West",
       "seed": 2,
-      "record": "23-9",
+      "record": "24-9",
       "categoryRatings": {
-        "offense": 78,
+        "offense": 81,
         "defense": 94,
-        "pacePressure": 52,
-        "hustle": 29,
+        "pacePressure": 55,
+        "hustle": 32,
         "clutch": 91
       },
       "teamStats": {
-        "offRating": 115.3,
-        "offRatingRank": 19,
-        "defRating": 110.0,
-        "defRatingRank": 25,
+        "offRating": 115.7,
+        "offRatingRank": 16,
+        "defRating": 110.5,
+        "defRatingRank": 29,
         "netRating": 5.3,
-        "netRatingRank": 15,
+        "netRatingRank": 17,
         "threesPerGame": 13.0,
-        "threesPerGameRank": 33,
-        "turnoversPerGame": 15.2,
-        "turnoversPerGameRank": 35,
-        "plusMinus": 5.3,
-        "plusMinusRank": 16,
-        "fgPct": 0.473,
-        "fgPctRank": 24,
+        "threesPerGameRank": 32,
+        "turnoversPerGame": 15.0,
+        "turnoversPerGameRank": 36,
+        "plusMinus": 5.2,
+        "plusMinusRank": 19,
+        "fgPct": 0.474,
+        "fgPctRank": 22,
         "fg3Pct": 0.359,
-        "fg3PctRank": 30,
+        "fg3PctRank": 27,
         "ftPct": 0.793,
-        "ftPctRank": 18
+        "ftPctRank": 17
       },
       "elo": {
-        "current": 1631.0171218046871,
+        "current": 1636.700414817617,
         "history": [
           {
             "date": "2025-10-22",
@@ -17148,11 +17737,11 @@
           },
           {
             "date": "2025-12-10",
-            "elo": 1618.7
+            "elo": 1624.4
           },
           {
             "date": "2025-12-13",
-            "elo": 1631.0
+            "elo": 1636.7
           },
           {
             "date": "2025-12-18",
@@ -17181,6 +17770,10 @@
           {
             "date": "2025-12-29",
             "elo": 1590.4
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1599.3
           }
         ]
       },
@@ -17541,9 +18134,9 @@
           "opponentScore": 119,
           "margin": 13,
           "result": "W",
-          "eloBefore": 1590.4,
-          "eloAfter": 1618.7,
-          "eloChange": 28.3
+          "eloBefore": 1599.3,
+          "eloAfter": 1624.4,
+          "eloChange": 25.1
         },
         {
           "gameId": "0022501230",
@@ -17556,8 +18149,8 @@
           "opponentScore": 109,
           "margin": 2,
           "result": "W",
-          "eloBefore": 1618.7,
-          "eloAfter": 1631.0,
+          "eloBefore": 1624.4,
+          "eloAfter": 1636.7,
           "eloChange": 12.3
         },
         {
@@ -17664,6 +18257,21 @@
           "eloBefore": 1628.0,
           "eloAfter": 1590.4,
           "eloChange": -37.6
+        },
+        {
+          "gameId": "0022500467",
+          "date": "2025-12-31",
+          "home": true,
+          "opponentTeamId": 1610612752,
+          "opponentTeamName": "New York Knicks",
+          "opponentAbbreviation": "NYK",
+          "teamScore": 134,
+          "opponentScore": 132,
+          "margin": 2,
+          "result": "W",
+          "eloBefore": 1590.4,
+          "eloAfter": 1599.3,
+          "eloChange": 9.0
         }
       ]
     },
@@ -17673,36 +18281,36 @@
       "abbreviation": "TOR",
       "conference": "East",
       "seed": 4,
-      "record": "20-14",
+      "record": "20-15",
       "categoryRatings": {
-        "offense": 45,
-        "defense": 78,
-        "pacePressure": 65,
-        "hustle": 52,
+        "offense": 39,
+        "defense": 84,
+        "pacePressure": 68,
+        "hustle": 45,
         "clutch": 71
       },
       "teamStats": {
-        "offRating": 112.6,
-        "offRatingRank": 31,
+        "offRating": 112.5,
+        "offRatingRank": 33,
         "defRating": 110.0,
-        "defRatingRank": 26,
-        "netRating": 2.6,
-        "netRatingRank": 26,
-        "threesPerGame": 11.5,
-        "threesPerGameRank": 46,
-        "turnoversPerGame": 14.9,
-        "turnoversPerGameRank": 29,
-        "plusMinus": 2.6,
-        "plusMinusRank": 26,
-        "fgPct": 0.471,
-        "fgPctRank": 27,
-        "fg3Pct": 0.346,
-        "fg3PctRank": 46,
-        "ftPct": 0.763,
-        "ftPctRank": 45
+        "defRatingRank": 27,
+        "netRating": 2.4,
+        "netRatingRank": 29,
+        "threesPerGame": 11.6,
+        "threesPerGameRank": 48,
+        "turnoversPerGame": 14.8,
+        "turnoversPerGameRank": 30,
+        "plusMinus": 2.5,
+        "plusMinusRank": 28,
+        "fgPct": 0.468,
+        "fgPctRank": 32,
+        "fg3Pct": 0.343,
+        "fg3PctRank": 47,
+        "ftPct": 0.764,
+        "ftPctRank": 42
       },
       "elo": {
-        "current": 1507.5021734524303,
+        "current": 1496.9985838705616,
         "history": [
           {
             "date": "2025-10-22",
@@ -17806,11 +18414,11 @@
           },
           {
             "date": "2025-12-09",
-            "elo": 1476.1
+            "elo": 1463.9
           },
           {
             "date": "2025-12-15",
-            "elo": 1507.5
+            "elo": 1497.0
           },
           {
             "date": "2025-12-18",
@@ -17839,6 +18447,10 @@
           {
             "date": "2025-12-29",
             "elo": 1501.3
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1488.8
           }
         ]
       },
@@ -18229,9 +18841,9 @@
           "opponentScore": 117,
           "margin": -16,
           "result": "L",
-          "eloBefore": 1501.3,
-          "eloAfter": 1476.1,
-          "eloChange": -25.2
+          "eloBefore": 1488.8,
+          "eloAfter": 1463.9,
+          "eloChange": -24.9
         },
         {
           "gameId": "0022501227",
@@ -18244,9 +18856,9 @@
           "opponentScore": 96,
           "margin": 10,
           "result": "W",
-          "eloBefore": 1476.1,
-          "eloAfter": 1507.5,
-          "eloChange": 31.4
+          "eloBefore": 1463.9,
+          "eloAfter": 1497.0,
+          "eloChange": 33.1
         },
         {
           "gameId": "0022500374",
@@ -18352,6 +18964,21 @@
           "eloBefore": 1495.5,
           "eloAfter": 1501.3,
           "eloChange": 5.8
+        },
+        {
+          "gameId": "0022500468",
+          "date": "2025-12-31",
+          "home": true,
+          "opponentTeamId": 1610612743,
+          "opponentTeamName": "Denver Nuggets",
+          "opponentAbbreviation": "DEN",
+          "teamScore": 103,
+          "opponentScore": 106,
+          "margin": -3,
+          "result": "L",
+          "eloBefore": 1501.3,
+          "eloAfter": 1488.8,
+          "eloChange": -12.4
         }
       ]
     },
@@ -18360,37 +18987,37 @@
       "name": "Utah Jazz",
       "abbreviation": "UTA",
       "conference": "West",
-      "seed": 11,
-      "record": "12-19",
+      "seed": 12,
+      "record": "12-21",
       "categoryRatings": {
-        "offense": 42,
-        "defense": 16,
-        "pacePressure": 78,
-        "hustle": 45,
+        "offense": 45,
+        "defense": 12,
+        "pacePressure": 65,
+        "hustle": 39,
         "clutch": 81
       },
       "teamStats": {
-        "offRating": 112.9,
-        "offRatingRank": 29,
-        "defRating": 118.3,
-        "defRatingRank": 69,
-        "netRating": -5.4,
-        "netRatingRank": 60,
-        "threesPerGame": 13.7,
+        "offRating": 112.8,
+        "offRatingRank": 30,
+        "defRating": 118.5,
+        "defRatingRank": 70,
+        "netRating": -5.8,
+        "netRatingRank": 59,
+        "threesPerGame": 13.6,
         "threesPerGameRank": 26,
         "turnoversPerGame": 16.1,
         "turnoversPerGameRank": 50,
-        "plusMinus": -5.5,
-        "plusMinusRank": 61,
+        "plusMinus": -5.9,
+        "plusMinusRank": 60,
         "fgPct": 0.453,
-        "fgPctRank": 50,
-        "fg3Pct": 0.351,
-        "fg3PctRank": 38,
+        "fgPctRank": 49,
+        "fg3Pct": 0.35,
+        "fg3PctRank": 39,
         "ftPct": 0.795,
-        "ftPctRank": 15
+        "ftPctRank": 16
       },
       "elo": {
-        "current": 1459.86958227387,
+        "current": 1434.6238643490142,
         "history": [
           {
             "date": "2025-10-22",
@@ -18486,11 +19113,11 @@
           },
           {
             "date": "2025-12-12",
-            "elo": 1443.7
+            "elo": 1418.4
           },
           {
             "date": "2025-12-15",
-            "elo": 1459.9
+            "elo": 1434.6
           },
           {
             "date": "2025-12-18",
@@ -18515,6 +19142,14 @@
           {
             "date": "2025-12-27",
             "elo": 1422.6
+          },
+          {
+            "date": "2025-12-30",
+            "elo": 1410.4
+          },
+          {
+            "date": "2026-01-01",
+            "elo": 1397.0
           }
         ]
       },
@@ -18875,9 +19510,9 @@
           "opponentScore": 126,
           "margin": 4,
           "result": "W",
-          "eloBefore": 1422.6,
-          "eloAfter": 1443.7,
-          "eloChange": 21.2
+          "eloBefore": 1397.0,
+          "eloAfter": 1418.4,
+          "eloChange": 21.4
         },
         {
           "gameId": "0022501224",
@@ -18890,8 +19525,8 @@
           "opponentScore": 133,
           "margin": 7,
           "result": "W",
-          "eloBefore": 1443.7,
-          "eloAfter": 1459.9,
+          "eloBefore": 1418.4,
+          "eloAfter": 1434.6,
           "eloChange": 16.2
         },
         {
@@ -18983,6 +19618,36 @@
           "eloBefore": 1381.2,
           "eloAfter": 1422.6,
           "eloChange": 41.4
+        },
+        {
+          "gameId": "0022500459",
+          "date": "2025-12-30",
+          "home": true,
+          "opponentTeamId": 1610612738,
+          "opponentTeamName": "Boston Celtics",
+          "opponentAbbreviation": "BOS",
+          "teamScore": 119,
+          "opponentScore": 129,
+          "margin": -10,
+          "result": "L",
+          "eloBefore": 1422.6,
+          "eloAfter": 1410.4,
+          "eloChange": -12.2
+        },
+        {
+          "gameId": "0022500475",
+          "date": "2026-01-01",
+          "home": false,
+          "opponentTeamId": 1610612746,
+          "opponentTeamName": "LA Clippers",
+          "opponentAbbreviation": "LAC",
+          "teamScore": 101,
+          "opponentScore": 118,
+          "margin": -17,
+          "result": "L",
+          "eloBefore": 1410.4,
+          "eloAfter": 1397.0,
+          "eloChange": -13.4
         }
       ]
     },
@@ -18992,36 +19657,36 @@
       "abbreviation": "WAS",
       "conference": "East",
       "seed": 14,
-      "record": "7-24",
+      "record": "8-24",
       "categoryRatings": {
         "offense": 9,
-        "defense": 6,
-        "pacePressure": 26,
+        "defense": 9,
+        "pacePressure": 22,
         "hustle": 65,
-        "clutch": 6
+        "clutch": 9
       },
       "teamStats": {
-        "offRating": 108.1,
-        "offRatingRank": 55,
-        "defRating": 119.3,
-        "defRatingRank": 73,
-        "netRating": -11.3,
+        "offRating": 108.3,
+        "offRatingRank": 54,
+        "defRating": 119.2,
+        "defRatingRank": 71,
+        "netRating": -10.9,
         "netRatingRank": 68,
-        "threesPerGame": 12.3,
-        "threesPerGameRank": 41,
-        "turnoversPerGame": 15.5,
+        "threesPerGame": 12.5,
+        "threesPerGameRank": 40,
+        "turnoversPerGame": 15.3,
         "turnoversPerGameRank": 41,
-        "plusMinus": -11.1,
+        "plusMinus": -10.7,
         "plusMinusRank": 70,
-        "fgPct": 0.457,
-        "fgPctRank": 44,
-        "fg3Pct": 0.348,
-        "fg3PctRank": 43,
-        "ftPct": 0.751,
-        "ftPctRank": 57
+        "fgPct": 0.456,
+        "fgPctRank": 46,
+        "fg3Pct": 0.352,
+        "fg3PctRank": 32,
+        "ftPct": 0.748,
+        "ftPctRank": 55
       },
       "elo": {
-        "current": 1330.113605810632,
+        "current": 1339.4177963438467,
         "history": [
           {
             "date": "2025-10-22",
@@ -19113,11 +19778,11 @@
           },
           {
             "date": "2025-12-12",
-            "elo": 1295.8
+            "elo": 1306.6
           },
           {
             "date": "2025-12-14",
-            "elo": 1330.1
+            "elo": 1339.4
           },
           {
             "date": "2025-12-18",
@@ -19146,6 +19811,10 @@
           {
             "date": "2025-12-29",
             "elo": 1305.1
+          },
+          {
+            "date": "2025-12-31",
+            "elo": 1315.1
           }
         ]
       },
@@ -19491,9 +20160,9 @@
           "opponentScore": 130,
           "margin": -4,
           "result": "L",
-          "eloBefore": 1305.1,
-          "eloAfter": 1295.8,
-          "eloChange": -9.2
+          "eloBefore": 1315.1,
+          "eloAfter": 1306.6,
+          "eloChange": -8.4
         },
         {
           "gameId": "0022501216",
@@ -19506,9 +20175,9 @@
           "opponentScore": 89,
           "margin": 19,
           "result": "W",
-          "eloBefore": 1295.8,
-          "eloAfter": 1330.1,
-          "eloChange": 34.3
+          "eloBefore": 1306.6,
+          "eloAfter": 1339.4,
+          "eloChange": 32.8
         },
         {
           "gameId": "0022500370",
@@ -19614,6 +20283,21 @@
           "eloBefore": 1314.8,
           "eloAfter": 1305.1,
           "eloChange": -9.7
+        },
+        {
+          "gameId": "0022500469",
+          "date": "2025-12-31",
+          "home": false,
+          "opponentTeamId": 1610612749,
+          "opponentTeamName": "Milwaukee Bucks",
+          "opponentAbbreviation": "MIL",
+          "teamScore": 114,
+          "opponentScore": 113,
+          "margin": 1,
+          "result": "W",
+          "eloBefore": 1305.1,
+          "eloAfter": 1315.1,
+          "eloChange": 10.0
         }
       ]
     }

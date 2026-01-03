@@ -3,6 +3,10 @@ const mockEnv = (import.meta as any).env?.VITE_USE_MOCK;
 const useMock = mockEnv === undefined ? true : mockEnv === 'true';
 
 export const fetchTeamData = async () => {
+  const local = await import('./teamDataLoader');
+  const localTeams = await local.loadTeamsFromJson();
+  if (localTeams.length) return localTeams;
+
   if (useMock) {
     const mod = await import('./mockData');
     return mod.fetchTeamData();

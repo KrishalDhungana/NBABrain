@@ -49,22 +49,52 @@ export interface EloHistoryPoint {
 
 export interface GameHistory {
   opponentName: string;
-  opponentElo: number;
+  opponentAbbreviation?: string;
+  opponentElo?: number;
   score: string; // e.g., "110-105"
   result: 'W' | 'L';
   eloChange: number;
+  date?: string;
+  home?: boolean;
+  eloBefore?: number;
+  eloAfter?: number;
 }
 
 export interface TeamRecord {
   wins: number;
   losses: number;
   conferenceRank: number;
+  seed?: number;
+  raw?: string;
 }
 
 export interface TeamStats {
+  offRating: number;
+  offRatingRank: number;
+  defRating: number;
+  defRatingRank: number;
+  netRating: number;
+  netRatingRank: number;
+  threesPerGame: number;
+  threesPerGameRank: number;
+  turnoversPerGame: number;
+  turnoversPerGameRank: number;
   plusMinus: number;
-  offensiveRating: number;
-  defensiveRating: number;
+  plusMinusRank: number;
+  fgPct: number;
+  fgPctRank: number;
+  fg3Pct: number;
+  fg3PctRank: number;
+  ftPct: number;
+  ftPctRank: number;
+}
+
+export interface TeamCategoryRatings {
+  offense: number;
+  defense: number;
+  pacePressure: number;
+  hustle: number;
+  clutch: number;
 }
 
 export interface Team {
@@ -72,6 +102,7 @@ export interface Team {
   name: string;
   abbreviation: string;
   conference: 'East' | 'West';
+  seed?: number;
   elo: number;
   eloChangeLast5: number;
   players: Player[];
@@ -80,6 +111,9 @@ export interface Team {
   gameHistory: GameHistory[];
   record?: TeamRecord;
   teamStats?: TeamStats;
+  categoryRatings?: TeamCategoryRatings;
+  season?: string;
+  seasonType?: string;
 }
 
 // For "Games Today" Tab

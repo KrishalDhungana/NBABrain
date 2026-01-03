@@ -34,13 +34,6 @@ const buildEloHistory = (base: number): { date: string; elo: number }[] => {
   });
 };
 
-const lastNChange = (arr: { elo: number }[], n: number): number => {
-  if (arr.length < n + 1) return 0;
-  const a = arr[arr.length - 1].elo;
-  const b = arr[arr.length - 1 - n].elo;
-  return a - b;
-};
-
 const POSITIONS: Array<Player['position']> = ['PG', 'SG', 'SF', 'PF', 'C'];
 
 const makePlayer = (id: number, name: string, position: Player['position'], teamName: string, teamAbbreviation: string, teamLogoColor: string, base: number): Player => {
@@ -74,7 +67,6 @@ const makePlayer = (id: number, name: string, position: Player['position'], team
 
 const buildTeam = (seed: typeof TEAM_SEED[number]): Team => {
   const eloHistory = buildEloHistory(seed.baseElo);
-  const eloChangeLast5 = lastNChange(eloHistory, 5);
 
   const rosterNames = [
     'Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel'
@@ -94,6 +86,7 @@ const buildTeam = (seed: typeof TEAM_SEED[number]): Team => {
   );
 
   const opponents = TEAM_SEED.filter(t => t.id !== seed.id);
+  const recentDates = daysArray(5);
   const gameHistory = opponents.slice(0, 5).map((opp, i) => {
     const teamElo = eloHistory[eloHistory.length - 1 - i]?.elo ?? seed.baseElo;
     const oppElo = opp.baseElo + (i % 2 === 0 ? 10 : -10);
@@ -101,14 +94,21 @@ const buildTeam = (seed: typeof TEAM_SEED[number]): Team => {
     const margin = Math.abs(Math.round((teamElo - oppElo) / 50)) + 3;
     const score = teamWon ? `${100 + margin}-${98}` : `${98}-${100 + margin}`;
     const eloChange = teamWon ? +Math.min(15, Math.max(5, Math.round((oppElo - teamElo) / 40 + 8))) : -Math.min(15, Math.max(5, Math.round((teamElo - oppElo) / 40 + 8)));
+    const date = recentDates[recentDates.length - 1 - i] ?? recentDates[0];
     return {
       opponentName: opp.name,
+      opponentAbbreviation: opp.abbreviation,
       opponentElo: opp.baseElo,
       score,
       result: teamWon ? 'W' as const : 'L' as const,
       eloChange,
+      date,
+      home: i % 2 === 0,
+      eloBefore: Math.round(teamElo),
+      eloAfter: Math.round(teamElo + eloChange),
     };
   });
+  const eloChangeLast5 = Math.round(gameHistory.slice(0, 5).reduce((acc, game) => acc + (game.eloChange ?? 0), 0));
 
   return {
     id: seed.id,
@@ -121,6 +121,13 @@ const buildTeam = (seed: typeof TEAM_SEED[number]): Team => {
     logoColor: seed.color,
     eloHistory,
     gameHistory,
+    categoryRatings: {
+      offense: clamp(Math.round(70 + (seed.baseElo - 1500) / 5), 60, 95),
+      defense: clamp(Math.round(68 + (seed.baseElo - 1500) / 6), 60, 95),
+      pacePressure: clamp(65 + (seed.id % 5) * 3, 60, 92),
+      hustle: clamp(64 + (seed.id % 7) * 2, 60, 90),
+      clutch: clamp(66 + (seed.id % 6) * 3, 60, 94),
+    },
   };
 };
 
@@ -141,11 +148,57 @@ const TEAMS: Team[] = TEAM_SEED.map(buildTeam);
       const losses = gp - wins;
       const offRtg = +(108 + (elo - 1500) / 12 + Math.sin(team.id) * 1.2).toFixed(1);
       const defRtg = +(109 - (elo - 1500) / 16 + Math.cos(team.id) * 1.2).toFixed(1);
-      const plusMinus = +(offRtg - defRtg).toFixed(1);
-      (team as any).record = { wins, losses, conferenceRank: idx + 1 };
-      (team as any).teamStats = { plusMinus, offensiveRating: offRtg, defensiveRating: defRtg };
+      const netRating = +(offRtg - defRtg).toFixed(1);
+      const threesPerGame = +(11 + (elo - 1500) / 80 + Math.sin(team.id) * 0.6).toFixed(1);
+      const turnoversPerGame = +(14 - (elo - 1500) / 120 + Math.cos(team.id) * 0.4).toFixed(1);
+      const fgPct = +clamp(0.44 + (elo - 1500) / 3500, 0.43, 0.52).toFixed(3);
+      const fg3Pct = +clamp(0.33 + (elo - 1500) / 5000, 0.32, 0.41).toFixed(3);
+      const ftPct = +clamp(0.74 + (elo - 1500) / 5000, 0.72, 0.86).toFixed(3);
+      team.seed = idx + 1;
+      (team as any).record = { wins, losses, conferenceRank: idx + 1, seed: idx + 1 };
+      (team as any).teamStats = {
+        offRating: offRtg,
+        defRating: defRtg,
+        netRating,
+        threesPerGame,
+        turnoversPerGame,
+        plusMinus: netRating,
+        fgPct,
+        fg3Pct,
+        ftPct,
+        offRatingRank: 0,
+        defRatingRank: 0,
+        netRatingRank: 0,
+        threesPerGameRank: 0,
+        turnoversPerGameRank: 0,
+        plusMinusRank: 0,
+        fgPctRank: 0,
+        fg3PctRank: 0,
+        ftPctRank: 0,
+      };
     });
   });
+  const rankTeams = (key: keyof Team['teamStats'], ascending = false) => {
+    const sorted = [...TEAMS].filter(t => t.teamStats).sort((a, b) => {
+      const aVal = (a.teamStats as any)?.[key] ?? 0;
+      const bVal = (b.teamStats as any)?.[key] ?? 0;
+      return ascending ? aVal - bVal : bVal - aVal;
+    });
+    sorted.forEach((team, idx) => {
+      if (!team.teamStats) return;
+      const rankKey = `${key as string}Rank`;
+      (team.teamStats as any)[rankKey] = idx + 1;
+    });
+  };
+  rankTeams('offRating');
+  rankTeams('defRating', true);
+  rankTeams('netRating');
+  rankTeams('threesPerGame');
+  rankTeams('turnoversPerGame', true);
+  rankTeams('plusMinus');
+  rankTeams('fgPct');
+  rankTeams('fg3Pct');
+  rankTeams('ftPct');
 })();
 
 const buildDailySummary = (teams: Team[]): DailySummary => {
